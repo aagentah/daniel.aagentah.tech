@@ -9,11 +9,7 @@ const componentList = {
   hero: dynamic(() => import('~/components/hero')),
   gridStore: dynamic(() => import('~/components/grid/store')),
   subscribeBanner: dynamic(() => import('~/components/subscribe-banner')),
-  button: dynamic(() => import('~/components/button')),
-  homepageIntro: dynamic(() => import('~/components/homepage-intro')),
-  homepageAbout: dynamic(() => import('~/components/homepage-about')),
-  homepageServices: dynamic(() => import('~/components/homepage-services')),
-  homepageShop: dynamic(() => import('~/components/homepage-shop'))
+  button: dynamic(() => import('~/components/button'))
   // ...
 };
 
