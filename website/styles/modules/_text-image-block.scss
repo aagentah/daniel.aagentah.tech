@@ -1,0 +1,194 @@
+.text-image-block--left {
+  text-align: left;
+
+  .text-image-block__image::before {
+    left: -20px;
+  }
+}
+
+.text-image-block--right {
+  text-align: right;
+
+  .text-image-block__image::before {
+    right: -20px;
+  }
+}
+
+.text-image-block__image {
+  position: relative;
+  @extend .shadow2;
+}
+
+.text-image-block__dialog {
+  margin-left: auto;
+  margin-right: auto;
+  @extend .measure-wide;
+  @extend .ph3;
+  @extend .ph5-md;
+}
+
+.text-image-block__title {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.text-image-block__description {
+  @extend .f5;
+  @extend .lh-copy;
+}
+
+// introduction
+
+@keyframes example1 {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  26% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  76% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes example2 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  26% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  76% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes example3 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  26% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes example4 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  26% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  76% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.text-image-block--introduction__span {
+  position: absolute;
+  top: 125px;
+  transform: rotate(-90deg);
+  font-size: 40px;
+  z-index: -1;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.text-image-block--introduction__span.one {
+  animation-name: example1;
+  @extend .t-primary;
+}
+
+.text-image-block--introduction__span.two {
+  animation-name: example2;
+  font-family: $t-intro-2;
+}
+
+.text-image-block--introduction__span.three {
+  animation-name: example3;
+  font-family: $t-intro-3;
+}
+
+.text-image-block--introduction__span.four {
+  animation-name: example4;
+  font-family: $t-intro-4;
+}
+
+@include breakpoint-up(md) {
+  .text-image-block--introduction__span {
+    top: 200px;
+    font-size: 50px;
+  }
+}
+
+.text-image-block--introduction__span.left {
+  left: -155px;
+  color: var(--primary-color);
+}
+
+.text-image-block--introduction__span.right {
+  right: -155px;
+}

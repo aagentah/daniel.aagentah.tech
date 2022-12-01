@@ -1,0 +1,29 @@
+// typography
+
+$npl-t-primary: $t-primary;
+$npl-t-secondary: $t-secondary;
+
+$npl-f1: 3rem;
+$npl-f2: 2.25rem;
+$npl-f3: 1.5rem;
+$npl-f4: 1.25rem;
+$npl-f5: 1rem;
+$npl-f6: 0.875rem;
+$npl-f7: 0.75rem;
+
+$npl-lh-copy: 1.5;
+
+// colors
+
+$npl-base-white: #ffffff;
+$npl-base-black: #000000;
+$npl-base-grey: #777777;
+$npl-base-almost-white: #f5f5f5;
+
+$npl-colors: $colors;
+
+// grid
+
+$npl-grid-breakpoints: $grid-breakpoints;
+
+@import 'next-pattern-library/dist/index.scss';

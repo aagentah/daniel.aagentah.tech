@@ -1,0 +1,82 @@
+// General
+
+.header-wrapper {
+  height: 50px;
+  position: relative;
+  @extend .z8;
+}
+
+@include breakpoint-up(md) {
+  .header-wrapper {
+    height: 80px;
+  }
+}
+
+.header-wrapper {
+  .button {
+    @extend .t-primary;
+  }
+}
+
+// Desktop
+
+.header--desktop {
+  height: 80px;
+  max-height: 80px;
+  min-height: 80px;
+}
+
+.nav__desktop__item {
+  position: relative;
+
+  @extend .ph3;
+}
+
+// Mobile
+
+.header--mobile {
+  position: relative;
+  height: 50px;
+  background: var(--white);
+}
+
+.nav--mobile {
+  transition: all 0.5s cubic-bezier(0.985, 0.33, 0.155, 0.87);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--white);
+  transform: translateX(-100vw);
+  @extend .z9;
+}
+
+.nav__mobile__item {
+  position: relative;
+
+  .button {
+    font-size: 2.5rem;
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: 100%;
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+  }
+}
+
+.header--mobile.collapsed > .nav--mobile {
+  transform: translateX(0);
+}
+
+.header__burger {
+  background-color: transparent;
+  top: 12px;
+  left: 10px;
+  @extend .absolute;
+}

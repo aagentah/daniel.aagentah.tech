@@ -1,0 +1,43 @@
+.carousel {
+  position: relative;
+  @extend .ph5;
+}
+
+.carousel__image {
+  border-radius: 100%;
+  @extend .shadow2;
+}
+
+.carousel__description {
+  @extend .tac;
+  @extend .pt3;
+  @extend .mt2;
+  @extend .ph4;
+}
+
+.carousel__arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: var(--black);
+  cursor: pointer;
+
+  @extend .db;
+  @extend .dn-md;
+}
+
+.carousel__arrow--left {
+  left: 10px;
+}
+
+.carousel__arrow--right {
+  left: auto;
+  right: 10px;
+}
+
+.carousel__arrow--disabled {
+  opacity: 0.2;
+}

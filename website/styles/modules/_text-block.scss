@@ -1,0 +1,30 @@
+.text-block {
+  margin-left: auto;
+  margin-right: auto;
+  @extend .measure-wide;
+
+  .heading {
+    display: inline-block;
+  }
+}
+
+.text-block.tac {
+  //
+}
+
+.text-block.tal {
+  //
+}
+
+.text-block.tar {
+  //
+}
+
+.text-block__title {
+  margin-bottom: 1rem;
+}
+
+.text-block__description {
+  @extend .f5;
+  @extend .lh-copy;
+}

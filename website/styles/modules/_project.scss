@@ -1,0 +1,43 @@
+.project__image {
+  @extend .pv4;
+}
+
+.project__body {
+  @extend .taj;
+}
+
+.project__body p,
+.project__body ul,
+.project__body ol,
+.project__body blockquote {
+  @extend .t-secondary;
+  @extend .lh-copy;
+  @extend .f5;
+  @extend .pb3;
+}
+
+.project__body h2,
+.project__body h3,
+.project__body h4,
+.project__body h5,
+.project__body h6 {
+  @extend .t-primary;
+  @extend .lh-title;
+  @extend .pb3;
+}
+
+.project__body h6 {
+  @extend .f5;
+}
+.project__body h5 {
+  @extend .f4;
+}
+.project__body h4 {
+  @extend .f4;
+}
+.project__body h3 {
+  @extend .f3;
+}
+.project__body h2 {
+  @extend .f2;
+}
