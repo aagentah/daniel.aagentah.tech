@@ -10,6 +10,7 @@ import author from "./documents/author";
 import post from "./documents/post";
 import store from "./documents/store";
 import product from "./documents/product";
+import project from "./documents/project";
 import user from "./documents/user";
 
 import blockContent from "./blockContent";
@@ -37,8 +38,9 @@ export default createSchema({
     page,
     // author,
     // post,
+    project,
     post,
-    store,
+    // store,
     // product,
     // user,
     //

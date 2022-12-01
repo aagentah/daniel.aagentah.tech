@@ -12,25 +12,30 @@ import CardPost from '~/components/card/post';
 import {
   imageBuilder,
   getSiteConfig,
-  getPostAndMore,
-  getAllPostsTotal,
+  getProjectAndMore,
+  getAllProjectsTotal
 } from '~/lib/sanity/requests';
 
-export default function Post({ siteConfig, post, morePosts, preview }) {
+export default function Project({
+  siteConfig,
+  project,
+  moreProjects,
+  preview
+}) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!router?.isFallback && !post?.slug) Router.push('/404');
-  }, [router?.isFallback, post?.slug]);
+    if (!router?.isFallback && !project?.slug) Router.push('/404');
+  }, [router?.isFallback, project?.slug]);
 
-  if (!router?.isFallback && post?.slug) {
+  if (!router?.isFallback && project?.slug) {
     return (
       <Layout
         meta={{
           siteConfig,
-          title: post.title,
-          description: post.excerpt,
-          image: post.coverImage,
+          title: project.title,
+          description: project.excerpt,
+          image: project.coverImage
         }}
         preview={preview}
       >
@@ -40,16 +45,16 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
               <Image
                 /* Options */
                 src={imageBuilder
-                  .image(post.coverImage)
+                  .image(project.coverImage)
                   .height(500)
                   .width(1080)
                   .url()}
                 placeholder={imageBuilder
-                  .image(post.coverImage)
+                  .image(project.coverImage)
                   .height(50)
                   .width(108)
                   .url()}
-                alt={post.title}
+                alt={project.title}
                 figcaption={null}
                 height={500}
                 width={null}
@@ -65,7 +70,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                 <Heading
                   /* Options */
                   htmlEntity="h1"
-                  text={post.title}
+                  text={project.title}
                   color="black"
                   size="large"
                   truncate={0}
@@ -76,27 +81,26 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
               </div>
 
               <p className="t-secondary  f7  almost-black  lh-copy  pb4">
-                {post.author.name} |
-                <Date dateString={post.date} />
+                <Date dateString={project.date} />
               </p>
 
-              <div className="post__body  pb4">
-                <BlockContent blocks={post.content} />
+              <div className="project__body  pb4">
+                <BlockContent blocks={project.content} />
               </div>
             </section>
           </article>
 
-          {morePosts.length > 0 && (
+          {project.childPosts.length > 0 && (
             <section className="pb3">
               <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
-                - More Posts
+                - Related Posts
               </h2>
 
               <div className="flex  flex-wrap">
-                {morePosts.map((p, i) => (
+                {project.childPosts.map((p, i) => (
                   <div key={p.slug} className="col-24  col-6-md">
                     <div className="pa3">
-                      <CardPost i={i} post={p} />
+                      <CardPost i={i} item={p.post} />
                     </div>
                   </div>
                 ))}
@@ -113,33 +117,33 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
 
 export async function getStaticProps({ req, params, preview = false }) {
   const siteConfig = await getSiteConfig();
-  const data = await getPostAndMore(params.slug, preview);
+  const data = await getProjectAndMore(params.slug, preview);
 
   return {
     props: {
       siteConfig,
       preview,
-      post: data.post || null,
-      morePosts: data.morePosts || null,
+      project: data.project || null,
+      moreProjects: data.moreProjects || null
     },
-    revalidate: 1,
+    revalidate: 1
   };
 }
 
 export async function getStaticPaths() {
-  const data = await getAllPostsTotal();
+  const data = await getAllProjectsTotal();
 
   return {
     paths:
       data
-        .filter((post) => post?.slug)
-        .map((post) => {
+        .filter(project => project?.slug)
+        .map(project => {
           return {
             params: {
-              slug: post.slug,
-            },
+              slug: project.slug
+            }
           };
         }) || [],
-    fallback: true,
+    fallback: true
   };
 }

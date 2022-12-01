@@ -12,7 +12,7 @@ export default function Footer() {
       <Container>
         <div className="flex  justify-center  mb3">
           <p className="t-secondary  bold  f5  lh-copy  almost-black  tac  dib  mla  mra">
-            Tree Badgers ({new Date().getFullYear()})
+            Daniel Sentien {new Date().getFullYear()}
           </p>
         </div>
 

@@ -99,25 +99,6 @@ const Meta = props => {
       <meta name="twitter:description" content={descVal || siteDesc} />
       <meta name="twitter:image" content={imageVal || siteImage} />
 
-      <link rel="preconnect" href="https://app.snipcart.com" />
-      <link rel="preconnect" href="https://cdn.snipcart.com" />
-
-      <link
-        rel="stylesheet"
-        href="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.css"
-      />
-
-      <script
-        async
-        src="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.js"
-      />
-
-      <div
-        hidden
-        id="snipcart"
-        data-api-key={process.env.SNIPCART_PUBLIC_TOKEN}
-      />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(makeSchema()) }} // eslint-disable-line react/no-danger

@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 $system-sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
   'Ubuntu', 'Roboto', 'Noto', 'Segoe Ui', Arial, sans-serif;
@@ -14,8 +15,8 @@ $mono: 'Consolas', 'Menlo', 'Monaco', 'Lucida Console', monospace;
 $sans: sans-serif;
 $serif: serif;
 
-$t-display: 'Heebo', sans-serif;
-$t-primary: 'Bodoni Moda', serif;
+$t-display: 'Share Tech Mono', monospace;
+$t-primary: 'Share Tech Mono', monospace;
 $t-secondary: 'Roboto', sans-serif;
 $t-intro-2: 'Pacifico', cursive;
 $t-intro-3: 'Roboto Mono', monospace;

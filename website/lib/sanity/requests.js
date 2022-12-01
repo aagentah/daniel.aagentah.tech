@@ -157,6 +157,7 @@ export async function getAllPosts(preview) {
     .fetch(`*[_type == "post"] | order(date desc, _updatedAt desc) {
       ${postFields}
     }`);
+  console.log('results', results);
   return getUniquePosts(results);
 }
 
@@ -202,15 +203,48 @@ export async function getAllPostsTotal() {
   return data;
 }
 
-export async function getProject(slug, preview) {
-  const curClient = getClient(preview);
+export async function getAllProjects(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "project"] | order(date desc, _updatedAt desc) {
+      ${postFields}
+    }`);
+  return getUniquePosts(results);
+}
 
+export async function getProjectAndMore(slug, preview) {
+  const curClient = getClient(preview);
+  const [project, moreProjects] = await Promise.all([
+    curClient
+      .fetch(
+        `*[_type == "project" && slug.current == $slug] | order(_updatedAt desc) {
+        ${postFields}
+        content,
+        'childPosts': childPosts[] {
+          'post': *[_id == ^._ref] [0] {
+            ${postFields}
+          },
+        },
+      }`,
+        { slug }
+      )
+      .then(res => res?.[0]),
+    curClient.fetch(
+      `*[_type == "project" && slug.current != $slug] | order(date desc, _updatedAt desc){
+        ${postFields}
+        content,
+      }[0...4]`,
+      { slug }
+    )
+  ]);
+  return { project, moreProjects: getUniquePosts(moreProjects) };
+}
+
+export async function getAllProjectsTotal() {
   const data = await client.fetch(
-    `*[_type == "project" && slug.current == $slug] [0] {
+    `*[_type == "project"] {
       ${postFields}
       content,
-    }`,
-    { slug }
+     }`
   );
 
   return data;

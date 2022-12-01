@@ -8,6 +8,8 @@ const componentList = {
   textImageBlock: dynamic(() => import('~/components/text-image-block')),
   hero: dynamic(() => import('~/components/hero')),
   gridStore: dynamic(() => import('~/components/grid/store')),
+  gridProjects: dynamic(() => import('~/components/grid/project')),
+  gridPosts: dynamic(() => import('~/components/grid/post')),
   subscribeBanner: dynamic(() => import('~/components/subscribe-banner')),
   button: dynamic(() => import('~/components/button'))
   // ...
