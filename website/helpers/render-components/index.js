@@ -11,7 +11,8 @@ const componentList = {
   gridProjects: dynamic(() => import('~/components/grid/project')),
   gridPosts: dynamic(() => import('~/components/grid/post')),
   subscribeBanner: dynamic(() => import('~/components/subscribe-banner')),
-  button: dynamic(() => import('~/components/button'))
+  button: dynamic(() => import('~/components/button')),
+  intro: dynamic(() => import('~/components/intro'))
   // ...
 };
 

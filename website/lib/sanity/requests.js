@@ -157,7 +157,7 @@ export async function getAllPosts(preview) {
     .fetch(`*[_type == "post"] | order(date desc, _updatedAt desc) {
       ${postFields}
     }`);
-  console.log('results', results);
+
   return getUniquePosts(results);
 }
 

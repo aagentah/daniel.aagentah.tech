@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 $system-sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
   'Ubuntu', 'Roboto', 'Noto', 'Segoe Ui', Arial, sans-serif;
@@ -15,9 +15,9 @@ $mono: 'Consolas', 'Menlo', 'Monaco', 'Lucida Console', monospace;
 $sans: sans-serif;
 $serif: serif;
 
-$t-display: 'Share Tech Mono', monospace;
-$t-primary: 'Share Tech Mono', monospace;
-$t-secondary: 'Roboto', sans-serif;
+$t-display: 'Roboto Mono', monospace;
+$t-primary: 'Roboto Mono', monospace;
+$t-secondary: 'Roboto Mono', monospace;
 $t-intro-2: 'Pacifico', cursive;
 $t-intro-3: 'Roboto Mono', monospace;
 $t-intro-4: 'Macondo', cursive;
@@ -44,7 +44,7 @@ $type-scale: (
 // colors
 
 :root {
-  --black: #000000;
+  --black: #1a1a1a;
   --almost-black: #111111;
   --dark-grey: #343434;
   --mid-grey: #555555;
@@ -54,7 +54,7 @@ $type-scale: (
   --moon-grey: #cccccc;
   --light-grey: #eeeeee;
   --almost-white: #f5f5f5;
-  --white: #ffffff;
+  --white: #e6e6e6;
   --blue: #096dff;
   --red: #ff0000;
   --green: #1c9c08;

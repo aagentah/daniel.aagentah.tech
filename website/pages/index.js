@@ -4,10 +4,7 @@ import Router, { useRouter } from 'next/router';
 import Layout from '~/components/layout';
 import RenderComponents from '~/helpers/render-components';
 
-import {
-  getSiteConfig,
-  getPageBySlug,
-} from '~/lib/sanity/requests';
+import { getSiteConfig, getPageBySlug } from '~/lib/sanity/requests';
 
 export default function Page({ siteConfig, page, preview }) {
   const router = useRouter();
@@ -23,8 +20,9 @@ export default function Page({ siteConfig, page, preview }) {
           siteConfig,
           title: page.title,
           description: page.description,
-          image: null,
+          image: null
         }}
+        navWhite={page?.slug.current === 'home'}
         preview={preview}
       >
         {page?.components?.length > 0 && (
@@ -45,8 +43,8 @@ export async function getStaticProps({ preview = false }) {
     props: {
       siteConfig,
       preview,
-      page,
+      page
     },
-    revalidate: 1,
+    revalidate: 1
   };
 }

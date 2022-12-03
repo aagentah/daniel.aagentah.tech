@@ -2,14 +2,13 @@ import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import NProgress from 'nprogress';
 
-
 import { useApp } from '../../../context-provider/app';
 import { useUser } from '~/lib/hooks';
 
 const HeaderDesktop = dynamic(() => import('./desktop'));
 const HeaderMobile = dynamic(() => import('./mobile'));
 
-export default function Header({ siteConfig }) {
+export default function Header({ navWhite, siteConfig }) {
   const app = useApp();
   const [user, { mutate }] = useUser();
 
@@ -28,7 +27,11 @@ export default function Header({ siteConfig }) {
 
   if (app?.deviceSize) {
     return (
-      <div className="header-wrapper">
+      <div
+        className={`header-wrapper ${
+          navWhite ? 'header-wrapper--white' : null
+        }`}
+      >
         {app.deviceSize !== 'md' && (
           <HeaderDesktop siteConfig={siteConfig} handleLogout={handleLogout} />
         )}

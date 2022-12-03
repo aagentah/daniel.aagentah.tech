@@ -37,7 +37,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   <Button
                     /* Options */
                     type="secondary"
-                    size="x-large"
+                    size="medium"
                     text={iteration?.title}
                     color="primary-color"
                     fluid={false}

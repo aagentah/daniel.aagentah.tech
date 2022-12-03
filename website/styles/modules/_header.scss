@@ -2,8 +2,17 @@
 
 .header-wrapper {
   height: 50px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   @extend .z8;
+}
+
+.header-wrapper--white {
+  .nav__desktop__item .button {
+    color: var(--white);
+  }
 }
 
 @include breakpoint-up(md) {
@@ -37,7 +46,7 @@
 .header--mobile {
   position: relative;
   height: 50px;
-  background: var(--white);
+  background-color: transparent;
 }
 
 .nav--mobile {
@@ -47,7 +56,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--white);
+  background-color: transparent;
   transform: translateX(-100vw);
   @extend .z9;
 }

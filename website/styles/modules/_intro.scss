@@ -1,0 +1,14 @@
+.intro {
+  background: var(--black);
+  min-height: 100vh;
+
+  @extend .flex;
+  @extend .flex-wrap;
+  @extend .align-center;
+  @extend .justify-center;
+}
+
+.intro__image {
+  max-width: 400px;
+  margin: 0 auto;
+}
