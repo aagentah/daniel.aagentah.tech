@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { useToasts } from 'react-toast-notifications';
 import LazyLoad from 'react-lazyload';
+import { Icon } from 'next-pattern-library';
 
 import Button from '~/components/elements/button';
-import { Icon } from 'next-pattern-library';
 
 import { useApp, useDispatchApp } from '~/context-provider/app';
 

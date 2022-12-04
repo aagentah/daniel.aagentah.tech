@@ -82,6 +82,7 @@
     "no-else-return": "off",
     "jsx-a11y/media-has-caption": "off",
     "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/no-autofocus": "off",
     "import/no-unresolved": [
       "error",
       {

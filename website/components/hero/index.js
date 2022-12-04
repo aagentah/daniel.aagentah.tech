@@ -1,11 +1,11 @@
 import BlockContent from '@sanity/block-content-to-react';
 import isObject from 'lodash/isObject';
 import { useParallax } from 'react-scroll-parallax';
+import { Icon } from 'next-pattern-library';
 
 import Button from '~/components/elements/button';
 import Copy from '~/components/elements/copy';
 import Heading from '~/components/elements/heading';
-import { Icon } from 'next-pattern-library';
 import Image from '~/components/elements/image';
 
 import { imageBuilder } from '~/lib/sanity/requests';
