@@ -1,5 +1,5 @@
 .intro {
-  background: var(--black);
+  // background: var(--black);
   min-height: 100vh;
 
   @extend .flex;
@@ -9,6 +9,95 @@
 }
 
 .intro__image {
+  opacity: 0;
+  animation-name: fade-in-right;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
   // max-width: 400px;
   // margin: 0 auto;
+}
+
+.intro__terminal {
+  opacity: 1;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  visibility: visible;
+}
+
+.intro__terminal.hide {
+  animation-name: fade-out-down;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 1s;
+}
+
+.intro__grid-posts {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro__grid-posts.show {
+  animation-name: fade-in-up;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 1.7s;
+}
+
+.terminal__prompt * {
+  @extend .f3;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+
+  h1,
+  p,
+  span {
+    display: inline-block;
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+@keyframes fade-out-down {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+  }
 }

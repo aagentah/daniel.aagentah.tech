@@ -25,7 +25,7 @@ export default function Page({ siteConfig, page, preview }) {
           description: page.description,
           image: null
         }}
-        navWhite={page?.slug.current === 'home'}
+        // navWhite={page?.slug.current === 'home'}
         preview={preview}
       >
         {page?.components?.length > 0 && (

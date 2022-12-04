@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import LazyLoad from 'react-lazyload';
+// import LazyLoad from 'react-lazyload';
 
+import { Icon } from 'next-pattern-library';
 import Button from '~/components/elements/button';
 import Copy from '~/components/elements/copy';
 import Heading from '~/components/elements/heading';
-import { Icon } from 'next-pattern-library';
 import Image from '~/components/elements/image';
 import Label from '~/components/elements/label';
 
@@ -14,8 +14,8 @@ import { useApp } from '~/context-provider/app';
 export default function CardPost({ item }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
-  const imageUrlWidth = app?.deviceSize === 'md' ? 260 : 230;
-  const imageHeight = app?.deviceSize === 'md' ? 260 : 230;
+  const imageUrlWidth = app?.deviceSize === 'md' ? 260 : 1080;
+  const imageHeight = app?.deviceSize === 'md' ? 260 : 120;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
@@ -26,7 +26,7 @@ export default function CardPost({ item }) {
         imageBuilder
           .image(item?.coverImage)
           .width(imageUrlWidth * scale)
-          .height(imageHeight * scale)
+          .height(imageHeight * 3)
           .auto('format')
           .fit('clip')
           .url()
@@ -74,7 +74,7 @@ export default function CardPost({ item }) {
       text={item?.title}
       color="black"
       size="small"
-      truncate={1}
+      truncate={null}
       skeleton={!item}
       /* Children */
       withLinkProps={{
@@ -130,18 +130,19 @@ export default function CardPost({ item }) {
     />
   );
 
-  return (
-    <LazyLoad once offset={150} height={imageHeight}>
-      <article className="card  card--item">
-        {image && <div className="card__image">{image}</div>}
+  // <LazyLoad once offset={150} height={imageHeight}>
+  //   </LazyLoad>
 
-        <div className="card__dialog">
-          {labels?.length && <div className="card__labels">{[...labels]}</div>}
-          {heading && <div className="card__title">{heading}</div>}
-          {copy && <div className="card__description">{copy}</div>}
-          {button && <div className="card__button">{button}</div>}
-        </div>
-      </article>
-    </LazyLoad>
+  return (
+    <article className="card  card--item">
+      {image && <div className="card__image">{image}</div>}
+
+      <div className="card__dialog">
+        {labels?.length && <div className="card__labels">{[...labels]}</div>}
+        {heading && <div className="card__title">{heading}</div>}
+        {copy && <div className="card__description">{copy}</div>}
+        {button && <div className="card__button">{button}</div>}
+      </div>
+    </article>
   );
 }

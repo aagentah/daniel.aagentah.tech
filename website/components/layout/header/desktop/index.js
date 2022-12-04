@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import Button from '~/components/elements/button';
-import Icon from 'next-pattern-library';
+import { Icon } from 'next-pattern-library';
 
 import { useUser } from '~/lib/hooks';
 import { useApp } from '~/context-provider/app';
