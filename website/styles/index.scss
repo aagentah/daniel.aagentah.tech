@@ -100,16 +100,6 @@
   }
 }
 
-.terminal__prompt > p {
-  border-bottom: 1px solid var(--grey);
-}
-
-@include breakpoint-up(md) {
-  .terminal__prompt > p {
-    border-bottom: none;
-  }
-}
-
 .terminal__prompt--1 {
   opacity: 0;
   animation-name: appear;

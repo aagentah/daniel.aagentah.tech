@@ -41,18 +41,18 @@ export default function HeroDefault({
   const lastRef = useRef(null);
 
   useEffect(() => {
-    if (lastRef.current) lastRef.current.focus();
+    if (app?.deviceSize !== 'md' && lastRef.current) lastRef.current.focus();
   }, []);
 
   const handleInputBlur = event => {
-    if (lastRef.current) lastRef.current.focus();
+    if (app?.deviceSize !== 'md' && lastRef.current) lastRef.current.focus();
   };
 
   const [terminal, setTerminal, terminalRef] = useState([
     <p>init usr login</p>,
     <h1>daniel.sentien</h1>,
     <p>
-      type "
+      {app?.deviceSize === 'md' ? 'select' : 'type'} "
       <span
         className="underline  cp"
         onClick={() => handleSubmit(null, 'prompts')}
@@ -95,94 +95,137 @@ export default function HeroDefault({
     }
 
     const val = prompt || inputValue;
+    const firstLines = [];
     const nextLines = [];
     let filterTerminal = terminalRef.current;
 
-    if (!val) {
-      nextLines.push('');
-    } else if (emailInputActive && validateEmail(val)) {
-      nextLines.push(val);
+    if (val) {
+      firstLines.push(val);
 
-      setEmailInputActive(false);
-      nextLines.push('subscribe succesful');
-    } else {
-      nextLines.push(val);
-
-      switch (val) {
-        case 'prompts':
-          nextLines.push(
-            <p>
-              available prompts:
-              <span className="db">
-                &nbsp; [
-                <span
-                  className="underline  cp"
-                  onClick={() => handleSubmit(null, 'projects')}
-                >
-                  projects
-                </span>{' '}
-                |{' '}
-                <span
-                  className="underline  cp"
-                  onClick={() => handleSubmit(null, 'subscribe')}
-                >
-                  subscribe
-                </span>{' '}
-                |{' '}
-                <span
-                  className="underline  cp"
-                  onClick={() => handleSubmit(null, 'escape')}
-                >
-                  escape
-                </span>
-                ]
-              </span>
-            </p>
-          );
+      for (let i = 0; i < terminalRef.current.length; i++) {
+        if (filterTerminal.length > 7) {
+          filterTerminal = filterTerminal.filter((item, i) => i !== 0);
+        } else {
           break;
-        case 'showPrompts':
-          nextLines.push('showPrompts');
-          break;
-        case 'projects':
-          nextLines.push('exec projects.render();');
-          break;
-        case 'subscribe':
-          setEmailInputActive(true);
-          nextLines.push(
-            <p>
-              please enter your email or{' '}
-              <span
-                className="underline  cp"
-                onClick={() => handleSubmit(null, 'cancel')}
-              >
-                cancel
-              </span>
-            </p>
-          );
-          break;
-        case 'cancel':
-          setEmailInputActive(false);
-          nextLines.push('subscribe cancelled');
-          break;
-        case 'escape':
-          nextLines.push('there is no escape...');
-          break;
-        default:
-          nextLines.push(`unknown: "${val}"`);
+        }
       }
+
+      setTerminal([...filterTerminal, ...firstLines]);
+      setInputValue('');
+      setEnteredValue(val);
     }
 
-    for (let i = 0; i < terminalRef.current.length; i++) {
-      if (filterTerminal.length > 7) {
-        filterTerminal = filterTerminal.filter((item, i) => i !== 0);
+    setTimeout(() => {
+      filterTerminal = terminalRef.current;
+
+      if (emailInputActive && validateEmail(val)) {
+        setEmailInputActive(false);
+        nextLines.push('subscribe succesful');
       } else {
-        break;
+        switch (val) {
+          case 'prompts':
+            nextLines.push(
+              <p>
+                available prompts:
+                <span className="db">
+                  &nbsp; [
+                  <span
+                    className="underline  cp"
+                    onClick={() => handleSubmit(null, 'projects')}
+                  >
+                    projects
+                  </span>{' '}
+                  |{' '}
+                  <span
+                    className="underline  cp"
+                    onClick={() => handleSubmit(null, 'music')}
+                  >
+                    music
+                  </span>{' '}
+                  |{' '}
+                  <span
+                    className="underline  cp"
+                    onClick={() => handleSubmit(null, 'posts')}
+                  >
+                    posts
+                  </span>
+                  ]
+                </span>
+                <span className="db">
+                  &nbsp; [
+                  <span
+                    className="underline  cp"
+                    onClick={() => handleSubmit(null, 'bio')}
+                  >
+                    bio
+                  </span>{' '}
+                  |{' '}
+                  <span
+                    className="underline  cp"
+                    onClick={() => handleSubmit(null, 'links')}
+                  >
+                    links
+                  </span>{' '}
+                  |{' '}
+                  <span
+                    className="underline  cp"
+                    onClick={() => handleSubmit(null, 'subscribe')}
+                  >
+                    subscribe
+                  </span>
+                  ]
+                </span>
+              </p>
+            );
+            break;
+          case 'showPrompts':
+            nextLines.push('showPrompts');
+            break;
+          case 'projects':
+            nextLines.push('exec projects.render();');
+            break;
+          case 'subscribe':
+            setEmailInputActive(true);
+            nextLines.push(
+              <p>
+                please enter your email or{' '}
+                <span
+                  className="underline  cp"
+                  onClick={() => handleSubmit(null, 'cancel')}
+                >
+                  cancel
+                </span>
+              </p>
+            );
+            break;
+          case 'cancel':
+            setEmailInputActive(false);
+            nextLines.push('subscribe cancelled');
+            break;
+          case 'escape':
+            nextLines.push('there is no escape...');
+            break;
+          default:
+            if (val) {
+              nextLines.push(`unknown: "${val}"`);
+            } else {
+              nextLines.push('');
+            }
+        }
       }
-    }
 
-    setTerminal([...filterTerminal, ...nextLines]);
-    setInputValue('');
-    setEnteredValue(val);
+      for (let i = 0; i < terminalRef.current.length; i++) {
+        if (filterTerminal.length > 7) {
+          filterTerminal = filterTerminal.filter((item, i) => i !== 0);
+        } else {
+          break;
+        }
+      }
+
+      setTerminal([...filterTerminal, ...nextLines]);
+      setInputValue('');
+      setEnteredValue(val);
+    }, 300);
 
     // if (inputValue === 'projects') {
     //   setResponseValue('return');
