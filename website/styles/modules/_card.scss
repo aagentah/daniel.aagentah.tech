@@ -23,7 +23,7 @@
 }
 
 .card__description {
-  //
+  @extend .mb2;
 }
 
 .card__button {

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Heading } from 'next-pattern-library';
 
 import Layout from '~/components/layout';
 import Container from '~/components/layout/container';
 import CardPost from '~/components/card/post';
+
+import Heading from '~/components/elements/heading';
 
 import { getSiteConfig, getPostWithSearch } from '~/lib/sanity/requests';
 
@@ -27,7 +28,7 @@ export default function Post({ siteConfig, params }) {
         siteConfig,
         title: 'Search',
         description: 'This is the Search page.',
-        image: null,
+        image: null
       }}
       preview={null}
     >
@@ -86,7 +87,7 @@ export async function getServerSideProps({ params, preview = false }) {
   return {
     props: {
       siteConfig,
-      params,
-    },
+      params
+    }
   };
 }

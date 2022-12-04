@@ -1,19 +1,17 @@
 import Link from 'next/link';
 import LazyLoad from 'react-lazyload';
-import {
-  Image,
-  Label,
-  Heading,
-  Copy,
-  Button,
-  Icon
-} from 'next-pattern-library';
+
+import { Icon } from 'next-pattern-library';
+import Button from '~/components/elements/button';
+import Copy from '~/components/elements/copy';
+import Heading from '~/components/elements/heading';
+import Image from '~/components/elements/image';
+import Label from '~/components/elements/label';
 
 import { imageBuilder } from '~/lib/sanity/requests';
 import { useApp } from '~/context-provider/app';
 
 export default function CardPost({ item }) {
-  console.log('item', item);
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 260 : 230;
@@ -76,7 +74,7 @@ export default function CardPost({ item }) {
       text={item?.title}
       color="black"
       size="small"
-      truncate={1}
+      truncate={2}
       skeleton={!item}
       /* Children */
       withLinkProps={{
@@ -98,7 +96,7 @@ export default function CardPost({ item }) {
       text={item?.excerpt}
       color="black"
       size="medium"
-      truncate={2}
+      truncate={null}
       skeleton={!item}
     />
   );

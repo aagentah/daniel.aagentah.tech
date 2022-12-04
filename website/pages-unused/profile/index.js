@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
-import { Heading, Button, Copy, Icon, Input } from 'next-pattern-library';
 import { useToasts } from 'react-toast-notifications';
+
+import Button from '~/components/elements/button';
+import Copy from '~/components/elements/copy';
+import Heading from '~/components/elements/heading';
+import { Icon } from 'next-pattern-library';
+import Input from '~/components/elements/input';
 
 import Layout from '~/components/layout';
 import Container from '~/components/layout/container';
@@ -25,7 +30,7 @@ function ProfileEdit() {
 
     const body = {
       email: e.currentTarget.username.value,
-      name: e.currentTarget.name.value,
+      name: e.currentTarget.name.value
     };
 
     if (e.currentTarget.password.value) {
@@ -34,7 +39,7 @@ function ProfileEdit() {
       if (body.password !== e.currentTarget.rpassword.value) {
         addToast("The passwords don't match", {
           appearance: 'error',
-          autoDismiss: true,
+          autoDismiss: true
         });
         return;
       }
@@ -42,7 +47,7 @@ function ProfileEdit() {
       if (body.password === e.currentTarget.username.value) {
         addToast('Password should not match Username', {
           appearance: 'error',
-          autoDismiss: true,
+          autoDismiss: true
         });
         return;
       }
@@ -50,7 +55,7 @@ function ProfileEdit() {
       if (body.password === e.currentTarget.name.value) {
         addToast('Password should not match Name', {
           appearance: 'error',
-          autoDismiss: true,
+          autoDismiss: true
         });
         return;
       }
@@ -60,7 +65,7 @@ function ProfileEdit() {
       if (!isPasswordValid.isValid) {
         addToast(isPasswordValid.message, {
           appearance: 'error',
-          autoDismiss: true,
+          autoDismiss: true
         });
         return;
       }
@@ -72,7 +77,7 @@ function ProfileEdit() {
     const res = await fetch('../api/user', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     });
 
     if (res.status === 200) {
@@ -80,12 +85,12 @@ function ProfileEdit() {
       mutate(updatedUser);
       addToast('Successfully updated', {
         appearance: 'success',
-        autoDismiss: true,
+        autoDismiss: true
       });
     } else {
       addToast('Error whilst updating, try again.', {
         appearance: 'error',
-        autoDismiss: true,
+        autoDismiss: true
       });
     }
 
@@ -98,7 +103,7 @@ function ProfileEdit() {
     setUpdateButtonLoading(true);
 
     const res = await fetch('../api/user', {
-      method: 'DELETE',
+      method: 'DELETE'
     });
 
     if (res.status === 204) {
@@ -107,7 +112,7 @@ function ProfileEdit() {
     } else {
       addToast('Error whilst deleting, try again.', {
         appearance: 'error',
-        autoDismiss: true,
+        autoDismiss: true
       });
     }
 
@@ -264,7 +269,7 @@ function ProfileEdit() {
                 type: 'form',
                 url: null,
                 target: null,
-                routerLink: null,
+                routerLink: null
               }}
             />
           </div>
@@ -309,7 +314,7 @@ export default function Profile({ siteConfig }) {
           siteConfig,
           title: 'Profile',
           description: 'This is the Profile page.',
-          image: null,
+          image: null
         }}
         preview={null}
       >
@@ -345,6 +350,6 @@ export async function getServerSideProps() {
   const siteConfig = await getSiteConfig();
 
   return {
-    props: { siteConfig },
+    props: { siteConfig }
   };
 }

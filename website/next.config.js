@@ -17,6 +17,16 @@ module.exports = withPreact({
     SITE_URL: process.env.SITE_URL,
     ENV_TYPE: process.env.ENV_TYPE
   },
+  images: {
+    domains: ['cdn.sanity.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/stwvi7ew/**'
+      }
+    ]
+  },
   webpack(config, { dev, isServer }) {
     // // Move Preact into the framework chunk instead of duplicating in routes:
     // const splitChunks = config.optimization && config.optimization.splitChunks;

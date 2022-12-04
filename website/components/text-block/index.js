@@ -1,7 +1,9 @@
 import BlockContent from '@sanity/block-content-to-react';
-import { Heading, Copy } from 'next-pattern-library';
 import isObject from 'lodash/isObject';
 import LazyLoad from 'react-lazyload';
+
+import Copy from '~/components/elements/copy';
+import Heading from '~/components/elements/heading';
 
 import Container from '../layout/container';
 import componentTextAlign from '~/functions/componentTextAlign';

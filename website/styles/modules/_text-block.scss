@@ -1,7 +1,7 @@
 .text-block {
   margin-left: auto;
   margin-right: auto;
-  @extend .measure-wide;
+  // @extend .measure-wide;
 
   .heading {
     display: inline-block;
@@ -22,6 +22,7 @@
 
 .text-block__title {
   margin-bottom: 1rem;
+  @extend .t-primary;
 }
 
 .text-block__description {

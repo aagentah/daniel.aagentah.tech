@@ -19,6 +19,7 @@
   padding-right: 8px;
   min-width: 50px;
   font-family: $t-secondary;
+  font-weight: bold;
 
   svg {
     transition: all 0.3s ease-in-out;
@@ -198,7 +199,7 @@
     }
   }
 
-  .button.secondary.button--#{$color} {
+  .button.secondary.button--#{'' + $color} {
     color: var($hex);
     fill: var($hex);
     border-color: var($hex);

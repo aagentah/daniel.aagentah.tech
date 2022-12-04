@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { Image } from 'next-pattern-library';
 import LazyLoad from 'react-lazyload';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+
+import Image from '~/components/elements/image';
 
 import { imageBuilder } from '~/lib/sanity/requests';
 import { useApp } from '~/context-provider/app';

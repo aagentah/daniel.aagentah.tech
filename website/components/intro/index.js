@@ -1,5 +1,7 @@
-import { Heading } from 'next-pattern-library';
-import { Parallax } from 'react-scroll-parallax';
+import { useParallax } from 'react-scroll-parallax';
+import { useState } from 'react';
+
+import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
 
 import { useApp } from '~/context-provider/app';
@@ -28,7 +30,59 @@ export default function HeroDefault({
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 420 : 420;
   const imageHeight = app?.deviceSize === 'md' ? 420 : 420;
-  const ParallaxDiv = app.deviceSize === 'md' ? 'div' : Parallax;
+  // const ParallaxDiv = app.deviceSize === 'md' ? 'div' : Parallax;
+  const [terminal, setTerminal] = useState([
+    'init usr login',
+    'daniel.sentien',
+    'type "prompts"'
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [responseValue, setResponseValue] = useState('');
+
+  const onChangeHandler = event => {
+    let value = event.target.value;
+
+    setInputValue(value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const nextLines = [];
+
+    switch (inputValue) {
+      case 'prompts':
+        nextLines.push('available prompts: [projects | escape]');
+        break;
+      default:
+        nextLines.push(inputValue);
+    }
+
+    const filterTerminal =
+      terminal.length > 5 ? terminal.filter((item, i) => i !== 0) : terminal;
+
+    setTerminal([...filterTerminal, ...nextLines]);
+    setInputValue('');
+
+    // if (inputValue === 'projects') {
+    //   setResponseValue('return');
+    //   Router.push('/projects');
+    // }
+  };
+
+  const l = useParallax({
+    translateX: [0, -20],
+    opacity: [1, 0],
+    startScroll: 0,
+    endScroll: 200
+  });
+
+  const r = useParallax({
+    translateX: [0, 20],
+    opacity: [1, 0],
+    startScroll: 0,
+    endScroll: 200
+  });
 
   const heroImage = (
     <Image
@@ -97,24 +151,60 @@ export default function HeroDefault({
           />
         </div>
 
-        <ParallaxDiv speed={-10}>
-          <div className="flex  flex-wrap  col-24">
-            {heroImage && (
-              <div className="intro__image  col-24">{heroImage}</div>
-            )}
+        <div className="flex  flex-wrap  justify-center  col-24  ph4">
+          <div className="intro__image  col-24  col-12-md  flex  justify-end">
+            <div ref={l.ref}>{heroImage}</div>
+          </div>
 
-            <div className="col-24  flex  justify-center">
+          <div className="col-24  col-12-md  flex  align-center  justify-start  tal  ph4">
+            <div ref={r.ref}>
               <div className="db  white  tac  t-primary">
-                <span className="f3  dib  pr3">$</span>
-                <span className="terminal__prompt--typing">
-                  <span className="cover cover--gimme-dev" />
-                  <h1 className="f3  dib">daniel.sentien</h1>
-                  <span className="f3  dib  blink">_</span>
-                </span>
+                {terminal.map((string, i) => (
+                  <p
+                    className={`terminal__prompt  terminal__prompt--${i +
+                      1}  tal  pb2`}
+                  >
+                    <span className="terminal__prompt__content" />
+                    <p className="f3  db  t-primary">$ {string}</p>
+                  </p>
+                ))}
+
+                <p className="terminal__prompt  terminal__prompt--command  tal">
+                  <span className="terminal__prompt__content" />
+
+                  <p className="f3  db  t-primary">
+                    $ {inputValue}
+                    {!inputValue && <span className="f3  dib  blink">_</span>}
+                  </p>
+
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      maxLength={25}
+                      name="terminal"
+                      autoFocus
+                      className="terminal__input"
+                      type="text"
+                      name="name"
+                      onChange={onChangeHandler}
+                      value={inputValue}
+                    />
+                  </form>
+                </p>
+
+                {
+                  // {responseValue && (
+                  //   <p className="terminal__prompt  terminal__prompt--1  tal">
+                  //     <span className="terminal__prompt__content" />
+                  //     <h1 className="f3  db  t-primary">
+                  //       $ exec {inputValue}.redir();
+                  //     </h1>
+                  //   </p>
+                  // )}
+                }
               </div>
             </div>
           </div>
-        </ParallaxDiv>
+        </div>
       </article>
     </>
   );

@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useToasts } from 'react-toast-notifications';
-import { Heading, Button, Icon, Input } from 'next-pattern-library';
+
+import Button from '~/components/elements/button';
+import Heading from '~/components/elements/heading';
+import { Icon } from 'next-pattern-library';
+import Input from '~/components/elements/input';
 
 import Layout from '~/components/layout';
 import Container from '~/components/layout/container';
@@ -19,13 +23,13 @@ export default function Login({ siteConfig }) {
   async function loginViaQuery() {
     const body = {
       username: router.query.username,
-      password: `${router.query.salt}:${router.query.hash}`,
+      password: `${router.query.salt}:${router.query.hash}`
     };
 
     const res = await fetch('../api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     });
 
     if (res.status === 200) {
@@ -36,7 +40,7 @@ export default function Login({ siteConfig }) {
         'Something went wrong, please try again, or a different browser?',
         {
           appearance: 'error',
-          autoDismiss: true,
+          autoDismiss: true
         }
       );
     }
@@ -47,13 +51,13 @@ export default function Login({ siteConfig }) {
 
     const body = {
       username: e.currentTarget.username.value,
-      password: e.currentTarget.password.value,
+      password: e.currentTarget.password.value
     };
 
     const res = await fetch('../api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     });
 
     if (res.status === 200) {
@@ -64,7 +68,7 @@ export default function Login({ siteConfig }) {
         'Something went wrong, have you used the correct Username/Password?',
         {
           appearance: 'error',
-          autoDismiss: true,
+          autoDismiss: true
         }
       );
     }
@@ -89,7 +93,7 @@ export default function Login({ siteConfig }) {
           siteConfig,
           title: 'Log In',
           description: 'This is the Log In page.',
-          image: null,
+          image: null
         }}
         preview={null}
       >
@@ -157,7 +161,7 @@ export default function Login({ siteConfig }) {
                     href: null,
                     target: null,
                     routerLink: null,
-                    routerLinkProps: null,
+                    routerLinkProps: null
                   }}
                 />
               </div>
@@ -181,7 +185,7 @@ export default function Login({ siteConfig }) {
                     href: '/signup',
                     target: null,
                     routerLink: Link,
-                    routerLinkProps: null,
+                    routerLinkProps: null
                   }}
                 />
               </div>
@@ -205,7 +209,7 @@ export default function Login({ siteConfig }) {
                     href: '/forgot',
                     target: null,
                     routerLink: Link,
-                    routerLinkProps: null,
+                    routerLinkProps: null
                   }}
                 />
               </div>
@@ -221,6 +225,6 @@ export async function getServerSideProps() {
   const siteConfig = await getSiteConfig();
 
   return {
-    props: { siteConfig },
+    props: { siteConfig }
   };
 }

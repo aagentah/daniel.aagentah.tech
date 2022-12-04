@@ -1,7 +1,8 @@
-import { Button } from 'next-pattern-library';
 import LazyLoad from 'react-lazyload';
 
 import Container from '../layout/container';
+
+import Button from '~/components/elements/button';
 
 /**
  * @param {string} title [required]

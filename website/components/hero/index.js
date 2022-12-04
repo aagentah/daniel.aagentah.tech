@@ -1,7 +1,12 @@
 import BlockContent from '@sanity/block-content-to-react';
 import isObject from 'lodash/isObject';
-import { Image, Heading, Copy, Button, Icon } from 'next-pattern-library';
 import { useParallax } from 'react-scroll-parallax';
+
+import Button from '~/components/elements/button';
+import Copy from '~/components/elements/copy';
+import Heading from '~/components/elements/heading';
+import { Icon } from 'next-pattern-library';
+import Image from '~/components/elements/image';
 
 import { imageBuilder } from '~/lib/sanity/requests';
 import { useApp } from '~/context-provider/app';
@@ -165,7 +170,6 @@ export default function HeroDefault({
         }
 
         {heroImage && <div className="hero__image">{heroImage}</div>}
-
       </article>
     </>
   );

@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
-import { Image, Heading } from 'next-pattern-library';
+
+import Heading from '~/components/elements/heading';
+import Image from '~/components/elements/image';
 
 import Layout from '~/components/layout';
 import Container from '~/components/layout/container';
@@ -36,7 +38,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
       >
         <Container>
           <article>
-            <div className="pv4">
+            <div className="mt6  mb5">
               <Image
                 /* Options */
                 src={imageBuilder
@@ -53,7 +55,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                 figcaption={null}
                 height={500}
                 width={null}
-                customClass={null}
+                customClass="br4  shadow2"
                 onClick={null}
                 /* Children */
                 withLinkProps={null}

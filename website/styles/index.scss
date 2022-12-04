@@ -47,21 +47,81 @@
 @import 'modules/page';
 @import 'modules/intro';
 
-.terminal__prompt--typing {
+.terminal__input {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  height: 32px;
+  width: 100%;
+  opacity: 0;
+}
+
+.terminal__prompt {
   position: relative;
+
+  * {
+    font-weight: normal;
+  }
+}
+
+.terminal__prompt--1 {
   opacity: 0;
   animation-name: appear;
   animation-duration: 0s;
   animation-fill-mode: forwards;
   animation-delay: 0.5s;
+
+  .terminal__prompt__content {
+    animation: typing-gimme-dev 6s steps(19, end);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 0.5s !important;
+  }
 }
 
-.blink {
-  animation: blink-animation 1s steps(3, start) infinite;
-  animation-delay: 0.3s;
+.terminal__prompt--2 {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
+
+  .terminal__prompt__content {
+    animation: typing-gimme-dev 6s steps(19, end);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 1.5s !important;
+  }
 }
 
-.terminal__prompt--typing .cover {
+.terminal__prompt--3 {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 2.5s;
+
+  .terminal__prompt__content {
+    animation: typing-gimme-dev 6s steps(19, end);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 2.5s !important;
+  }
+}
+
+.terminal__prompt--command {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 3.5s;
+
+  .terminal__prompt__content {
+    animation-delay: 3.5s !important;
+  }
+}
+
+.terminal__prompt .terminal__prompt__content {
   position: absolute;
   z-index: 1;
   top: -5px;
@@ -73,11 +133,9 @@
   // border-left: 1px solid #fff;
 }
 
-.terminal__prompt--typing .cover--gimme-dev {
-  animation: typing-gimme-dev 16s steps(19, end);
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-delay: 0.5s;
+.blink {
+  animation: blink-animation 1s steps(3, start) infinite;
+  animation-delay: 0.3s;
 }
 
 @keyframes appear {

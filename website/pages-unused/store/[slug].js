@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
 
-import { Image, Heading, Button, Icon } from 'next-pattern-library';
+import Button from '~/components/elements/button';
+import Heading from '~/components/elements/heading';
+import { Icon } from 'next-pattern-library';
+import Image from '~/components/elements/image';
 
 import Layout from '~/components/layout';
 import Container from '~/components/layout/container';
@@ -168,8 +171,8 @@ export async function getStaticPaths() {
   return {
     paths:
       data
-        .filter((store) => store?.slug)
-        .map((store) => {
+        .filter(store => store?.slug)
+        .map(store => {
           return {
             params: {
               slug: store.slug

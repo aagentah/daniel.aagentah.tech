@@ -1,7 +1,10 @@
 import BlockContent from '@sanity/block-content-to-react';
-import { Image, Heading, Copy } from 'next-pattern-library';
 import isObject from 'lodash/isObject';
 import LazyLoad from 'react-lazyload';
+
+import Copy from '~/components/elements/copy';
+import Heading from '~/components/elements/heading';
+import Image from '~/components/elements/image';
 
 import Container from '../layout/container';
 import { imageBuilder } from '~/lib/sanity/requests';

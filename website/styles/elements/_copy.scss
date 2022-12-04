@@ -5,6 +5,7 @@
   display: block;
   font-family: $t-secondary;
   line-height: 1.5;
+  overflow: hidden;
 
   &.small {
     font-size: 0.75rem;
