@@ -41,7 +41,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     type="secondary"
                     size="large"
                     text={iteration?.title}
-                    color="primary-color"
+                    color="black"
                     fluid={false}
                     icon={null}
                     iconFloat={null}
