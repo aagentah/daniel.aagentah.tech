@@ -1,6 +1,8 @@
 import useState from 'react-usestateref';
 import classNames from 'classnames';
 
+import { useRef, useEffect } from 'react';
+
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
 
@@ -36,6 +38,15 @@ export default function HeroDefault({
   const [enteredValue, setEnteredValue] = useState('');
   const [responseValue, setResponseValue] = useState('');
   const [emailInputActive, setEmailInputActive] = useState(false);
+  const lastRef = useRef(null);
+
+  useEffect(() => {
+    if (lastRef.current) lastRef.current.focus();
+  }, []);
+
+  const handleInputBlur = event => {
+    if (lastRef.current) lastRef.current.focus();
+  };
 
   const [terminal, setTerminal, terminalRef] = useState([
     <p>init usr login</p>,
@@ -101,9 +112,9 @@ export default function HeroDefault({
         case 'prompts':
           nextLines.push(
             <p>
-              available prompts:{' '}
+              available prompts:
               <span className="db">
-                [
+                &nbsp; [
                 <span
                   className="underline  cp"
                   onClick={() => handleSubmit(null, 'projects')}
@@ -154,7 +165,7 @@ export default function HeroDefault({
           nextLines.push('subscribe cancelled');
           break;
         case 'escape':
-          nextLines.push('there is no escape.');
+          nextLines.push('there is no escape...');
           break;
         default:
           nextLines.push(`unknown: "${val}"`);
@@ -253,7 +264,7 @@ export default function HeroDefault({
                     1}  tal`}
                 >
                   <span className="terminal__prompt__content" />
-                  <p className="f5  f3-md  db  pb2  t-primary">
+                  <p className="f5  f4-md  db  pb2  t-primary">
                     {
                       // $ {renderTerminalLine(string, i)}
                     }
@@ -273,6 +284,8 @@ export default function HeroDefault({
 
                 <form onSubmit={handleSubmit}>
                   <input
+                    ref={lastRef}
+                    onBlur={handleInputBlur}
                     maxLength={25}
                     name="terminal"
                     autoFocus

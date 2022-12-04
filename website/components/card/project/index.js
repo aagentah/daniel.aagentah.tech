@@ -96,7 +96,7 @@ export default function CardPost({ item }) {
       text={item?.excerpt}
       color="black"
       size="medium"
-      truncate={2}
+      truncate={null}
       skeleton={!item}
     />
   );

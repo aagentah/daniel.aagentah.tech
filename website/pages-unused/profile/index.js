@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import Router from 'next/router';
 import { useToasts } from 'react-toast-notifications';
 
+import { Icon } from 'next-pattern-library';
 import Button from '~/components/elements/button';
 import Copy from '~/components/elements/copy';
 import Heading from '~/components/elements/heading';
-import { Icon } from 'next-pattern-library';
 import Input from '~/components/elements/input';
 
 import Layout from '~/components/layout';

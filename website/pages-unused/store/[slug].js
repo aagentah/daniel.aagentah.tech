@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
 
+import { Icon } from 'next-pattern-library';
 import Button from '~/components/elements/button';
 import Heading from '~/components/elements/heading';
-import { Icon } from 'next-pattern-library';
 import Image from '~/components/elements/image';
 
 import Layout from '~/components/layout';
