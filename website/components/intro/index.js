@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import useState from 'react-usestateref';
 import classNames from 'classnames';
 
 import Heading from '~/components/elements/heading';
@@ -31,15 +31,25 @@ export default function HeroDefault({
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 420 : 420;
-  const imageHeight = app?.deviceSize === 'md' ? 420 : 420;
+  const imageHeight = app?.deviceSize === 'md' ? null : 400;
   const [inputValue, setInputValue] = useState('');
   const [enteredValue, setEnteredValue] = useState('');
   const [responseValue, setResponseValue] = useState('');
+  const [emailInputActive, setEmailInputActive] = useState(false);
 
-  const [terminal, setTerminal] = useState([
+  const [terminal, setTerminal, terminalRef] = useState([
     <p>init usr login</p>,
     <h1>daniel.sentien</h1>,
-    'get prompts'
+    <p>
+      type "
+      <span
+        className="underline  cp"
+        onClick={() => handleSubmit(null, 'prompts')}
+      >
+        prompts
+      </span>
+      "
+    </p>
   ]);
 
   const terminalClass = classNames({
@@ -49,6 +59,18 @@ export default function HeroDefault({
   const gridPostsClass = classNames({
     show: enteredValue === 'projects'
   });
+
+  const commandClass = classNames({
+    email: emailInputActive
+  });
+
+  const validateEmail = email => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleInputChange = event => {
     let value = event.target.value;
@@ -63,16 +85,73 @@ export default function HeroDefault({
 
     const val = prompt || inputValue;
     const nextLines = [];
+    let filterTerminal = terminalRef.current;
 
     if (!val) {
       nextLines.push('');
+    } else if (emailInputActive && validateEmail(val)) {
+      nextLines.push(val);
+
+      setEmailInputActive(false);
+      nextLines.push('subscribe succesful');
     } else {
+      nextLines.push(val);
+
       switch (val) {
         case 'prompts':
-          nextLines.push('available prompts');
+          nextLines.push(
+            <p>
+              available prompts:{' '}
+              <span className="db">
+                [
+                <span
+                  className="underline  cp"
+                  onClick={() => handleSubmit(null, 'projects')}
+                >
+                  projects
+                </span>{' '}
+                |{' '}
+                <span
+                  className="underline  cp"
+                  onClick={() => handleSubmit(null, 'subscribe')}
+                >
+                  subscribe
+                </span>{' '}
+                |{' '}
+                <span
+                  className="underline  cp"
+                  onClick={() => handleSubmit(null, 'escape')}
+                >
+                  escape
+                </span>
+                ]
+              </span>
+            </p>
+          );
+          break;
+        case 'showPrompts':
+          nextLines.push('showPrompts');
           break;
         case 'projects':
           nextLines.push('exec projects.render();');
+          break;
+        case 'subscribe':
+          setEmailInputActive(true);
+          nextLines.push(
+            <p>
+              please enter your email or{' '}
+              <span
+                className="underline  cp"
+                onClick={() => handleSubmit(null, 'cancel')}
+              >
+                cancel
+              </span>
+            </p>
+          );
+          break;
+        case 'cancel':
+          setEmailInputActive(false);
+          nextLines.push('subscribe cancelled');
           break;
         case 'escape':
           nextLines.push('there is no escape.');
@@ -82,8 +161,13 @@ export default function HeroDefault({
       }
     }
 
-    const filterTerminal =
-      terminal.length > 6 ? terminal.filter((item, i) => i !== 0) : terminal;
+    for (let i = 0; i < terminalRef.current.length; i++) {
+      if (filterTerminal.length > 7) {
+        filterTerminal = filterTerminal.filter((item, i) => i !== 0);
+      } else {
+        break;
+      }
+    }
 
     setTerminal([...filterTerminal, ...nextLines]);
     setInputValue('');
@@ -93,52 +177,6 @@ export default function HeroDefault({
     //   setResponseValue('return');
     //   Router.push('/projects');
     // }
-  };
-
-  const renderTerminalLine = v => {
-    let el = null;
-
-    switch (v) {
-      case 'get prompts':
-        el = (
-          <p>
-            type "
-            <span
-              className="underline"
-              onClick={() => handleSubmit(null, 'prompts')}
-            >
-              prompts
-            </span>
-            "
-          </p>
-        );
-        break;
-      case 'available prompts':
-        el = (
-          <p>
-            available prompts: [
-            <span
-              className="underline"
-              onClick={() => handleSubmit(null, 'projects')}
-            >
-              projects
-            </span>{' '}
-            |{' '}
-            <span
-              className="underline"
-              onClick={() => handleSubmit(null, 'escape')}
-            >
-              escape
-            </span>
-            ]
-          </p>
-        );
-        break;
-      default:
-        el = v;
-    }
-
-    return el;
   };
 
   const heroImage = (
@@ -203,29 +241,33 @@ export default function HeroDefault({
         <div
           className={`intro__terminal  ${terminalClass}  flex  flex-wrap  justify-center  col-24  ph4`}
         >
-          <div className="intro__image  col-24  col-12-md  flex  justify-end">
+          <div className="intro__image  col-24  col-12-md  flex  justify-center  justify-end-md  ph3  mb3  mb0-md">
             {heroImage}
           </div>
 
-          <div className="col-24  col-12-md  flex  align-center  justify-start  tal  ph4">
-            <div className="db  tac  t-primary">
+          <div className="col-24  col-12-md  flex  align-center  justify-start  justify-start-md  ph0  ph4-md">
+            <div className="terminal__prompt__wrapper  db  t-primary">
               {terminal.map((string, i) => (
                 <p
                   className={`terminal__prompt  terminal__prompt--${i +
-                    1}  tal  pb2`}
+                    1}  tal`}
                 >
                   <span className="terminal__prompt__content" />
-                  <p className="f3  db  t-primary">
-                    $ {renderTerminalLine(string)}
+                  <p className="f5  f3-md  db  pb2  t-primary">
+                    {
+                      // $ {renderTerminalLine(string, i)}
+                    }
+                    $ {string}
                   </p>
                 </p>
               ))}
 
-              <p className="terminal__prompt  terminal__prompt--command  tal">
-                <span className="terminal__prompt__content" />
-
-                <p className="f3  db  t-primary">
-                  $ {inputValue}
+              <p
+                className={`terminal__prompt  terminal__prompt--command  ${commandClass}  tal`}
+              >
+                <p className="f5  f3-md  db  t-primary">
+                  ${' '}
+                  <span className="terminal__prompt__value">{inputValue}</span>
                   {!inputValue && <span className="dib  blink">_</span>}
                 </p>
 

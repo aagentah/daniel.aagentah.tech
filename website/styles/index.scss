@@ -50,10 +50,21 @@
 .terminal__input {
   position: absolute;
   top: 0;
-  left: 30px;
-  height: 32px;
+  left: 28px;
+  height: 34px;
+  line-height: 34px;
   width: 100%;
+  max-width: 200px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--black);
   opacity: 0;
+
+  @extend .t-primary;
+}
+
+.terminal__prompt__wrapper {
+  width: 100%;
 }
 
 .terminal__prompt {
@@ -61,6 +72,41 @@
 
   * {
     font-weight: normal;
+  }
+}
+
+.terminal__prompt * {
+  line-height: 1.5;
+  margin: 0;
+
+  @extend .f5;
+  @extend .f3-md;
+
+  h1:not(.db),
+  p:not(.db),
+  span:not(.db) {
+    padding-bottom: 10px;
+    display: inline;
+  }
+}
+
+@include breakpoint-up(md) {
+  .terminal__prompt * {
+    h1:not(.db),
+    p:not(.db),
+    span:not(.db) {
+      padding-bottom: 0px;
+    }
+  }
+}
+
+.terminal__prompt > p {
+  border-bottom: 1px solid var(--grey);
+}
+
+@include breakpoint-up(md) {
+  .terminal__prompt > p {
+    border-bottom: none;
   }
 }
 
@@ -118,6 +164,21 @@
 
   .terminal__prompt__content {
     animation-delay: 3.5s !important;
+  }
+}
+
+.terminal__prompt--command.email {
+  .terminal__input {
+    animation-name: fade-in;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+  }
+
+  .terminal__prompt__value,
+  .blink {
+    display: none !important;
   }
 }
 
