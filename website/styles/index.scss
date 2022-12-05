@@ -49,16 +49,16 @@
 
 .terminal__input {
   position: absolute;
-  top: 0;
-  left: 28px;
+  top: -2px;
+  left: 25px;
   height: 34px;
   line-height: 34px;
   width: 100%;
   max-width: 200px;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--black);
-  opacity: 0;
+  // opacity: 0;
+  caret-color: transparent;
 
   @extend .t-primary;
 }
@@ -159,16 +159,31 @@
 
 .terminal__prompt--command.email {
   .terminal__input {
-    animation-name: fade-in;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
+    border-bottom: 1px solid var(--black);
   }
 
   .terminal__prompt__value,
   .blink {
     display: none !important;
+  }
+}
+
+@include breakpoint-up(md) {
+  .terminal__prompt--command.email {
+    .terminal__input {
+      border-bottom: none;
+    }
+  }
+
+  .terminal__prompt--command:hover {
+    .terminal__input {
+      border-bottom: 1px solid var(--black);
+    }
+
+    .terminal__prompt__value,
+    .blink {
+      display: none !important;
+    }
   }
 }
 

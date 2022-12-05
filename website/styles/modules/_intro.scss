@@ -1,6 +1,6 @@
 .intro {
   // background: var(--black);
-  min-height: 100vh;
+  overflow: hidden;
 
   @extend .flex;
   @extend .flex-wrap;
@@ -24,6 +24,15 @@
   }
 }
 
+.intro__image--mobile {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 400px;
+  transform: scale(1.4);
+  opacity: 0.1;
+}
+
 .intro__image {
   opacity: 0;
   animation-name: fade-in-right;
@@ -31,8 +40,26 @@
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
   animation-delay: 0.5s;
+
   // max-width: 400px;
   // margin: 0 auto;
+}
+
+.intro__barcode {
+  top: -20px;
+  left: 0;
+  right: 0;
+  width: 200px;
+  margin: 0 auto;
+}
+
+@include breakpoint-up(md) {
+  .intro__barcode {
+    top: 20px;
+    left: 0;
+    right: auto;
+    margin: 0;
+  }
 }
 
 .intro__terminal.hide {

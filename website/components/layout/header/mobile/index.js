@@ -38,7 +38,7 @@ export default function Header({ siteConfig, handleLogout }) {
             width="20"
             height="20"
             viewBox="0 0 24 24"
-            fill="#e47b21"
+            fill="#1a1a1a"
           >
             <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
           </svg>
@@ -46,7 +46,10 @@ export default function Header({ siteConfig, handleLogout }) {
 
         <h1 className="t-primary  almost-black  f6">
           <a href="/" className="almost-black  link">
-            <img className="w2" src="/images/logo.png" />
+            <img
+              className="header--mobile__logo  w2"
+              src="/images/logo-black.png"
+            />
           </a>
         </h1>
       </div>
@@ -59,7 +62,7 @@ export default function Header({ siteConfig, handleLogout }) {
               width="20"
               height="20"
               viewBox="0 0 24 24"
-              fill="#e47b21"
+              fill="#1a1a1a"
             >
               <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
             </svg>
@@ -86,7 +89,7 @@ export default function Header({ siteConfig, handleLogout }) {
                       type="secondary"
                       size="x-large"
                       text={iteration?.title}
-                      color="primary-color"
+                      color="black"
                       fluid={false}
                       icon={null}
                       iconFloat={null}
@@ -114,7 +117,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     type="secondary"
                     size="x-large"
                     text="Profile"
-                    color="primary-color"
+                    color="black"
                     fluid={false}
                     icon={null}
                     iconFloat={null}
@@ -138,7 +141,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     type="secondary"
                     size="x-large"
                     text="Log Out"
-                    color="primary-color"
+                    color="black"
                     fluid={false}
                     icon={buttonIconSignOut}
                     iconFloat={null}

@@ -275,7 +275,12 @@ export default function HeroDefault({
       `}
         style={styles}
       >
-        <div className="absolute  top  left  mt3  ml3">
+        <img
+          className="intro__image--mobile  db  dn-md"
+          src="/images/logo-black.png"
+        />
+
+        <div className="intro__barcode  absolute  top  left  ml3">
           <Image
             /* Options */
             src="/images/barcode-black.png"
@@ -295,7 +300,7 @@ export default function HeroDefault({
         <div
           className={`intro__terminal  ${terminalClass}  flex  flex-wrap  justify-center  col-24  ph4`}
         >
-          <div className="intro__image  col-24  col-12-md  flex  justify-center  justify-end-md  ph3  mb3  mb0-md">
+          <div className="intro__image  col-24  col-12-md  justify-center  justify-end-md  ph3  mb3  mb0-md  dn  df-md">
             {heroImage}
           </div>
 
@@ -321,7 +326,9 @@ export default function HeroDefault({
               >
                 <p className="f5  f3-md  db  t-primary">
                   ${' '}
-                  <span className="terminal__prompt__value">{inputValue}</span>
+                  {
+                    // <span className="terminal__prompt__value">{inputValue}</span>
+                  }
                   {!inputValue && <span className="dib  blink">_</span>}
                 </p>
 
@@ -337,6 +344,7 @@ export default function HeroDefault({
                     name="name"
                     onChange={handleInputChange}
                     value={inputValue}
+                    placeholder=""
                   />
                 </form>
               </p>
