@@ -29,7 +29,7 @@ export default function GridItems({ padding, marginTop, marginBottom }) {
             <div className="flex  flex-wrap">
               {[...Array(itemsLength)].map((iteration, i) => (
                 <div key={iteration} className="col-24">
-                  <div className="pa3">
+                  <div className="pt3  ph3  pb0">
                     <CardProject i={i} item={items && items[i]} />
                   </div>
                 </div>

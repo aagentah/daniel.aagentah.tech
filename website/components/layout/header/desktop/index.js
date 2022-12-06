@@ -40,7 +40,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     /* Options */
                     type="secondary"
                     size="large"
-                    text={iteration?.title}
+                    text={`_${iteration?.title.toLowerCase()}`}
                     color="black"
                     fluid={false}
                     icon={null}

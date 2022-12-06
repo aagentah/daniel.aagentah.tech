@@ -6,6 +6,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import { AppProvider } from '../context-provider/app';
+import Layout from '~/components/layout';
 
 import '../styles/index.scss';
 
@@ -15,6 +16,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const transitionTimeout = 300;
+  const { siteConfig, page, preview } = pageProps;
 
   return (
     <>
@@ -28,11 +30,22 @@ function MyApp({ Component, pageProps }) {
               loadingDelay={transitionTimeout}
               loadingTimeout={{
                 enter: transitionTimeout,
-                exit: transitionTimeout,
+                exit: transitionTimeout
               }}
               loadingClassNames="loading-indicator"
             >
-              <Component {...pageProps} />
+              <Layout
+                meta={{
+                  siteConfig,
+                  title: page.title,
+                  description: page.description,
+                  image: null
+                }}
+                // navWhite={page?.slug.current === 'home'}
+                preview={preview}
+              >
+                <Component {...pageProps} />
+              </Layout>
             </PageTransition>
           </ToastProvider>
         </ParallaxProvider>

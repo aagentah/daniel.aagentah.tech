@@ -23,32 +23,4 @@
   .footer {
     display: none;
   }
-
-  .grid {
-    .pa3 {
-      padding-bottom: 0;
-    }
-  }
-
-  .card {
-    position: relative;
-  }
-
-  .card__image {
-    // border: 5px solid #000;
-    // @extend .shadow3;
-  }
-
-  .card__title {
-    position: absolute;
-    bottom: 85px;
-    right: -116px;
-    transform: rotate(-90deg);
-    width: 200px;
-  }
-
-  .card__description,
-  .card__button {
-    display: none;
-  }
 }

@@ -46,7 +46,7 @@
 }
 
 .intro__barcode {
-  top: -20px;
+  top: 0px;
   left: 0;
   right: 0;
   width: 200px;
@@ -60,27 +60,6 @@
     right: auto;
     margin: 0;
   }
-}
-
-.intro__terminal.hide {
-  animation-name: fade-out-down;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-delay: 1s;
-}
-
-.intro__grid-posts {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.intro__grid-posts.show {
-  animation-name: fade-in-up;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-delay: 1.7s;
 }
 
 @keyframes fade-in-right {

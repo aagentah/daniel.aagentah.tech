@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 
-import Layout from '~/components/layout';
 import RenderComponents from '~/helpers/render-components';
 
 import {
@@ -18,20 +17,11 @@ export default function Page({ siteConfig, page, preview }) {
 
   if (!router?.isFallback && page?.slug) {
     return (
-      <Layout
-        meta={{
-          siteConfig,
-          title: page.title,
-          description: page.description,
-          image: null
-        }}
-        // navWhite={page?.slug.current === 'home'}
-        preview={preview}
-      >
+      <>
         {page?.components?.length > 0 && (
           <RenderComponents components={page.components} />
         )}
-      </Layout>
+      </>
     );
   }
 

@@ -45,8 +45,13 @@
 
 .header--mobile {
   position: relative;
-  height: 50px;
+  height: 80px;
   background-color: transparent;
+}
+
+.header--mobile__logo {
+  @extend .w3;
+  // @extend .mt4;
 }
 
 .nav--mobile {
@@ -63,10 +68,6 @@
 
 .nav__mobile__item {
   position: relative;
-
-  .button {
-    font-size: 2rem;
-  }
 }
 
 .header--mobile.collapsed > .nav--mobile {
@@ -75,7 +76,7 @@
 
 .header__burger {
   background-color: transparent;
-  top: 12px;
+  top: 28px;
   left: 10px;
   @extend .absolute;
 }

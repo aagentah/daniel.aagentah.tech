@@ -3,10 +3,7 @@ import classNames from 'classnames';
 
 import { useRef, useEffect } from 'react';
 
-import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
-
-import GridProject from '~/components/grid/project';
 
 import { useApp } from '~/context-provider/app';
 
@@ -63,14 +60,6 @@ export default function HeroDefault({
     </p>
   ]);
 
-  const terminalClass = classNames({
-    hide: enteredValue === 'projects'
-  });
-
-  const gridPostsClass = classNames({
-    show: enteredValue === 'projects'
-  });
-
   const commandClass = classNames({
     email: emailInputActive
   });
@@ -94,7 +83,9 @@ export default function HeroDefault({
       e.preventDefault();
     }
 
-    const val = prompt || inputValue;
+    let val = prompt || inputValue;
+    val = val.toLowerCase();
+
     const firstLines = [];
     const nextLines = [];
     let filterTerminal = terminalRef.current;
@@ -188,7 +179,7 @@ export default function HeroDefault({
             setEmailInputActive(true);
             nextLines.push(
               <p>
-                please enter your email or{' '}
+                please enter email or{' '}
                 <span
                   className="underline  cp"
                   onClick={() => handleSubmit(null, 'cancel')}
@@ -226,43 +217,7 @@ export default function HeroDefault({
       setInputValue('');
       setEnteredValue(val);
     }, 300);
-
-    // if (inputValue === 'projects') {
-    //   setResponseValue('return');
-    //   Router.push('/projects');
-    // }
   };
-
-  const heroImage = (
-    <Image
-      /* Options */
-      src="/images/logo-black.png"
-      placeholder={null}
-      alt={null}
-      figcaption={null}
-      height={imageHeight}
-      width={null}
-      customClass={null}
-      skeleton={skeleton}
-      onClick={null}
-      /* Children */
-      withLinkProps={null}
-    />
-  );
-
-  const heroTitle = (
-    <Heading
-      /* Options */
-      htmlEntity="h2"
-      text={null}
-      color="black"
-      size="large"
-      truncate={null}
-      skeleton={skeleton}
-      /* Children */
-      withLinkProps={null}
-    />
-  );
 
   return (
     <>
@@ -297,11 +252,22 @@ export default function HeroDefault({
           />
         </div>
 
-        <div
-          className={`intro__terminal  ${terminalClass}  flex  flex-wrap  justify-center  col-24  ph4`}
-        >
+        <div className="intro__terminal  flex  flex-wrap  justify-center  col-24  ph4">
           <div className="intro__image  col-24  col-12-md  justify-center  justify-end-md  ph3  mb3  mb0-md  dn  df-md">
-            {heroImage}
+            <Image
+              /* Options */
+              src="/images/logo-black.png"
+              placeholder={null}
+              alt={null}
+              figcaption={null}
+              height={imageHeight}
+              width={null}
+              customClass={null}
+              skeleton={skeleton}
+              onClick={null}
+              /* Children */
+              withLinkProps={null}
+            />
           </div>
 
           <div className="col-24  col-12-md  flex  align-center  justify-start  justify-start-md  ph0  ph4-md">
@@ -312,12 +278,7 @@ export default function HeroDefault({
                     1}  tal`}
                 >
                   <span className="terminal__prompt__content" />
-                  <p className="f5  f4-md  db  pb2  t-primary">
-                    {
-                      // $ {renderTerminalLine(string, i)}
-                    }
-                    $ {string}
-                  </p>
+                  <p className="f5  f4-md  db  pb2  t-primary">$ {string}</p>
                 </p>
               ))}
 
@@ -350,10 +311,6 @@ export default function HeroDefault({
               </p>
             </div>
           </div>
-        </div>
-
-        <div className={`intro__grid-posts  ${gridPostsClass}  mt6  mb5`}>
-          <GridProject />
         </div>
       </article>
     </>

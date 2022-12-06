@@ -2,7 +2,6 @@ import Link from 'next/link';
 import LazyLoad from 'react-lazyload';
 
 import { Icon } from 'next-pattern-library';
-import Button from '~/components/elements/button';
 import Copy from '~/components/elements/copy';
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
@@ -101,34 +100,34 @@ export default function CardPost({ item }) {
     />
   );
 
-  const button = (
-    <Button
-      /* Options */
-      type="secondary"
-      size="small"
-      text="View Product"
-      color="black"
-      fluid={false}
-      icon={buttonIcon}
-      iconFloat={null}
-      inverted={false}
-      loading={false}
-      disabled={false}
-      skeleton={false}
-      onClick={null}
-      /* Children */
-      withLinkProps={{
-        type: 'next',
-        href: '/post/[slug]',
-        target: null,
-        routerLink: Link,
-        routerLinkProps: {
-          as: `/post/${item?.slug}`,
-          scroll: false
-        }
-      }}
-    />
-  );
+  // const button = (
+  //   <Button
+  //     /* Options */
+  //     type="secondary"
+  //     size="small"
+  //     text="View Product"
+  //     color="black"
+  //     fluid={false}
+  //     icon={buttonIcon}
+  //     iconFloat={null}
+  //     inverted={false}
+  //     loading={false}
+  //     disabled={false}
+  //     skeleton={false}
+  //     onClick={null}
+  //     /* Children */
+  //     withLinkProps={{
+  //       type: 'next',
+  //       href: '/post/[slug]',
+  //       target: null,
+  //       routerLink: Link,
+  //       routerLinkProps: {
+  //         as: `/post/${item?.slug}`,
+  //         scroll: false
+  //       }
+  //     }}
+  //   />
+  // );
 
   return (
     <LazyLoad once offset={150} height={imageHeight}>
@@ -139,7 +138,9 @@ export default function CardPost({ item }) {
           {labels?.length && <div className="card__labels">{[...labels]}</div>}
           {heading && <div className="card__title">{heading}</div>}
           {copy && <div className="card__description">{copy}</div>}
-          {button && <div className="card__button">{button}</div>}
+          {
+            // button && <div className="card__button">{button}</div>
+          }
         </div>
       </article>
     </LazyLoad>
