@@ -33,7 +33,15 @@ export async function getStaticProps({ preview = false }) {
     props: {
       siteConfig,
       preview,
-      page
+      page,
+      layout: {
+        preview,
+        meta: {
+          title: page?.title,
+          description: page?.description,
+          image: null
+        }
+      }
     },
     revalidate: 1
   };

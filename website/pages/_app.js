@@ -16,7 +16,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const transitionTimeout = 300;
-  const { siteConfig, page, preview } = pageProps;
+  const { siteConfig, page, preview, layout } = pageProps;
 
   return (
     <>
@@ -37,9 +37,9 @@ function MyApp({ Component, pageProps }) {
               <Layout
                 meta={{
                   siteConfig,
-                  title: page.title,
-                  description: page.description,
-                  image: null
+                  title: layout.meta.title,
+                  description: layout.meta.description,
+                  image: layout.meta.image
                 }}
                 // navWhite={page?.slug.current === 'home'}
                 preview={preview}

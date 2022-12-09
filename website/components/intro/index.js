@@ -270,7 +270,7 @@ export default function HeroDefault({
             />
           </div>
 
-          <div className="col-24  col-12-md  flex  align-center  justify-start  justify-start-md  ph0  ph4-md">
+          <div className="col-24  col-12-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
             <div className="terminal__prompt__wrapper  db  t-primary">
               {terminal.map((string, i) => (
                 <p
