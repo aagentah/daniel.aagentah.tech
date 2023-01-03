@@ -47,7 +47,7 @@ export default function HeroDefault({
 
   const [terminal, setTerminal, terminalRef] = useState([
     <p>init usr login</p>,
-    <h1 className="primary-color">daniel.sentien</h1>,
+    <h1 className="primary-color">daniel.aagentah</h1>,
     <p>
       {app?.deviceSize === 'md' ? 'select' : 'type'} "
       <span

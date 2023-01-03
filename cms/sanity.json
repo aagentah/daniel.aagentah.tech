@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "stwvi7ew",
+    "projectId": "wn4omjb1",
     "dataset": "production"
   },
   "project": {
-    "name": "daniel.sentien.tech"
+    "name": "daniel.aagentah.tech"
   },
   "plugins": [
     "@sanity/base",
@@ -18,9 +18,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
