@@ -77,7 +77,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
           </section>
         </article>
 
-        {morePosts.length > 0 && (
+        {morePosts?.length > 0 && (
           <section className="pb3">
             <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
               - More Posts

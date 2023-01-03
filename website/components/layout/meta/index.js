@@ -10,11 +10,11 @@ const Meta = props => {
   const { router, siteConfig, title, description, image } = props;
 
   // siteConfig
-  const siteTitle = siteConfig.title || '';
-  const siteDesc = siteConfig.description || '';
+  const siteTitle = siteConfig?.title || '';
+  const siteDesc = siteConfig?.description || '';
   const siteImage =
     imageBuilder
-      .image(siteConfig.logo)
+      .image(siteConfig?.logo)
       .height(1000)
       .width(1000)
       .url() || '';

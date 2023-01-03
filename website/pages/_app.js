@@ -37,9 +37,9 @@ function MyApp({ Component, pageProps }) {
               <Layout
                 meta={{
                   siteConfig,
-                  title: layout.meta.title,
-                  description: layout.meta.description,
-                  image: layout.meta.image
+                  title: layout?.meta?.title,
+                  description: layout?.meta.description,
+                  image: layout?.meta?.image
                 }}
                 // navWhite={page?.slug.current === 'home'}
                 preview={preview}

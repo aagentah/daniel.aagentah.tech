@@ -9,7 +9,7 @@ export default function Layout({ meta, navWhite, preview, children }) {
   // set device type in context API
   deviceSize();
 
-  const titleClass = meta.title.replace(/\s+/g, '-').toLowerCase();
+  const titleClass = meta?.title?.replace(/\s+/g, '-').toLowerCase();
 
   return (
     <>

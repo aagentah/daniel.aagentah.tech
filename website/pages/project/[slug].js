@@ -82,7 +82,7 @@ export default function Project({
           </section>
         </article>
 
-        {project.childPosts.length > 0 && (
+        {project?.childPosts?.length > 0 && (
           <section className="pb3">
             <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
               - Related Posts
