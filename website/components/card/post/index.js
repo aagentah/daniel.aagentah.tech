@@ -13,8 +13,8 @@ import { useApp } from '~/context-provider/app';
 export default function CardPost({ item }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
-  const imageUrlWidth = app?.deviceSize === 'md' ? 260 : 230;
-  const imageHeight = app?.deviceSize === 'md' ? 260 : 230;
+  const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 260;
+  const imageHeight = app?.deviceSize === 'md' ? 1080 : 260;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
