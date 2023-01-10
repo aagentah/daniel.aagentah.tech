@@ -1,11 +1,32 @@
 .intro {
   // background: var(--black);
   overflow: hidden;
+  // background: var(--black);
+  // color: var(--white);
 
   @extend .flex;
   @extend .flex-wrap;
   @extend .align-center;
   @extend .justify-center;
+}
+
+.planet {
+  width: 100%;
+  height: 600px;
+  display: block;
+  z-index: 2;
+}
+
+.planet__hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: scale(1.3);
+  // opacity: 0.5;
+  object-fit: contain;
 }
 
 .intro__terminal {
@@ -20,7 +41,7 @@
 
 @include breakpoint-up(md) {
   .intro__terminal {
-    top: 25%;
+    top: 20%;
   }
 }
 

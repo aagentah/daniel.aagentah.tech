@@ -1,6 +1,5 @@
 import useState from 'react-usestateref';
 import classNames from 'classnames';
-
 import { useRef, useEffect } from 'react';
 
 import Image from '~/components/elements/image';
@@ -41,13 +40,19 @@ export default function HeroDefault({
     if (app?.deviceSize !== 'md' && lastRef.current) lastRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    renderPlanet();
+  }, []);
+
   const handleInputBlur = event => {
     if (app?.deviceSize !== 'md' && lastRef.current) lastRef.current.focus();
   };
 
   const [terminal, setTerminal, terminalRef] = useState([
-    <p>init usr login</p>,
-    <h1 className="primary-color">daniel.aagentah</h1>,
+    <p>init exo:navigator</p>,
+    <h1 className="primary-color">
+      <span className="black">usr</span>&nbsp;daniel.aagentah
+    </h1>,
     <p>
       {app?.deviceSize === 'md' ? 'select' : 'type'} "
       <span
@@ -125,15 +130,15 @@ export default function HeroDefault({
                     onClick={() => handleSubmit(null, 'projects')}
                   >
                     projects
-                  </span>{' '}
-                  |{' '}
+                  </span>
+                  ,{' '}
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'music')}
                   >
                     music
-                  </span>{' '}
-                  |{' '}
+                  </span>
+                  ,{' '}
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'posts')}
@@ -148,16 +153,16 @@ export default function HeroDefault({
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'bio')}
                   >
-                    bio
-                  </span>{' '}
-                  |{' '}
+                    planetInfo();
+                  </span>
+                  ,{' '}
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'links')}
                   >
                     links
-                  </span>{' '}
-                  |{' '}
+                  </span>
+                  ,{' '}
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'subscribe')}
@@ -184,7 +189,7 @@ export default function HeroDefault({
                   className="underline  cp"
                   onClick={() => handleSubmit(null, 'cancel')}
                 >
-                  cancel
+                  "cancel"
                 </span>
               </p>
             );
@@ -217,6 +222,211 @@ export default function HeroDefault({
       setInputValue('');
       setEnteredValue(val);
     }, 300);
+  };
+
+  const renderPlanet = () => {
+    let container;
+    let stats;
+    let camera;
+    let scene;
+    let renderer;
+    let group;
+    let mouseX = 0;
+    let mouseY = 0;
+    let loader;
+    let id;
+    // let kickId = 0;
+
+    const rotateRand = () => {
+      // const kickId = Planet.kickId;
+
+      const random_boolean1 = Math.random() < 0.5;
+      const random_boolean2 = Math.random() < 0.5;
+
+      const ran1And9 = () => {
+        return Math.floor(Math.random() * 1) + 1;
+      };
+
+      const action = () => {
+        // if (kickId !== Planet.kickId) {
+        // window.clearInterval(intervalListener);
+        // }
+
+        group.rotation.y = group.rotation.y;
+        group.rotation.x = group.rotation.x;
+
+        if (random_boolean1) {
+          if (random_boolean2) {
+            group.rotation.y += parseFloat(`0.001`);
+            group.rotation.x -= parseFloat(`0.001`);
+          } else {
+            group.rotation.y -= parseFloat(`0.001`);
+            group.rotation.x += parseFloat(`0.001`);
+          }
+        } else if (random_boolean2) {
+          group.rotation.y += parseFloat(`0.001`);
+          group.rotation.x += parseFloat(`0.001`);
+        } else {
+          group.rotation.y -= parseFloat(`0.001`);
+          group.rotation.x -= parseFloat(`0.001`);
+        }
+      };
+
+      const intervalListener = self.setInterval(() => {
+        action();
+      }, 10);
+    };
+
+    // document.querySelector('.js-btn-scale-up').addEventListener(
+    //   'click',
+    //   () => {
+    //     animate();
+    //     const scale = 0.005;
+    //
+    //     const intervalListener = self.setInterval(() => {
+    //       action();
+    //     }, 10);
+    //
+    //     const action = () => {
+    //       if (group.scale.x >= 1) {
+    //         group.scale.set(1, 1, 1);
+    //         cancelAnimationFrame(id);
+    //         // requestAnimationFrame(animate);
+    //         window.clearInterval(intervalListener);
+    //       } else {
+    //         group.scale.x += scale;
+    //         group.scale.y += scale;
+    //         group.scale.z += scale;
+    //       }
+    //     };
+    //   },
+    //   false
+    // );
+
+    function init() {
+      container = document.querySelector('.planet');
+      console.log('container', container);
+
+      let windowHalfX = container.clientWidth;
+      let windowHalfY = container.clientHeight;
+
+      camera = new THREE.PerspectiveCamera(
+        60,
+        container.clientWidth / container.clientHeight,
+        1,
+        2000
+      );
+      camera.position.z = 500;
+
+      scene = new THREE.Scene();
+
+      group = new THREE.Group();
+      scene.add(group);
+
+      // earth
+
+      loader = new THREE.TextureLoader();
+
+      loader.load('/images/ceres.jpg', function(texture) {
+        let geometry = new THREE.SphereGeometry(
+          container.clientWidth - (container.clientWidth / 100) * 45,
+          20,
+          20
+        );
+
+        let material = new THREE.MeshBasicMaterial({
+          map: texture,
+          overdraw: 0.5
+        });
+        let mesh = new THREE.Mesh(geometry, material);
+        group.add(mesh);
+      });
+
+      // shadow
+
+      let canvas = document.createElement('canvas');
+      canvas.width = 128;
+      canvas.height = 128;
+
+      let context = canvas.getContext('2d');
+      let gradient = context.createRadialGradient(
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        canvas.width / 2
+      );
+
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      let texture = new THREE.CanvasTexture(canvas);
+
+      let geometry = new THREE.PlaneBufferGeometry(300, 300, 3, 3);
+      let material = new THREE.MeshBasicMaterial({
+        map: texture,
+        overdraw: 0.5
+      });
+
+      let mesh = new THREE.Mesh(geometry, material);
+      mesh.position.y = -250;
+      mesh.rotation.x = -Math.PI / 2;
+      group.add(mesh);
+
+      renderer = new THREE.CanvasRenderer({ alpha: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+
+      // stats = new Stats();
+      // container.appendChild(stats.dom);
+
+      // document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+      //
+
+      window.addEventListener('resize', onWindowResize, false);
+    }
+
+    function onWindowResize() {
+      windowHalfX = container.clientWidth;
+      windowHalfY = container.clientHeight;
+
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+
+    // function onDocumentMouseMove(event) {
+    //   mouseX = event.clientX - windowHalfX;
+    //   mouseY = event.clientY - windowHalfY;
+    // }
+
+    //
+
+    function animate() {
+      id = requestAnimationFrame(animate);
+      render();
+      // stats.update();
+    }
+
+    function render() {
+      camera.position.x += (mouseX - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    }
+
+    init();
+    animate();
+
+    rotateRand();
+
+    group.scale.set(0.5, 0.5, 0.5);
+    renderer.setClearColor(0x000000, 0);
   };
 
   return (
@@ -253,24 +463,30 @@ export default function HeroDefault({
         </div>
 
         <div className="intro__terminal  flex  flex-wrap  justify-center  col-24  ph4">
-          <div className="intro__image  col-24  col-12-md  justify-center  justify-end-md  ph3  mb3  mb0-md  dn  df-md">
-            <Image
-              /* Options */
-              src="/images/logo-black.png"
-              placeholder={null}
-              alt={null}
-              figcaption={null}
-              height={imageHeight}
-              width={null}
-              customClass={null}
-              skeleton={skeleton}
-              onClick={null}
-              /* Children */
-              withLinkProps={null}
-            />
+          <div className="intro__image  col-24  col-13-md  justify-center  justify-end-md    mb3  mb0-md  dn  df-md">
+            {
+              // <Image
+              //   /* Options */
+              //   src="/images/logo-black.png"
+              //   placeholder={null}
+              //   alt={null}
+              //   figcaption={null}
+              //   height={imageHeight}
+              //   width={null}
+              //   customClass={null}
+              //   skeleton={skeleton}
+              //   onClick={null}
+              //   /* Children */
+              //   withLinkProps={null}
+              // />
+            }
+
+            <div className="planet" />
+
+            <img className="planet__hud" src="/images/hud.jpeg" />
           </div>
 
-          <div className="col-24  col-12-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
+          <div className="col-24  col-11-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
             <div className="terminal__prompt__wrapper  db  t-primary">
               {terminal.map((string, i) => (
                 <p
