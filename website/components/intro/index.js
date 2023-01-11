@@ -38,19 +38,60 @@ export default function HeroDefault({
   const [emailInputActive, setEmailInputActive] = useState(false);
   const [rotate, setRotate] = useState({});
   const [rotate2, setRotate2] = useState({});
+  const wadEnv = {
+    attack: 0.0,
+    decay: 0.0,
+    sustain: 1.0,
+    hold: -1.0,
+    release: 0.3
+  };
+
+  const instruments = [
+    'kick',
+    'snare',
+    'synth',
+    'wob',
+    'hat',
+    'perc',
+    'pad',
+    'atmos'
+  ];
+
   const [audioPlaying, setAudioPlaying] = useState({
     kick: new Wad({
       source: `/audio/kick.wav`,
-      env: {
-        attack: 0.0,
-        decay: 0.0,
-        sustain: 1.0,
-        hold: -1.0,
-        release: 0.3
-      }
-      // tuna: effectobject
+      env: wadEnv
+    }),
+    snare: new Wad({
+      source: `/audio/snare.wav`,
+      env: wadEnv
+    }),
+    synth: new Wad({
+      source: `/audio/synth.wav`,
+      env: wadEnv
+    }),
+    wob: new Wad({
+      source: `/audio/wob.wav`,
+      env: wadEnv
+    }),
+    hat: new Wad({
+      source: `/audio/hat.wav`,
+      env: wadEnv
+    }),
+    perc: new Wad({
+      source: `/audio/perc.wav`,
+      env: wadEnv
+    }),
+    pad: new Wad({
+      source: `/audio/pad.wav`,
+      env: wadEnv
+    }),
+    atmos: new Wad({
+      source: `/audio/atmos.wav`,
+      env: wadEnv
     })
   });
+
   const lastRef = useRef(null);
 
   useEffect(() => {
@@ -247,7 +288,7 @@ export default function HeroDefault({
   };
 
   const renderPlanet = () => {
-    if (hasPlanetRendered) {
+    if (hasPlanetRendered || typeof window === 'undefined') {
       return;
     }
 
@@ -406,7 +447,7 @@ export default function HeroDefault({
       group.add(mesh);
 
       renderer = new THREE.CanvasRenderer({ alpha: true });
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(window?.devicePixelRatio);
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
 
@@ -580,113 +621,23 @@ export default function HeroDefault({
                   />
                 </form>
               </p>
+
               <div className="flex  flex-wrap  pr0  pr6-md">
-                <div className="col-12  pa2">
-                  <div
-                    className="audio__button  w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    KICK
+                {instruments.map((string, i) => (
+                  <div className="col-12  pa2">
+                    <div
+                      className="audio__button"
+                      data-audio={string}
+                      onTouchStart={handleTouchStart}
+                      onMouseDown={handleTouchStart}
+                      onTouchEnd={handleTouchEnd}
+                      onMouseUp={handleTouchEnd}
+                      onMouseLeave={handleTouchEnd}
+                    >
+                      {string}
+                    </div>
                   </div>
-                </div>
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    SNARE
-                  </div>
-                </div>
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    SYNTH
-                  </div>
-                </div>
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    WOB
-                  </div>
-                </div>
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    HAT
-                  </div>
-                </div>
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    PERC
-                  </div>
-                </div>
-
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    PAD
-                  </div>
-                </div>
-
-                <div className="col-12  pa2">
-                  <div
-                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
-                    data-audio="kick"
-                    onTouchStart={handleTouchStart}
-                    onMouseDown={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseUp={handleTouchEnd}
-                    onMouseLeave={handleTouchEnd}
-                  >
-                    ATMOS
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

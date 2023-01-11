@@ -117,6 +117,19 @@
 
 .audio__button {
   transition: all 0.1s ease-in-out;
+  @extend.w-100;
+  @extend.h3;
+  @extend.ba;
+  @extend.bc-black;
+  @extend.br2;
+  @extend.shadow2;
+  @extend.cp;
+  @extend.flex;
+  @extend.align-center;
+  @extend.justify-center;
+  @extend.tac;
+  @extend.f4;
+  @extend.fw7;
 
   &:focus,
   &:active {
