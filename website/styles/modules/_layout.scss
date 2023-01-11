@@ -1,7 +1,8 @@
 $transitionTimeout: 0.3s;
 
 main {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 100px);
+  padding-top: 100px;
 }
 
 // Page transition

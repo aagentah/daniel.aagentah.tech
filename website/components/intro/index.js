@@ -33,6 +33,7 @@ export default function HeroDefault({
   const [inputValue, setInputValue] = useState('');
   const [enteredValue, setEnteredValue] = useState('');
   const [responseValue, setResponseValue] = useState('');
+  const [hasPlanetRendered, setHasPlanetRendered] = useState(false);
   const [emailInputActive, setEmailInputActive] = useState(false);
   const lastRef = useRef(null);
 
@@ -124,52 +125,32 @@ export default function HeroDefault({
               <p>
                 available prompts:
                 <span className="db">
-                  &nbsp; [
+                  &nbsp; "
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'projects')}
                   >
-                    projects
+                    planet.midi
                   </span>
-                  ,{' '}
+                  "
+                  <br />
+                  &nbsp; "
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'music')}
                   >
-                    music
+                    planet.switch
                   </span>
-                  ,{' '}
+                  "
+                  <br />
+                  &nbsp; "
                   <span
                     className="underline  cp"
                     onClick={() => handleSubmit(null, 'posts')}
                   >
-                    posts
+                    planet.data
                   </span>
-                  ]
-                </span>
-                <span className="db">
-                  &nbsp; [
-                  <span
-                    className="underline  cp"
-                    onClick={() => handleSubmit(null, 'bio')}
-                  >
-                    planetInfo();
-                  </span>
-                  ,{' '}
-                  <span
-                    className="underline  cp"
-                    onClick={() => handleSubmit(null, 'links')}
-                  >
-                    links
-                  </span>
-                  ,{' '}
-                  <span
-                    className="underline  cp"
-                    onClick={() => handleSubmit(null, 'subscribe')}
-                  >
-                    subscribe
-                  </span>
-                  ]
+                  "
                 </span>
               </p>
             );
@@ -225,6 +206,10 @@ export default function HeroDefault({
   };
 
   const renderPlanet = () => {
+    if (hasPlanetRendered) {
+      return;
+    }
+
     let container;
     let stats;
     let camera;
@@ -235,6 +220,9 @@ export default function HeroDefault({
     let mouseY = 0;
     let loader;
     let id;
+    let windowHalfX;
+    let windowHalfY;
+
     // let kickId = 0;
 
     const rotateRand = () => {
@@ -307,8 +295,8 @@ export default function HeroDefault({
       container = document.querySelector('.planet');
       console.log('container', container);
 
-      let windowHalfX = container.clientWidth;
-      let windowHalfY = container.clientHeight;
+      windowHalfX = container.clientWidth;
+      windowHalfY = container.clientHeight;
 
       camera = new THREE.PerspectiveCamera(
         60,
@@ -328,8 +316,10 @@ export default function HeroDefault({
       loader = new THREE.TextureLoader();
 
       loader.load('/images/ceres.jpg', function(texture) {
+        const times = app?.deviceSize === 'md' ? 0 : 45;
+
         let geometry = new THREE.SphereGeometry(
-          container.clientWidth - (container.clientWidth / 100) * 45,
+          container.clientWidth - (container.clientWidth / 100) * times,
           20,
           20
         );
@@ -386,18 +376,18 @@ export default function HeroDefault({
 
       //
 
-      window.addEventListener('resize', onWindowResize, false);
+      // window.addEventListener('resize', onWindowResize, false);
     }
 
-    function onWindowResize() {
-      windowHalfX = container.clientWidth;
-      windowHalfY = container.clientHeight;
-
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    }
+    // function onWindowResize() {
+    //   windowHalfX = container.clientWidth;
+    //   windowHalfY = container.clientHeight;
+    //
+    //   camera.aspect = container.clientWidth / container.clientHeight;
+    //   camera.updateProjectionMatrix();
+    //
+    //   renderer.setSize(container.clientWidth, container.clientHeight);
+    // }
 
     // function onDocumentMouseMove(event) {
     //   mouseX = event.clientX - windowHalfX;
@@ -427,6 +417,7 @@ export default function HeroDefault({
 
     group.scale.set(0.5, 0.5, 0.5);
     renderer.setClearColor(0x000000, 0);
+    setHasPlanetRendered(true);
   };
 
   return (
@@ -440,10 +431,12 @@ export default function HeroDefault({
       `}
         style={styles}
       >
-        <img
-          className="intro__image--mobile  db  dn-md"
-          src="/images/logo-black.png"
-        />
+        {
+          // <img
+          //   className="intro__image--mobile  db  dn-md"
+          //   src="/images/logo-black.png"
+          // />
+        }
 
         <div className="intro__barcode  absolute  top  left  ml3">
           <Image
@@ -463,7 +456,8 @@ export default function HeroDefault({
         </div>
 
         <div className="intro__terminal  flex  flex-wrap  justify-center  col-24  ph4">
-          <div className="intro__image  col-24  col-13-md  justify-center  justify-end-md    mb3  mb0-md  dn  df-md">
+          <div className="col-24  col-1-md" />
+          <div className="intro__image  col-24  col-13-md  justify-center  justify-end-md  mb4  mb0-md">
             {
               // <Image
               //   /* Options */
@@ -483,10 +477,10 @@ export default function HeroDefault({
 
             <div className="planet" />
 
-            <img className="planet__hud" src="/images/hud.jpeg" />
+            <img className="planet__hud" src="/images/hud-2.png" />
           </div>
 
-          <div className="col-24  col-11-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
+          <div className="col-24  col-10-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
             <div className="terminal__prompt__wrapper  db  t-primary">
               {terminal.map((string, i) => (
                 <p
