@@ -1,6 +1,7 @@
 import useState from 'react-usestateref';
 import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
+import Wad from 'web-audio-daw';
 
 import Image from '~/components/elements/image';
 
@@ -37,6 +38,19 @@ export default function HeroDefault({
   const [emailInputActive, setEmailInputActive] = useState(false);
   const [rotate, setRotate] = useState({});
   const [rotate2, setRotate2] = useState({});
+  const [audioPlaying, setAudioPlaying] = useState({
+    kick: new Wad({
+      source: `/audio/kick.wav`,
+      env: {
+        attack: 0.0,
+        decay: 0.0,
+        sustain: 1.0,
+        hold: -1.0,
+        release: 0.3
+      }
+      // tuna: effectobject
+    })
+  });
   const lastRef = useRef(null);
 
   useEffect(() => {
@@ -447,6 +461,20 @@ export default function HeroDefault({
     setHasPlanetRendered(true);
   };
 
+  const handleTouchStart = e => {
+    const attr = e.target.getAttribute('data-audio');
+
+    audioPlaying[attr].play();
+  };
+
+  const handleTouchEnd = e => {
+    const attr = e.target.getAttribute('data-audio');
+
+    if (attr === 'kick') {
+      audioPlaying[attr].stop();
+    }
+  };
+
   return (
     <>
       <article
@@ -552,6 +580,114 @@ export default function HeroDefault({
                   />
                 </form>
               </p>
+              <div className="flex  flex-wrap  pr0  pr6-md">
+                <div className="col-12  pa2">
+                  <div
+                    className="audio__button  w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    KICK
+                  </div>
+                </div>
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    SNARE
+                  </div>
+                </div>
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    SYNTH
+                  </div>
+                </div>
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    WOB
+                  </div>
+                </div>
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    HAT
+                  </div>
+                </div>
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    PERC
+                  </div>
+                </div>
+
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    PAD
+                  </div>
+                </div>
+
+                <div className="col-12  pa2">
+                  <div
+                    className="w-100  h3  ba  bc-black  br2  shadow2  cp  flex  align-center  justify-center  tac  f4  fw7"
+                    data-audio="kick"
+                    onTouchStart={handleTouchStart}
+                    onMouseDown={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseUp={handleTouchEnd}
+                    onMouseLeave={handleTouchEnd}
+                  >
+                    ATMOS
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
