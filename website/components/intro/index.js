@@ -35,6 +35,8 @@ export default function HeroDefault({
   const [responseValue, setResponseValue] = useState('');
   const [hasPlanetRendered, setHasPlanetRendered] = useState(false);
   const [emailInputActive, setEmailInputActive] = useState(false);
+  const [rotate, setRotate] = useState({});
+  const [rotate2, setRotate2] = useState({});
   const lastRef = useRef(null);
 
   useEffect(() => {
@@ -43,6 +45,31 @@ export default function HeroDefault({
 
   useEffect(() => {
     renderPlanet();
+
+    const handleR1 = () => {
+      let spin = Math.round(Math.random() * 180);
+      setRotate({ transform: `rotate(${spin}deg)` });
+
+      setInterval(() => {
+        spin = Math.round(Math.random() * 180);
+        setRotate({ transform: `rotate(${spin}deg)` });
+      }, 5000);
+    };
+
+    const handleR2 = () => {
+      let spin = Math.round(Math.random() * 180);
+      setRotate2({ transform: `rotate(${spin}deg)` });
+
+      setInterval(() => {
+        spin = Math.round(Math.random() * 180);
+        setRotate2({ transform: `rotate(${spin}deg)` });
+      }, 5000);
+    };
+
+    handleR1();
+    setTimeout(() => {
+      handleR2();
+    }, 2500);
   }, []);
 
   const handleInputBlur = event => {
@@ -477,7 +504,13 @@ export default function HeroDefault({
 
             <div className="planet" />
 
-            <img className="planet__hud" src="/images/hud-2.png" />
+            <div className="planet__hud__wrapper--1" style={rotate}>
+              <img className="planet__hud" src="/images/hud-outside.png" />
+            </div>
+
+            <div className="planet__hud__wrapper--2" style={rotate2}>
+              <img className="planet__hud" src="/images/hud-inside.png" />
+            </div>
           </div>
 
           <div className="col-24  col-10-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
