@@ -151,39 +151,39 @@
 }
 
 .intro__prompt__wrapper {
-  position: absolute;
-  top: 30%;
-  left: 0;
-  width: 100%;
-
-  &.active {
-    opacity: 0;
-    animation: absolute-fade-in 0.3s ease-in-out forwards;
-    animation-delay: 0.5s;
-  }
-
-  &:not(.active) {
-    opacity: 1;
-    animation: absolute-fade-out 0.3s ease-in-out forwards;
-  }
+  // position: absolute;
+  // top: 30%;
+  // left: 0;
+  // width: 100%;
+  //
+  // &.active {
+  //   opacity: 0;
+  //   animation: absolute-fade-in 0.3s ease-in-out forwards;
+  //   animation-delay: 0.5s;
+  // }
+  //
+  // &:not(.active) {
+  //   opacity: 1;
+  //   animation: absolute-fade-out 0.3s ease-in-out forwards;
+  // }
 }
 
 .intro__midi__wrapper {
-  position: absolute;
-  top: 30%;
-  left: 0;
-  width: 100%;
-
-  &.active {
-    opacity: 0;
-    animation: absolute-fade-in 0.3s ease-in-out forwards;
-    animation-delay: 0.5s;
-  }
-
-  &:not(.active) {
-    opacity: 1;
-    animation: absolute-fade-out 0.3s ease-in-out forwards;
-  }
+  // position: absolute;
+  // top: 30%;
+  // left: 0;
+  // width: 100%;
+  //
+  // &.active {
+  //   opacity: 0;
+  //   animation: absolute-fade-in 0.3s ease-in-out forwards;
+  //   animation-delay: 0.5s;
+  // }
+  //
+  // &:not(.active) {
+  //   opacity: 1;
+  //   animation: absolute-fade-out 0.3s ease-in-out forwards;
+  // }
 }
 
 .intro__prompt {
