@@ -57,15 +57,15 @@
   // margin: 0 auto;
 }
 
-.intro__right {
+.intro__dialog {
   height: 300px;
   opacity: 0;
-  animation: fadein2 0s ease-in-out forwards;
+  animation: fade-out 0s ease-in-out forwards;
   animation-delay: 0.5s;
 }
 
 @include breakpoint-up(md) {
-  .intro__right {
+  .intro__dialog {
     height: 600px;
   }
 }
@@ -158,13 +158,13 @@
 
   &.active {
     opacity: 0;
-    animation: fadein 0.3s ease-in-out forwards;
+    animation: absolute-fade-in 0.3s ease-in-out forwards;
     animation-delay: 0.5s;
   }
 
   &:not(.active) {
     opacity: 1;
-    animation: fadeout 0.3s ease-in-out forwards;
+    animation: absolute-fade-out 0.3s ease-in-out forwards;
   }
 }
 
@@ -176,57 +176,13 @@
 
   &.active {
     opacity: 0;
-    animation: fadein 0.3s ease-in-out forwards;
+    animation: absolute-fade-in 0.3s ease-in-out forwards;
     animation-delay: 0.5s;
   }
 
   &:not(.active) {
     opacity: 1;
-    animation: fadeout 0.3s ease-in-out forwards;
-  }
-}
-
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  99% {
-    opacity: 0;
-    height: initial;
-    overflow: inherit;
-  }
-  100% {
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-  }
-}
-
-@keyframes fadein {
-  0% {
-    opacity: 0;
-    height: 0;
-    overflow: inherit;
-  }
-  1% {
-    opacity: 0;
-    height: 100%;
-    overflow: inherit;
-  }
-  100% {
-    opacity: 1;
-    height: 100%;
-    overflow: inherit;
-  }
-}
-
-@keyframes fadein2 {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+    animation: absolute-fade-out 0.3s ease-in-out forwards;
   }
 }
 
@@ -437,6 +393,40 @@
   }
 }
 
+@keyframes absolute-fade-out {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    height: initial;
+    overflow: inherit;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+@keyframes absolute-fade-in {
+  0% {
+    opacity: 0;
+    height: 0;
+    overflow: inherit;
+  }
+  1% {
+    opacity: 0;
+    height: 100%;
+    overflow: inherit;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+    overflow: inherit;
+  }
+}
+
 @keyframes fade-in-right {
   0% {
     opacity: 0;
@@ -467,6 +457,16 @@
   100% {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 

@@ -100,7 +100,9 @@ export default function HeroDefault({
   }, []);
 
   useEffect(() => {
-    renderPlanet();
+    if (typeof window !== 'undefined') {
+      renderPlanet();
+    }
 
     const handleR1 = () => {
       let spin = Math.round(Math.random() * 180);
@@ -298,7 +300,7 @@ export default function HeroDefault({
   };
 
   const renderPlanet = () => {
-    if (hasPlanetRendered || typeof window === 'undefined') {
+    if (hasPlanetRendered) {
       return;
     }
 
@@ -457,7 +459,7 @@ export default function HeroDefault({
       group.add(mesh);
 
       renderer = new THREE.CanvasRenderer({ alpha: true });
-      renderer.setPixelRatio(window?.devicePixelRatio);
+      // renderer.setPixelRatio(window?.devicePixelRatio);
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
 
@@ -598,7 +600,7 @@ export default function HeroDefault({
             </div>
           </div>
 
-          <div className="intro__right  col-24  col-10-md  flex  justify-start  align-center  relative  ph0  ph3-md">
+          <div className="intro__dialog  col-24  col-10-md  flex  justify-start  align-center  relative  ph0  ph3-md">
             <div
               className={`intro__prompt__wrapper  db  t-primary  ${promptWrapperClass}`}
             >
