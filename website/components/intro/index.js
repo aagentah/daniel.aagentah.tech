@@ -36,6 +36,7 @@ export default function HeroDefault({
   const [responseValue, setResponseValue] = useState('');
   const [hasPlanetRendered, setHasPlanetRendered] = useState(false);
   const [emailInputActive, setEmailInputActive] = useState(false);
+  const [isPlanetMidi, setIsPlanetMidi] = useState(false);
   const [rotate, setRotate] = useState({});
   const [rotate2, setRotate2] = useState({});
   const wadEnv = {
@@ -152,6 +153,14 @@ export default function HeroDefault({
     email: emailInputActive
   });
 
+  const promptWrapperClass = classNames({
+    active: !isPlanetMidi
+  });
+
+  const midiWrapperClass = classNames({
+    active: isPlanetMidi
+  });
+
   const validateEmail = email => {
     return String(email)
       .toLowerCase()
@@ -210,7 +219,7 @@ export default function HeroDefault({
                   &nbsp; "
                   <span
                     className="underline  cp"
-                    onClick={() => handleSubmit(null, 'projects')}
+                    onClick={() => handleSubmit(null, 'planet.midi')}
                   >
                     planet.midi
                   </span>
@@ -219,7 +228,7 @@ export default function HeroDefault({
                   &nbsp; "
                   <span
                     className="underline  cp"
-                    onClick={() => handleSubmit(null, 'music')}
+                    onClick={() => handleSubmit(null, 'planet.switch')}
                   >
                     planet.switch
                   </span>
@@ -228,7 +237,7 @@ export default function HeroDefault({
                   &nbsp; "
                   <span
                     className="underline  cp"
-                    onClick={() => handleSubmit(null, 'posts')}
+                    onClick={() => handleSubmit(null, 'planet.data')}
                   >
                     planet.data
                   </span>
@@ -237,33 +246,34 @@ export default function HeroDefault({
               </p>
             );
             break;
-          case 'showPrompts':
+          case 'planet.midi':
+            setIsPlanetMidi(true);
             nextLines.push('showPrompts');
             break;
-          case 'projects':
-            nextLines.push('exec projects.render();');
-            break;
-          case 'subscribe':
-            setEmailInputActive(true);
-            nextLines.push(
-              <p>
-                please enter email or{' '}
-                <span
-                  className="underline  cp"
-                  onClick={() => handleSubmit(null, 'cancel')}
-                >
-                  "cancel"
-                </span>
-              </p>
-            );
-            break;
-          case 'cancel':
-            setEmailInputActive(false);
-            nextLines.push('subscribe cancelled');
-            break;
-          case 'escape':
-            nextLines.push('there is no escape...');
-            break;
+          // case 'projects':
+          //   nextLines.push('exec projects.render();');
+          //   break;
+          // case 'subscribe':
+          //   setEmailInputActive(true);
+          //   nextLines.push(
+          //     <p>
+          //       please enter email or{' '}
+          //       <span
+          //         className="underline  cp"
+          //         onClick={() => handleSubmit(null, 'cancel')}
+          //       >
+          //         "cancel"
+          //       </span>
+          //     </p>
+          //   );
+          //   break;
+          // case 'cancel':
+          //   setEmailInputActive(false);
+          //   nextLines.push('subscribe cancelled');
+          //   break;
+          // case 'escape':
+          //   nextLines.push('there is no escape...');
+          //   break;
           default:
             if (val) {
               nextLines.push(`unknown: "${val}"`);
@@ -374,7 +384,7 @@ export default function HeroDefault({
     // );
 
     function init() {
-      container = document.querySelector('.planet');
+      container = document.querySelector('.intro__planet');
       console.log('container', container);
 
       windowHalfX = container.clientWidth;
@@ -551,9 +561,9 @@ export default function HeroDefault({
           />
         </div>
 
-        <div className="intro__terminal  flex  flex-wrap  justify-center  col-24  ph4">
+        <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  absolute">
           <div className="col-24  col-1-md" />
-          <div className="intro__image  col-24  col-13-md  justify-center  justify-end-md  mb4  mb0-md">
+          <div className="intro__planet__wrapper  col-24  col-13-md  justify-center  justify-end-md  mb4  mb0-md">
             {
               // <Image
               //   /* Options */
@@ -571,36 +581,41 @@ export default function HeroDefault({
               // />
             }
 
-            <div className="planet" />
+            <div className="intro__planet" />
 
-            <div className="planet__hud__wrapper--1" style={rotate}>
+            <div
+              className="planet__hud__wrapper  planet__hud__wrapper--1"
+              style={rotate}
+            >
               <img className="planet__hud" src="/images/hud-outside.png" />
             </div>
 
-            <div className="planet__hud__wrapper--2" style={rotate2}>
+            <div
+              className="planet__hud__wrapper  planet__hud__wrapper--2"
+              style={rotate2}
+            >
               <img className="planet__hud" src="/images/hud-inside.png" />
             </div>
           </div>
 
-          <div className="col-24  col-10-md  flex  align-center  justify-start  justify-start-md  ph0  ph3-md">
-            <div className="terminal__prompt__wrapper  db  t-primary">
+          <div className="intro__right  col-24  col-10-md  flex  justify-start  align-center  relative  ph0  ph3-md">
+            <div
+              className={`intro__prompt__wrapper  db  t-primary  ${promptWrapperClass}`}
+            >
               {terminal.map((string, i) => (
-                <p
-                  className={`terminal__prompt  terminal__prompt--${i +
-                    1}  tal`}
-                >
-                  <span className="terminal__prompt__content" />
+                <p className={`intro__prompt  intro__prompt--${i + 1}  tal`}>
+                  <span className="intro__prompt__content" />
                   <p className="f5  f4-md  db  pb2  t-primary">$ {string}</p>
                 </p>
               ))}
 
               <p
-                className={`terminal__prompt  terminal__prompt--command  ${commandClass}  tal`}
+                className={`intro__prompt  intro__prompt--command  ${commandClass}  tal`}
               >
                 <p className="f5  f3-md  db  t-primary">
                   ${' '}
                   {
-                    // <span className="terminal__prompt__value">{inputValue}</span>
+                    // <span className="intro__prompt__value">{inputValue}</span>
                   }
                   {!inputValue && <span className="dib  blink">_</span>}
                 </p>
@@ -612,7 +627,7 @@ export default function HeroDefault({
                     maxLength={25}
                     name="terminal"
                     autoFocus
-                    className="terminal__input"
+                    className="intro__input"
                     type="text"
                     name="name"
                     onChange={handleInputChange}
@@ -621,12 +636,15 @@ export default function HeroDefault({
                   />
                 </form>
               </p>
+            </div>
 
+            <div className={`intro__midi__wrapper  ${midiWrapperClass}`}>
+              {' '}
               <div className="flex  flex-wrap  pr0  pr6-md">
                 {instruments.map((string, i) => (
                   <div className="col-12  pa2">
                     <div
-                      className="audio__button"
+                      className="intro__midi-button"
                       data-audio={string}
                       onTouchStart={handleTouchStart}
                       onMouseDown={handleTouchStart}

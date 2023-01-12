@@ -10,7 +10,67 @@
   @extend .justify-center;
 }
 
-.planet {
+.intro__barcode {
+  top: 0px;
+  left: 0;
+  right: 0;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.intro__section {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  // padding-top: 30px;
+  // top: 50%;
+  // transform: translate(0%, -50%);
+}
+
+// @include breakpoint-up(md) {
+//   .intro__terminal {
+//     top: 20%;
+//   }
+// }
+
+// .intro__image--mobile {
+//   position: absolute;
+//   bottom: -50px;
+//   right: -50px;
+//   width: 400px;
+//   transform: scale(1.4);
+//   opacity: 0.1;
+// }
+
+.intro__planet__wrapper {
+  opacity: 0;
+  animation-name: fade-in-right;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+  transform: translateY(100px);
+
+  // max-width: 400px;
+  // margin: 0 auto;
+}
+
+.intro__right {
+  height: 300px;
+  opacity: 0;
+  animation: fadein2 0s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+@include breakpoint-up(md) {
+  .intro__right {
+    height: 600px;
+  }
+}
+
+.intro__planet {
   width: 100%;
   height: 300px;
   display: block;
@@ -20,18 +80,17 @@
 }
 
 @include breakpoint-up(md) {
-  .planet {
+  .intro__planet {
     height: 600px;
   }
 }
 
-.planet__hud__wrapper--1 {
+.planet__hud__wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 3;
   transition: transform 2s steps(20);
   pointer-events: none;
 
@@ -47,75 +106,305 @@
   }
 }
 
-.planet__hud__wrapper--2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: transform 2s steps(20);
-  pointer-events: none;
+.planet__hud__wrapper--1 {
+  z-index: 3;
 
   .planet__hud {
-    object-fit: contain;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scale(1.3);
-    pointer-events: none;
+    transform: scale(0.9);
   }
 }
 
-.intro__terminal {
-  opacity: 1;
+.planet__hud__wrapper--2 {
+  z-index: 1;
+
+  .planet__hud {
+    transform: scale(1.3);
+  }
+}
+
+.intro__input {
   position: absolute;
-  top: 15%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  visibility: visible;
+  top: -4px;
+  left: 19px;
+  height: 34px;
+  line-height: 34px;
+  width: 100%;
+  max-width: 200px;
+  background: transparent;
+  border: 0;
+  // opacity: 0;
+  caret-color: transparent;
+  text-transform: lowercase;
+  border-radius: 0px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  padding-left: 6px;
+
+  @extend .t-primary;
 }
 
 @include breakpoint-up(md) {
-  .intro__terminal {
-    top: 20%;
+  .intro__input {
+    top: -2px;
+    left: 19px;
   }
 }
 
-.intro__image--mobile {
+.intro__prompt__wrapper {
   position: absolute;
-  bottom: -50px;
-  right: -50px;
-  width: 400px;
-  transform: scale(1.4);
-  opacity: 0.1;
-}
-
-.intro__image {
-  opacity: 0;
-  animation-name: fade-in-right;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-delay: 0.5s;
-  transform: translateY(100px);
-
-  // max-width: 400px;
-  // margin: 0 auto;
-}
-
-.intro__barcode {
-  top: 0px;
+  top: 30%;
   left: 0;
-  right: 0;
-  width: 200px;
-  margin: 0 auto;
+  width: 100%;
+
+  &.active {
+    opacity: 0;
+    animation: fadein 0.3s ease-in-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  &:not(.active) {
+    opacity: 1;
+    animation: fadeout 0.3s ease-in-out forwards;
+  }
 }
 
-.audio__button {
+.intro__midi__wrapper {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+
+  &.active {
+    opacity: 0;
+    animation: fadein 0.3s ease-in-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  &:not(.active) {
+    opacity: 1;
+    animation: fadeout 0.3s ease-in-out forwards;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    height: initial;
+    overflow: inherit;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    height: 0;
+    overflow: inherit;
+  }
+  1% {
+    opacity: 0;
+    height: 100%;
+    overflow: inherit;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+    overflow: inherit;
+  }
+}
+
+@keyframes fadein2 {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.intro__prompt {
+  position: relative;
+
+  * {
+    font-weight: normal;
+  }
+}
+
+.intro__prompt * {
+  line-height: 1.5;
+  margin: 0;
+
+  @extend .f5;
+  @extend .f4-md;
+
+  h1:not(.db),
+  p:not(.db),
+  span:not(.db) {
+    padding-bottom: 10px;
+    display: inline;
+  }
+}
+
+@include breakpoint-up(md) {
+  .intro__prompt * {
+    h1:not(.db),
+    p:not(.db),
+    span:not(.db) {
+      padding-bottom: 0px;
+    }
+  }
+}
+
+.intro__prompt--1 {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+
+  .intro__prompt__content {
+    animation: typing-gimme-dev 6s steps(19, end);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 0.5s !important;
+  }
+}
+
+.intro__prompt--2 {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
+
+  .intro__prompt__content {
+    animation: typing-gimme-dev 6s steps(19, end);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 1.5s !important;
+  }
+}
+
+.intro__prompt--3 {
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 2.5s;
+
+  .intro__prompt__content {
+    animation: typing-gimme-dev 6s steps(19, end);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 2.5s !important;
+  }
+}
+
+.intro__prompt--command {
+  opacity: 0;
+  width: 100%;
+  max-width: 200px;
+  animation-name: appear;
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  animation-delay: 3.5s;
+
+  .intro__prompt__content {
+    animation-delay: 3.5s !important;
+  }
+}
+
+.intro__prompt--command.email {
+  .intro__input {
+    border-color: var(--black);
+  }
+
+  .blink {
+    display: none !important;
+  }
+}
+
+@include breakpoint-up(md) {
+  .intro__prompt--command.email {
+    .intro__input {
+      border-color: transparent;
+    }
+  }
+
+  .intro__prompt--command:hover {
+    .intro__input:hover {
+      border-color: var(--black);
+    }
+
+    .blink {
+      opacity: 0 !important;
+    }
+  }
+}
+
+.intro__prompt .intro__prompt__content {
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  height: calc(100% + 10px);
+  background: var(--white);
+  // border-left: 1px solid #fff;
+}
+
+.blink {
+  animation: blink-animation 1s steps(3, start) infinite;
+  animation-delay: 0.3s;
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes typing-gimme-dev {
+  0% {
+    width: 100%;
+    opacity: 1;
+  }
+  12% {
+    width: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  16% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.intro__midi-button {
   transition: all 0.1s ease-in-out;
   @extend.w-100;
   @extend.h3;
@@ -149,6 +438,17 @@
 }
 
 @keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fade-in-left {
   0% {
     opacity: 0;
     transform: translateX(30px);
