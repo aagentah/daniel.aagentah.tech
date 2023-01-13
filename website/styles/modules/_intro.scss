@@ -361,6 +361,7 @@
 }
 
 .intro__midi-button {
+  position: relative;
   transition: all 0.1s ease-in-out;
   @extend.w-100;
   @extend.h3;
@@ -376,11 +377,27 @@
   @extend.f4;
   @extend.fw7;
 
-  &:focus,
-  &:active {
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
-    color: white;
+  .intro__midi-button__number {
+    transition: all 0.1s ease-in-out;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 3px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+
+.intro__midi-button.active {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+
+  .intro__midi-button__number {
+    color: var(--white);
+    border-color: var(--white);
   }
 }
 

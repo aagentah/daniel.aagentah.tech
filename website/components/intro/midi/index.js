@@ -1,6 +1,6 @@
 import useState from 'react-usestateref';
 import classNames from 'classnames';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Wad from 'web-audio-daw';
 
 import { useApp } from '~/context-provider/app';
@@ -26,6 +26,19 @@ export default function HeroDefault({
 
   const [display, setDisplay] = useState('none');
   const [opacity, setOpacity] = useState('0');
+  const [activeInstruments, setActiveInstruments] = useState([]);
+  const activeInstrumentsRef = useRef([]);
+
+  const macros = {
+    1: 'kick',
+    2: 'snare',
+    3: 'synth',
+    4: 'wob',
+    5: 'hat',
+    6: 'perc',
+    7: 'pad',
+    8: 'atmos'
+  };
 
   useEffect(() => {
     if (active) {
@@ -42,6 +55,34 @@ export default function HeroDefault({
         audioPlaying.pad.stop();
         audioPlaying.atmos.stop();
       }, 300);
+    }
+  }, [active]);
+
+  useEffect(() => {
+    if (active) {
+      // let shouldHandleKeyDown = true;
+      // document.onkeydown = function(e) {
+      //   if (!shouldHandleKeyDown) return;
+      //   shouldHandleKeyDown = false;
+      //   handleTouchStart(e);
+      // };
+      // document.onkeyup = function(e) {
+      //   shouldHandleKeyDown = true;
+      // };
+
+      // window.addEventListener('keydown', handleTouchStart);
+
+      document.addEventListener('keydown', e => {
+        if (e.repeat) return;
+        handleTouchStart(e);
+      });
+
+      document.addEventListener('keyup', e => {
+        if (e.repeat) return;
+        handleTouchEnd(e);
+      });
+
+      // window.addEventListener('keyup', handleTouchEnd);
     }
   }, [active]);
 
@@ -103,17 +144,49 @@ export default function HeroDefault({
     active
   });
 
-  const handleTouchStart = e => {
-    const attr = e.target.getAttribute('data-audio');
+  // And create our custom function in place of the original setActivePoint
+  function _setActiveInstruments(val) {
+    activeInstrumentsRef.current = val; // Updates the ref
+    setActiveInstruments(val);
+  }
 
-    audioPlaying[attr].play();
+  const handleTouchStart = e => {
+    let attr;
+    let int;
+
+    if (e?.type === 'keydown') {
+      attr = macros[e.key];
+      int = Number(e.key);
+    } else {
+      attr = e.target.getAttribute('data-audio');
+      int = Number(e.target.getAttribute('data-i'));
+    }
+
+    if (attr && int) {
+      if (!activeInstrumentsRef.current.includes(int)) {
+        _setActiveInstruments([...activeInstrumentsRef.current, int]);
+        if (audioPlaying[attr]) audioPlaying[attr].play();
+      }
+    }
   };
 
   const handleTouchEnd = e => {
-    const attr = e.target.getAttribute('data-audio');
+    let attr;
+    let int;
 
-    if (attr === 'kick') {
-      audioPlaying[attr].stop();
+    if (e?.type === 'keyup') {
+      attr = macros[e.key];
+      int = Number(e.key);
+    } else {
+      attr = e.target.getAttribute('data-audio');
+      int = Number(e.target.getAttribute('data-i'));
+    }
+
+    if (attr && int) {
+      _setActiveInstruments(
+        activeInstrumentsRef.current.filter(item => item !== int)
+      );
+      if (audioPlaying[attr]) audioPlaying[attr].stop();
     }
   };
 
@@ -132,14 +205,18 @@ export default function HeroDefault({
           {instruments.map((string, i) => (
             <div className="col-12  pa2">
               <div
-                className="intro__midi-button"
+                className={`intro__midi-button  ${
+                  activeInstrumentsRef.current.includes(i + 1) ? 'active' : ''
+                }`}
+                data-i={i + 1}
                 data-audio={string}
-                onTouchStart={handleTouchStart}
+                // onTouchStart={handleTouchStart}
                 onMouseDown={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
+                // onTouchEnd={handleTouchEnd}
                 onMouseUp={handleTouchEnd}
                 onMouseLeave={handleTouchEnd}
               >
+                <span className="intro__midi-button__number">{i + 1}</span>
                 {string}
               </div>
             </div>
