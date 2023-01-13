@@ -189,7 +189,17 @@ export default function HeroDefault({
       loader = new THREE.TextureLoader();
 
       loader.load('/images/ceres.jpg', function(texture) {
-        const times = app?.deviceSize === 'md' ? 0 : 45;
+        let times;
+
+        if (app?.deviceSize === 'lg') {
+          times = 45;
+        } else if (app?.deviceSize === 'md') {
+          times = 30;
+        } else {
+          times = 45;
+        }
+
+        console.log('times', times);
 
         let geometry = new THREE.SphereGeometry(
           container.clientWidth - (container.clientWidth / 100) * times,
@@ -249,18 +259,18 @@ export default function HeroDefault({
 
       //
 
-      // window.addEventListener('resize', onWindowResize, false);
+      window.addEventListener('resize', onWindowResize, false);
     }
 
-    // function onWindowResize() {
-    //   windowHalfX = container.clientWidth;
-    //   windowHalfY = container.clientHeight;
-    //
-    //   camera.aspect = container.clientWidth / container.clientHeight;
-    //   camera.updateProjectionMatrix();
-    //
-    //   renderer.setSize(container.clientWidth, container.clientHeight);
-    // }
+    function onWindowResize() {
+      windowHalfX = container.clientWidth;
+      windowHalfY = container.clientHeight;
+
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
 
     // function onDocumentMouseMove(event) {
     //   mouseX = event.clientX - windowHalfX;
@@ -293,92 +303,94 @@ export default function HeroDefault({
     setHasPlanetRendered(true);
   };
 
-  return (
-    <>
-      <article
-        className={`
+  if (app?.deviceSize) {
+    return (
+      <>
+        <article
+          className={`
         intro
         ${modifier && `intro--${modifier}`}
         mt${marginTop}
         mb${marginBottom}
       `}
-        style={styles}
-      >
-        {
-          // <img
-          //   className="intro__image--mobile  db  dn-md"
-          //   src="/images/logo-black.png"
-          // />
-        }
+          style={styles}
+        >
+          {
+            // <img
+            //   className="intro__image--mobile  db  dn-md"
+            //   src="/images/logo-black.png"
+            // />
+          }
 
-        <div className="intro__barcode  absolute  top  left  ml3">
-          <Image
-            /* Options */
-            src="/images/barcode-black.png"
-            placeholder={null}
-            alt={null}
-            figcaption={null}
-            height={75}
-            width={null}
-            customClass={null}
-            skeleton={skeleton}
-            onClick={null}
-            /* Children */
-            withLinkProps={null}
-          />
-        </div>
-
-        <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  absolute">
-          <div className="col-24  col-1-md" />
-          <div className="intro__planet__wrapper  col-24  col-13-md  justify-center  justify-end-md  mb4  mb0-md">
-            {
-              // <Image
-              //   /* Options */
-              //   src="/images/logo-black.png"
-              //   placeholder={null}
-              //   alt={null}
-              //   figcaption={null}
-              //   height={imageHeight}
-              //   width={null}
-              //   customClass={null}
-              //   skeleton={skeleton}
-              //   onClick={null}
-              //   /* Children */
-              //   withLinkProps={null}
-              // />
-            }
-
-            <div className="intro__planet" />
-
-            <div
-              className="planet__hud__wrapper  planet__hud__wrapper--1"
-              style={rotate}
-            >
-              <img className="planet__hud" src="/images/hud-outside.png" />
-            </div>
-
-            <div
-              className="planet__hud__wrapper  planet__hud__wrapper--2"
-              style={rotate2}
-            >
-              <img className="planet__hud" src="/images/hud-inside.png" />
-            </div>
-          </div>
-
-          <div className="intro__dialog  col-24  col-10-md  flex  justify-start  align-center  relative  ph0  ph3-md">
-            <Prompt
-              active={promptActive}
-              setMidiActive={setMidiActive}
-              setPromptActive={setPromptActive}
-            />
-            <Midi
-              active={midiActive}
-              setMidiActive={setMidiActive}
-              setPromptActive={setPromptActive}
+          <div className="intro__barcode  absolute  top  left  ml3">
+            <Image
+              /* Options */
+              src="/images/barcode-black.png"
+              placeholder={null}
+              alt={null}
+              figcaption={null}
+              height={75}
+              width={null}
+              customClass={null}
+              skeleton={skeleton}
+              onClick={null}
+              /* Children */
+              withLinkProps={null}
             />
           </div>
-        </div>
-      </article>
-    </>
-  );
+
+          <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  absolute">
+            <div className="col-24  col-1-md" />
+            <div className="intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md">
+              {
+                // <Image
+                //   /* Options */
+                //   src="/images/logo-black.png"
+                //   placeholder={null}
+                //   alt={null}
+                //   figcaption={null}
+                //   height={imageHeight}
+                //   width={null}
+                //   customClass={null}
+                //   skeleton={skeleton}
+                //   onClick={null}
+                //   /* Children */
+                //   withLinkProps={null}
+                // />
+              }
+
+              <div className="intro__planet" />
+
+              <div
+                className="planet__hud__wrapper  planet__hud__wrapper--1"
+                style={rotate}
+              >
+                <img className="planet__hud" src="/images/hud-outside.png" />
+              </div>
+
+              <div
+                className="planet__hud__wrapper  planet__hud__wrapper--2"
+                style={rotate2}
+              >
+                <img className="planet__hud" src="/images/hud-inside.png" />
+              </div>
+            </div>
+
+            <div className="intro__dialog  col-24  col-7-sm  col-10-lg  flex  justify-start  align-center  relative  ph0  ph3-md">
+              <Prompt
+                active={promptActive}
+                setMidiActive={setMidiActive}
+                setPromptActive={setPromptActive}
+              />
+              <Midi
+                active={midiActive}
+                setMidiActive={setMidiActive}
+                setPromptActive={setPromptActive}
+              />
+            </div>
+          </div>
+        </article>
+      </>
+    );
+  }
 }
