@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
+import Iframe from 'react-iframe';
 
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
@@ -9,6 +10,7 @@ import Container from '~/components/layout/container';
 
 import Date from '~/components/date';
 import CardPost from '~/components/card/post';
+import { useApp } from '~/context-provider/app';
 
 import {
   imageBuilder,
@@ -19,10 +21,33 @@ import {
 
 export default function Post({ siteConfig, post, morePosts, preview }) {
   const router = useRouter();
+  const app = useApp();
 
   useEffect(() => {
     if (!router?.isFallback && !post?.slug) Router.push('/404');
   }, [router?.isFallback, post?.slug]);
+
+  const serializers = {
+    types: {
+      iframeEmbedBlock: props => {
+        return (
+          <div className="w-100  db  mla  mra  mb4">
+            <Iframe
+              url={props.node.iframeUrl}
+              width="100%"
+              height={
+                app?.deviceSize === 'md'
+                  ? props.node.iframeHeightMobile
+                  : props.node.iframeHeightDesktop
+              }
+              display="initial"
+              position="relative"
+            />
+          </div>
+        );
+      }
+    }
+  };
 
   if (!router?.isFallback && post?.slug) {
     return (
@@ -51,7 +76,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
           />
 
           <section className="measure-wide  mla  mra">
-            <div className="pb2">
+            <div className="pb2  pt4">
               <Heading
                 /* Options */
                 htmlEntity="h1"

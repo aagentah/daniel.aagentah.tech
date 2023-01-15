@@ -32,11 +32,9 @@ export default {
     {
       name: "content",
       title: "Content",
-      type: "array",
-      of: [{ type: "block" }],
-      required: true
+      description: "Everything after the description.",
+      type: "blockContent"
     },
-
     {
       name: "coverImage",
       title: "Cover Image",

@@ -51,6 +51,7 @@
     "preact-render-to-string": "5.1.19",
     "react": "npm:@preact/compat@17.0.3",
     "react-dom": "npm:@preact/compat@17.0.3",
+    "react-iframe": "^1.8.5",
     "react-lazyload": "3.0.0",
     "react-responsive": "8.1.0",
     "react-scroll-parallax": "3.3.1",
