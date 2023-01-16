@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
 import Iframe from 'react-iframe';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
@@ -34,16 +36,27 @@ export default function Project({
 
   const serializers = {
     types: {
-      iframeEmbedBlock: props => {
+      codeBlock: ({ node }) => {
+        const { language, code } = node;
+
+        return (
+          <SyntaxHighlighter language={language || 'text'} style={atomDark}>
+            {code}
+          </SyntaxHighlighter>
+        );
+      },
+      iframeEmbedBlock: ({ node }) => {
+        const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
+
         return (
           <div className="w-100  db  mla  mra  mb4">
             <Iframe
-              url={props.node.iframeUrl}
+              url={iframeUrl}
               width="100%"
               height={
                 app?.deviceSize === 'md'
-                  ? props.node.iframeHeightMobile
-                  : props.node.iframeHeightDesktop
+                  ? iframeHeightMobile
+                  : iframeHeightDesktop
               }
               display="initial"
               position="relative"

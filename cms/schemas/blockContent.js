@@ -9,6 +9,27 @@ export default {
       type: "block"
     },
     {
+      name: "codeBlock",
+      title: "Code Block",
+      type: "object",
+      fields: [
+        {
+          name: "language",
+          title: "Language",
+          type: "string",
+          description: "",
+          validation: Rule => Rule.required()
+        },
+        {
+          name: "code",
+          title: "code",
+          type: "text",
+          description: "",
+          validation: Rule => Rule.required()
+        }
+      ]
+    },
+    {
       name: "iframeEmbedBlock",
       title: "Iframe Embed",
       type: "object",
