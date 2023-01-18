@@ -3,6 +3,10 @@ import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
 import Iframe from 'react-iframe';
 
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/a11y-light.css';
+
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
 
@@ -19,6 +23,11 @@ import {
   getAllPostsTotal
 } from '~/lib/sanity/requests';
 
+hljs.registerLanguage('javascript', javascript);
+
+const prism = require('prismjs');
+require('prismjs/components/prism-javascript');
+
 export default function Post({ siteConfig, post, morePosts, preview }) {
   const router = useRouter();
   const app = useApp();
@@ -29,16 +38,28 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
 
   const serializers = {
     types: {
-      iframeEmbedBlock: props => {
+      codeBlock: ({ node }) => {
+        const { language, code } = node;
+        const myHtml = hljs.highlight(code, { language }).value;
+
+        return (
+          <pre className="">
+            <code dangerouslySetInnerHTML={{ __html: myHtml }} />
+          </pre>
+        );
+      },
+      iframeEmbedBlock: ({ node }) => {
+        const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
+
         return (
           <div className="w-100  db  mla  mra  mb4">
             <Iframe
-              url={props.node.iframeUrl}
+              url={iframeUrl}
               width="100%"
               height={
                 app?.deviceSize === 'md'
-                  ? props.node.iframeHeightMobile
-                  : props.node.iframeHeightDesktop
+                  ? iframeHeightMobile
+                  : iframeHeightDesktop
               }
               display="initial"
               position="relative"
@@ -48,7 +69,6 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
       }
     }
   };
-
   if (!router?.isFallback && post?.slug) {
     return (
       <Container>
@@ -94,8 +114,8 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
               <Date dateString={post.date} />
             </p>
 
-            <div className="post__body  pb4">
-              <BlockContent blocks={post.content} />
+            <div className="richtext  post__body  pb4">
+              <BlockContent blocks={post.content} serializers={serializers} />
             </div>
           </section>
         </article>

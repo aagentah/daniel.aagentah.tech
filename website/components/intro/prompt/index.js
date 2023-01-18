@@ -31,6 +31,7 @@ export default function HeroDefault({
   const [emailInputActive, setEmailInputActive] = useState(false);
   const [display, setDisplay] = useState('block');
   const [opacity, setOpacity] = useState('1');
+  const isInProgress = true;
 
   const lastRef = useRef(null);
 
@@ -61,16 +62,17 @@ export default function HeroDefault({
     <h1 className="primary-color">
       <span className="black">usr</span>&nbsp;daniel.aagentah
     </h1>,
-    <p>
-      {app?.deviceSize === 'md' ? 'select' : 'type'} "
-      <span
-        className="underline  cp"
-        onClick={() => handleSubmit(null, 'prompts')}
-      >
-        prompts
-      </span>
-      "
-    </p>
+    <p>TERMINAL IN PROG_</p>
+    // <p>
+    //   {app?.deviceSize === 'md' ? 'select' : 'type'} "
+    //   <span
+    //     className="underline  cp"
+    //     onClick={() => handleSubmit(null, 'prompts')}
+    //   >
+    //     prompts
+    //   </span>
+    //   "
+    // </p>
   ]);
 
   const commandClass = classNames({
@@ -234,33 +236,35 @@ export default function HeroDefault({
           </p>
         ))}
 
-        <p
-          className={`intro__prompt  intro__prompt--command  ${commandClass}  tal`}
-        >
-          <p className="f5  f3-md  db  t-primary">
-            ${' '}
-            {
-              // <span className="intro__prompt__value">{inputValue}</span>
-            }
-            {!inputValue && <span className="dib  blink">_</span>}
-          </p>
-
-          <form onSubmit={handleSubmit}>
-            <input
-              ref={lastRef}
-              onBlur={handleInputBlur}
-              maxLength={25}
-              name="terminal"
-              autoFocus
-              className="intro__input"
-              type="text"
-              name="name"
-              onChange={handleInputChange}
-              value={inputValue}
-              placeholder=""
-            />
-          </form>
-        </p>
+        {
+          // <p
+          //   className={`intro__prompt  intro__prompt--command  ${commandClass}  tal`}
+          // >
+          //   <p className="f5  f3-md  db  t-primary">
+          //     ${' '}
+          //     {
+          //       // <span className="intro__prompt__value">{inputValue}</span>
+          //     }
+          //     {!inputValue && <span className="dib  blink">_</span>}
+          //   </p>
+          //
+          //   <form onSubmit={handleSubmit}>
+          //     <input
+          //       ref={lastRef}
+          //       onBlur={handleInputBlur}
+          //       maxLength={25}
+          //       name="terminal"
+          //       autoFocus
+          //       className="intro__input"
+          //       type="text"
+          //       name="name"
+          //       onChange={handleInputChange}
+          //       value={inputValue}
+          //       placeholder=""
+          //     />
+          //   </form>
+          // </p>
+        }
       </div>
     </>
   );

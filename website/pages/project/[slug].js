@@ -40,9 +40,11 @@ export default function Project({
         const { language, code } = node;
 
         return (
-          <SyntaxHighlighter language={language || 'text'} style={atomDark}>
-            {code}
-          </SyntaxHighlighter>
+          <div className="code-block">
+            <SyntaxHighlighter language={language || 'text'} style={atomDark}>
+              {code}
+            </SyntaxHighlighter>
+          </div>
         );
       },
       iframeEmbedBlock: ({ node }) => {
@@ -112,7 +114,7 @@ export default function Project({
               <Date dateString={project.date} />
             </p>
 
-            <div className="project__body  pb4">
+            <div className="richtext  project__body  pb4">
               <BlockContent
                 blocks={project.content}
                 serializers={serializers}

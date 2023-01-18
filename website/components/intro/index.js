@@ -1,13 +1,14 @@
 import useState from 'react-usestateref';
 import classNames from 'classnames';
 import { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 
 import Image from '~/components/elements/image';
 
-import Midi from '~/components/intro/midi';
-import Prompt from '~/components/intro/prompt';
-
 import { useApp } from '~/context-provider/app';
+
+const Prompt = dynamic(() => import('~/components/intro/prompt'));
+const Midi = dynamic(() => import('~/components/intro/midi'));
 
 /**
  * @param {string} image [required]
