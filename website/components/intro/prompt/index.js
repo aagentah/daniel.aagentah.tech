@@ -16,7 +16,7 @@ import { useApp } from '~/context-provider/app';
  * @param {string} skeleton [required]
  **/
 
-export default function HeroDefault({
+export default function Prompt({
   //
   active,
   setMidiActive,

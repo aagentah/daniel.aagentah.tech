@@ -22,7 +22,7 @@ const Midi = dynamic(() => import('~/components/intro/midi'));
  * @param {string} skeleton [required]
  **/
 
-export default function HeroDefault({
+export default function Intro({
   //
   modifier,
   marginTop,

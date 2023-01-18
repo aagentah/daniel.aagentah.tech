@@ -86,6 +86,7 @@
     "no-use-before-define": "off",
     "no-restricted-globals": "off",
     "no-undef": "off",
+    "no-inner-declarations": "off",
     "import/no-unresolved": [
       "error",
       {

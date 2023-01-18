@@ -6,7 +6,7 @@ import CardProject from '~/components/card/project';
 import { getAllProjects } from '~/lib/sanity/requests';
 
 export default function GridItems({ padding, marginTop, marginBottom }) {
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [itemsLength, setItemsLength] = useState(12);
 
   useEffect(() => {
@@ -30,7 +30,11 @@ export default function GridItems({ padding, marginTop, marginBottom }) {
               {[...Array(itemsLength)].map((iteration, i) => (
                 <div key={iteration} className="col-24  col-12-md">
                   <div className="pt3  ph3  pb0">
-                    <CardProject i={i} item={items && items[i]} />
+                    <CardProject
+                      i={i}
+                      item={items && items[i]}
+                      placeholder={!items.length}
+                    />
                   </div>
                 </div>
               ))}

@@ -10,7 +10,7 @@ import Label from '~/components/elements/label';
 import { imageBuilder } from '~/lib/sanity/requests';
 import { useApp } from '~/context-provider/app';
 
-export default function CardPost({ item }) {
+export default function CardPost({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
@@ -29,12 +29,12 @@ export default function CardPost({ item }) {
           .fit('clip')
           .url()
       }
-      placeholder={null}
+      placeholder={placeholder}
       alt={item?.title}
       figcaption={null}
       height={imageHeight}
       width={null}
-      customClass={null}
+      customClass="br3"
       skeleton={!item}
       onClick={null}
       /* Children */

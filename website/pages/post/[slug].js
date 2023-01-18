@@ -13,7 +13,6 @@ import Image from '~/components/elements/image';
 import Container from '~/components/layout/container';
 
 import Date from '~/components/date';
-import CardPost from '~/components/card/post';
 import { useApp } from '~/context-provider/app';
 
 import {
@@ -119,24 +118,6 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
             </div>
           </section>
         </article>
-
-        {morePosts?.length > 0 && (
-          <section className="pb3">
-            <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
-              - More Posts
-            </h2>
-
-            <div className="flex  flex-wrap">
-              {morePosts.map((p, i) => (
-                <div key={p.slug} className="col-24  col-6-md">
-                  <div className="pa3">
-                    <CardPost i={i} post={p} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
       </Container>
     );
   }
