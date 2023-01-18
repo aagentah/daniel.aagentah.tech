@@ -383,11 +383,14 @@ export default function HeroDefault({
                 setMidiActive={setMidiActive}
                 setPromptActive={setPromptActive}
               />
-              <Midi
-                active={midiActive}
-                setMidiActive={setMidiActive}
-                setPromptActive={setPromptActive}
-              />
+
+              {typeof window !== 'undefined' && (
+                <Midi
+                  active={midiActive}
+                  setMidiActive={setMidiActive}
+                  setPromptActive={setPromptActive}
+                />
+              )}
             </div>
           </div>
         </article>

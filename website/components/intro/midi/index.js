@@ -1,7 +1,6 @@
 import useState from 'react-usestateref';
 import classNames from 'classnames';
 import { useEffect, useRef } from 'react';
-import Wad from 'web-audio-daw';
 
 import { useApp } from '~/context-provider/app';
 
@@ -17,12 +16,13 @@ import { useApp } from '~/context-provider/app';
  * @param {string} skeleton [required]
  **/
 
-export default function HeroDefault({
+export default async function HeroDefault({
   active,
   handleMidiState,
   setPromptActive
 }) {
   const app = useApp();
+  const Wad = (await import('web-audio-daw')).default;
 
   const [display, setDisplay] = useState('none');
   const [opacity, setOpacity] = useState('0');
