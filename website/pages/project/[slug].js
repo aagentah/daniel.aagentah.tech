@@ -8,6 +8,7 @@ import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
 
+import SubscribeBanner from '~/components/subscribe-banner';
 import Container from '~/components/layout/container';
 
 import Date from '~/components/date';
@@ -119,6 +120,23 @@ export default function Project({
                 blocks={project.content}
                 serializers={serializers}
               />
+            </div>
+
+            <div className="pb4  tac">
+              <div className="pb3">
+                <Heading
+                  /* Options */
+                  htmlEntity="h2"
+                  text="Keep in touch <3"
+                  color="black"
+                  size="large"
+                  truncate={0}
+                  onClick={null}
+                  /* Children */
+                  withLinkProps={null}
+                />
+              </div>
+              <SubscribeBanner />
             </div>
           </section>
         </article>

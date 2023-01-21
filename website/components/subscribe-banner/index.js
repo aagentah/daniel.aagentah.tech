@@ -65,7 +65,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
             className="subscribe-banner__input  di"
             id="email-input"
             name="email"
-            placeholder="you@awesome.com"
+            placeholder="Your Email"
             ref={inputEl}
             type="email"
           />
@@ -77,7 +77,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
             text="Subscribe"
             color="black"
             fluid={false}
-            icon={buttonIconArrowRight}
+            icon={null}
             iconFloat={null}
             inverted
             loading={null}
@@ -95,7 +95,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
 
         <div className="col-24  flex  justify-center">
           <p className="t-secondary  f6  almost-black  lh-copy  tac">
-            We&apos;ll only send emails when new content is posted. No spam.
+            No spam. Only the interesting bits.
           </p>
         </div>
       </form>

@@ -5,6 +5,12 @@ main {
   padding-top: 120px;
 }
 
+.page--bio {
+  main {
+    min-height: auto;
+  }
+}
+
 // Page transition
 
 .page-transition-enter {
