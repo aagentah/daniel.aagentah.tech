@@ -32,7 +32,6 @@ export default {
     {
       name: "content",
       title: "Content",
-      description: "Everything after the description.",
       type: "blockContent"
     },
     {

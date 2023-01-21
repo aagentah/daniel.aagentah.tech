@@ -12,6 +12,9 @@ import store from "./documents/store";
 import product from "./documents/product";
 import project from "./documents/project";
 import user from "./documents/user";
+import music from "./documents/music";
+import smartLink from "./documents/smartLink";
+import smartLinkItem from "./documents/smartLinkItem";
 
 import blockContent from "./blockContent";
 
@@ -40,6 +43,9 @@ export default createSchema({
     // post,
     project,
     post,
+    music,
+    smartLink,
+    smartLinkItem,
     // store,
     // product,
     // user,

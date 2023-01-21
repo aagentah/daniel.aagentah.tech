@@ -1,7 +1,7 @@
 export default {
-  name: "post",
+  name: "music",
   type: "document",
-  title: "Post",
+  title: "Music",
   fields: [
     {
       name: "title",
@@ -42,8 +42,15 @@ export default {
     },
     {
       name: "date",
-      title: "Publish Date",
+      title: "Release Date",
       type: "datetime",
+      validation: Rule => Rule.required()
+    },
+    {
+      name: "smartLink",
+      title: "Smart Link",
+      type: "reference",
+      to: { type: "smartLink" },
       validation: Rule => Rule.required()
     }
   ],
