@@ -74,27 +74,29 @@ export default function Project({
     return (
       <Container>
         <article>
-          <Image
-            /* Options */
-            src={imageBuilder
-              .image(project.coverImage)
-              .height(500)
-              .width(1080)
-              .url()}
-            placeholder={imageBuilder
-              .image(project.coverImage)
-              .height(50)
-              .width(108)
-              .url()}
-            alt={project.title}
-            figcaption={null}
-            height={500}
-            width={null}
-            customClass="br4  shadow2"
-            onClick={null}
-            /* Children */
-            withLinkProps={null}
-          />
+          <div className="post__header">
+            <Image
+              /* Options */
+              src={imageBuilder
+                .image(project.coverImage)
+                .height(500)
+                .width(1080)
+                .url()}
+              placeholder={imageBuilder
+                .image(project.coverImage)
+                .height(50)
+                .width(108)
+                .url()}
+              alt={project.title}
+              figcaption={null}
+              height={500}
+              width={null}
+              customClass={null}
+              onClick={null}
+              /* Children */
+              withLinkProps={null}
+            />
+          </div>
 
           <section className="measure-wide  mla  mra">
             <div className="pb2  pt4">

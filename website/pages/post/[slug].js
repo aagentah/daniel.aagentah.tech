@@ -73,27 +73,29 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
     return (
       <Container>
         <article>
-          <Image
-            /* Options */
-            src={imageBuilder
-              .image(post.coverImage)
-              .height(500)
-              .width(1080)
-              .url()}
-            placeholder={imageBuilder
-              .image(post.coverImage)
-              .height(50)
-              .width(108)
-              .url()}
-            alt={post.title}
-            figcaption={null}
-            height={500}
-            width={null}
-            customClass="br4  shadow2"
-            onClick={null}
-            /* Children */
-            withLinkProps={null}
-          />
+          <div className="post__header">
+            <Image
+              /* Options */
+              src={imageBuilder
+                .image(post.coverImage)
+                .height(500)
+                .width(1080)
+                .url()}
+              placeholder={imageBuilder
+                .image(post.coverImage)
+                .height(50)
+                .width(108)
+                .url()}
+              alt={post.title}
+              figcaption={null}
+              height={500}
+              width={null}
+              customClass={null}
+              onClick={null}
+              /* Children */
+              withLinkProps={null}
+            />
+          </div>
 
           <section className="measure-wide  mla  mra">
             <div className="pb2  pt4">

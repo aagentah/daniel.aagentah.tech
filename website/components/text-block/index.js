@@ -80,7 +80,7 @@ export default function TextBlock({
       >
         <Container>
           <div className="text-block__title">{blockTitle}</div>
-          {blockCopy && (
+          {description && (
             <div className="text-block__description">{blockCopy}</div>
           )}
         </Container>

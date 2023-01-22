@@ -34,7 +34,7 @@ export default function CardPost({ item, placeholder }) {
       figcaption={null}
       height={imageHeight}
       width={null}
-      customClass="br3"
+      customClass={null}
       skeleton={!item}
       onClick={null}
       /* Children */
