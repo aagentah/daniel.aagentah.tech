@@ -1,11 +1,31 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+import dynamic from 'next/dynamic';
+
 import { Icon } from 'next-pattern-library';
+import Container from '~/components/layout/container';
+
 import Button from '~/components/elements/button';
 
 import { useUser } from '~/lib/hooks';
 import { useApp } from '~/context-provider/app';
+
+const IconInstagram = dynamic(() =>
+  import('~/components/elements/icon').then(m => m.IconInstagram)
+);
+
+const IconSoundcloud = dynamic(() =>
+  import('~/components/elements/icon').then(m => m.IconSoundcloud)
+);
+
+const IconYoutube = dynamic(() =>
+  import('~/components/elements/icon').then(m => m.IconYoutube)
+);
+
+const IconSpotify = dynamic(() =>
+  import('~/components/elements/icon').then(m => m.IconSpotify)
+);
 
 export default function Header({ siteConfig, handleLogout }) {
   const [user, { mutate }] = useUser();
@@ -75,20 +95,49 @@ export default function Header({ siteConfig, handleLogout }) {
           // </div>
         }
 
-        <nav className="nav  flex  flex-wrap">
-          <ul className="col-24  flex  flex-wrap  ls-none  pv3">
-            {siteConfig?.menu?.map?.length &&
-              siteConfig.menu.map((iteration, i) => {
-                let path = iteration?.slug?.current;
-                if (path === 'home') path = '';
+        <nav className="nav  flex  flex-wrap  pt3">
+          <Container>
+            <ul className="col-24  flex  flex-wrap  ls-none  pv3">
+              {siteConfig?.menu?.map?.length &&
+                siteConfig.menu.map((iteration, i) => {
+                  let path = iteration?.slug?.current;
+                  if (path === 'home') path = '';
 
-                return (
-                  <li className="nav__mobile__item  col-24  pb4">
+                  return (
+                    <li className="nav__mobile__item  col-24  pb4">
+                      <Button
+                        /* Options */
+                        type="secondary"
+                        size="x-large"
+                        text={`_${iteration?.title.toLowerCase()}`}
+                        color="black"
+                        fluid={false}
+                        icon={null}
+                        iconFloat={null}
+                        inverted
+                        loading={false}
+                        disabled={false}
+                        onClick={null}
+                        /* Children */
+                        withLinkProps={{
+                          type: 'next',
+                          href: `/${path}`,
+                          target: null,
+                          routerLink: Link,
+                          routerLinkProps: null
+                        }}
+                      />
+                    </li>
+                  );
+                })}
+              {user ? (
+                <>
+                  <li className="col-24  pb4">
                     <Button
                       /* Options */
                       type="secondary"
                       size="x-large"
-                      text={`_${iteration?.title.toLowerCase()}`}
+                      text="Profile"
                       color="black"
                       fluid={false}
                       icon={null}
@@ -100,132 +149,139 @@ export default function Header({ siteConfig, handleLogout }) {
                       /* Children */
                       withLinkProps={{
                         type: 'next',
-                        href: `/${path}`,
+                        href: '/profile',
                         target: null,
                         routerLink: Link,
                         routerLinkProps: null
                       }}
                     />
                   </li>
-                );
-              })}
-            {user ? (
-              <>
-                <li className="col-24  pb4">
-                  <Button
-                    /* Options */
-                    type="secondary"
-                    size="x-large"
-                    text="Profile"
-                    color="black"
-                    fluid={false}
-                    icon={null}
-                    iconFloat={null}
-                    inverted
-                    loading={false}
-                    disabled={false}
-                    onClick={null}
-                    /* Children */
-                    withLinkProps={{
-                      type: 'next',
-                      href: '/profile',
-                      target: null,
-                      routerLink: Link,
-                      routerLinkProps: null
-                    }}
-                  />
-                </li>
-                <li className="col-24  pb4">
-                  <Button
-                    /* Options */
-                    type="secondary"
-                    size="x-large"
-                    text="Log Out"
-                    color="black"
-                    fluid={false}
-                    icon={buttonIconSignOut}
-                    iconFloat={null}
-                    inverted
-                    loading={false}
-                    disabled={false}
-                    onClick={handleLogout}
-                    /* Children */
-                    withLinkProps={null}
-                  />
-                </li>
-              </>
-            ) : (
-              <>
-                {
-                  // <li className="col-24  pb4">
-                  //   <Button
-                  //     /* Options */
-                  //     type="secondary"
-                  //     size="large"
-                  //     text="Sign Up"
-                  //     color="black"
-                  //     fluid={false}
-                  //     icon={null}
-                  //     iconFloat={null}
-                  //     inverted
-                  //     loading={false}
-                  //     disabled={false}
-                  //     onClick={null}
-                  //     /* Children */
-                  //     withLinkProps={{
-                  //       type: 'next',
-                  //       href: '/signup',
-                  //       target: null,
-                  //       routerLink: Link,
-                  //       routerLinkProps: null,
-                  //     }}
-                  //   />
-                  // </li>
-                  // <li className="col-24  pb4">
-                  //   <Button
-                  //     /* Options */
-                  //     type="secondary"
-                  //     size="large"
-                  //     text="Login"
-                  //     color="black"
-                  //     fluid={false}
-                  //     icon={buttonIconSignIn}
-                  //     iconFloat={null}
-                  //     inverted
-                  //     loading={false}
-                  //     disabled={false}
-                  //     onClick={null}
-                  //     /* Children */
-                  //     withLinkProps={{
-                  //       type: 'next',
-                  //       href: '/login',
-                  //       target: null,
-                  //       routerLink: Link,
-                  //       routerLinkProps: null,
-                  //     }}
-                  //   />
-                  // </li>
-                }
-              </>
-            )}
-          </ul>
-          <div className="col-24  flex  flex-wrap  pb3">
-            <div className="dib  mr3  flex  justify-center  align-center">
-              <a className="almost-black  f3" href="" target="_blank">
-                {iconFacebook}
-              </a>
+                  <li className="col-24  pb4">
+                    <Button
+                      /* Options */
+                      type="secondary"
+                      size="x-large"
+                      text="Log Out"
+                      color="black"
+                      fluid={false}
+                      icon={buttonIconSignOut}
+                      iconFloat={null}
+                      inverted
+                      loading={false}
+                      disabled={false}
+                      onClick={handleLogout}
+                      /* Children */
+                      withLinkProps={null}
+                    />
+                  </li>
+                </>
+              ) : (
+                <>
+                  {
+                    // <li className="col-24  pb4">
+                    //   <Button
+                    //     /* Options */
+                    //     type="secondary"
+                    //     size="large"
+                    //     text="Sign Up"
+                    //     color="black"
+                    //     fluid={false}
+                    //     icon={null}
+                    //     iconFloat={null}
+                    //     inverted
+                    //     loading={false}
+                    //     disabled={false}
+                    //     onClick={null}
+                    //     /* Children */
+                    //     withLinkProps={{
+                    //       type: 'next',
+                    //       href: '/signup',
+                    //       target: null,
+                    //       routerLink: Link,
+                    //       routerLinkProps: null,
+                    //     }}
+                    //   />
+                    // </li>
+                    // <li className="col-24  pb4">
+                    //   <Button
+                    //     /* Options */
+                    //     type="secondary"
+                    //     size="large"
+                    //     text="Login"
+                    //     color="black"
+                    //     fluid={false}
+                    //     icon={buttonIconSignIn}
+                    //     iconFloat={null}
+                    //     inverted
+                    //     loading={false}
+                    //     disabled={false}
+                    //     onClick={null}
+                    //     /* Children */
+                    //     withLinkProps={{
+                    //       type: 'next',
+                    //       href: '/login',
+                    //       target: null,
+                    //       routerLink: Link,
+                    //       routerLinkProps: null,
+                    //     }}
+                    //   />
+                    // </li>
+                  }
+                </>
+              )}
+            </ul>
+
+            <div className="col-24  flex  justify-center  pb3  ph3  ph0-md">
+              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Instagram"
+                  href="https://www.instagram.com/daniel.aagentah/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconInstagram color="black" size={30} />
+                </a>
+              </div>
+
+              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Soundcloud"
+                  href="https://soundcloud.com/aagentah"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconSoundcloud color="black" size={30} />
+                </a>
+              </div>
+              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Youtube"
+                  href="https://www.youtube.com/@daniel.aagentah"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconYoutube color="black" size={30} />
+                </a>
+              </div>
+
+              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Spotify"
+                  href="https://open.spotify.com/artist/5sAlVt0dBip3YMS6di8JJw?si=GR11QkY8RVySAvsvLMRodg"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconSpotify color="black" size={30} />
+                </a>
+              </div>
             </div>
-            <div className="dib  mr3  flex  justify-center  align-center">
-              <a className="almost-black  f3" href="" target="_blank">
-                {iconInstagram}
-              </a>
+
+            <div className="flex  justify-center  pt4">
+              <p className="t-secondary  bold  f5  lh-copy  almost-black  tac  dib  mla  mra">
+                Daniel Aagentah {new Date().getFullYear()}
+              </p>
             </div>
-            <div className="dib  mr3  flex  justify-center  align-center">
-              <a className="almost-black  f3" href="" target="_blank">
-                {iconEmail}
-              </a>
-            </div>
-          </div>
+          </Container>
         </nav>
 
         {
