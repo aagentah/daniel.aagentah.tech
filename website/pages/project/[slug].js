@@ -72,64 +72,39 @@ export default function Project({
 
   if (!router?.isFallback && project?.slug) {
     return (
-      <Container>
-        <article>
-          <div className="post__header">
-            <Image
-              /* Options */
-              src={imageBuilder
-                .image(project.coverImage)
-                .height(500)
-                .width(1080)
-                .url()}
-              placeholder={imageBuilder
-                .image(project.coverImage)
-                .height(50)
-                .width(108)
-                .url()}
-              alt={project.title}
-              figcaption={null}
-              height={500}
-              width={null}
-              customClass={null}
-              onClick={null}
-              /* Children */
-              withLinkProps={null}
-            />
-          </div>
-
-          <section className="measure-wide  mla  mra">
-            <div className="pb2  pt4">
-              <Heading
+      <>
+        <Container>
+          <article>
+            <div className="post__header">
+              <Image
                 /* Options */
-                htmlEntity="h1"
-                text={project.title}
-                color="black"
-                size="large"
-                truncate={0}
+                src={imageBuilder
+                  .image(project.coverImage)
+                  .height(500)
+                  .width(1080)
+                  .url()}
+                placeholder={imageBuilder
+                  .image(project.coverImage)
+                  .height(50)
+                  .width(108)
+                  .url()}
+                alt={project.title}
+                figcaption={null}
+                height={500}
+                width={null}
+                customClass={null}
                 onClick={null}
                 /* Children */
                 withLinkProps={null}
               />
             </div>
 
-            <p className="t-secondary  f7  almost-black  lh-copy  pb4">
-              <Date dateString={project.date} />
-            </p>
-
-            <div className="richtext  project__body  pb4">
-              <BlockContent
-                blocks={project.content}
-                serializers={serializers}
-              />
-            </div>
-
-            <div className="pb4  tac">
-              <div className="pb3">
+            <section className="measure-wide  mla  mra">
+              <div className="pb2  pt4">
                 <Heading
                   /* Options */
-                  htmlEntity="h2"
-                  text="Keep in touch <3"
+                  htmlEntity="h1"
+                  text={project.title}
                   color="black"
                   size="large"
                   truncate={0}
@@ -138,29 +113,41 @@ export default function Project({
                   withLinkProps={null}
                 />
               </div>
-              <SubscribeBanner />
-            </div>
-          </section>
-        </article>
 
-        {project?.childPosts?.length > 0 && (
-          <section className="pb3">
-            <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
-              - Related Posts
-            </h2>
+              <p className="t-secondary  f7  almost-black  lh-copy  pb4">
+                <Date dateString={project.date} />
+              </p>
 
-            <div className="flex  flex-wrap">
-              {project.childPosts.map((p, i) => (
-                <div key={p.slug} className="col-24  col-12-md">
-                  <div className="pa3">
-                    <CardPost i={i} item={p.post} />
+              <div className="richtext  project__body  pb4">
+                <BlockContent
+                  blocks={project.content}
+                  serializers={serializers}
+                />
+              </div>
+            </section>
+          </article>
+
+          {project?.childPosts?.length > 0 && (
+            <section className="pb3">
+              <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
+                - Related Posts
+              </h2>
+
+              <div className="flex  flex-wrap">
+                {project.childPosts.map((p, i) => (
+                  <div key={p.slug} className="col-24  col-12-md">
+                    <div className="pa3">
+                      <CardPost i={i} item={p.post} />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-      </Container>
+                ))}
+              </div>
+            </section>
+          )}
+        </Container>
+
+        <SubscribeBanner />
+      </>
     );
   }
 

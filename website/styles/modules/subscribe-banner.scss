@@ -1,5 +1,10 @@
 .subscribe-banner {
-  //
+  background: var(--black);
+  color: var(--white);
+
+  @extend .tac;
+  @extend .pv5;
+  @extend .ph4;
 }
 
 .subscribe-banner__input {
@@ -7,19 +12,33 @@
   outline: 0;
   border-radius: 0;
   background: transparent;
-  margin-right: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  height: 50px;
+  color: var(--white);
 
+  @extend .t-secondary;
+  @extend .tac;
+  @extend .tal-md;
   @extend .f7;
   @extend .f6-md;
   @extend .w5-md;
   @extend .pa2;
   @extend .ba;
   @extend .bw1;
-  @extend .bc-black;
+  @extend .bc-white;
 
   &::placeholder {
-    color: var(--black);
+    color: var(--white);
     opacity: 1;
+  }
+}
+
+@include breakpoint-up(md) {
+  .subscribe-banner__input {
+    width: auto;
+    margin-right: 15px;
+    margin-bottom: 0px;
   }
 }
 

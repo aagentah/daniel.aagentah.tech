@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Heading from '~/components/elements/heading';
 
 import Container from '~/components/layout/container';
 import SubscribeBanner from '~/components/subscribe-banner';
@@ -23,24 +22,11 @@ export default function Bio({ siteConfig }) {
 
   return (
     <>
-      <Container>
-        <div className="pb4  mb2  tac">
-          <div className="pb3">
-            <Heading
-              /* Options */
-              htmlEntity="h2"
-              text="Keep in touch <3"
-              color="black"
-              size="large"
-              truncate={0}
-              onClick={null}
-              /* Children */
-              withLinkProps={null}
-            />
-          </div>
-          <SubscribeBanner />
-        </div>
+      <div className="pb4  mb2  tac">
+        <SubscribeBanner />
+      </div>
 
+      <Container>
         <div className="col-24">
           {
             // <div className="pt4  pb3  tac">

@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import { useToasts } from 'react-toast-notifications';
 import LazyLoad from 'react-lazyload';
 import { Icon } from 'next-pattern-library';
+import Heading from '~/components/elements/heading';
 
 import Button from '~/components/elements/button';
 
@@ -60,6 +61,20 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
         className={`subscribe-banner  mt${marginTop}  mb${marginBottom}`}
         onSubmit={subscribe}
       >
+        <div className="pb3">
+          <Heading
+            /* Options */
+            htmlEntity="h2"
+            text="Keep in touch <3"
+            color="white"
+            size="large"
+            truncate={0}
+            onClick={null}
+            /* Children */
+            withLinkProps={null}
+          />
+        </div>
+
         <div className="col-24  flex  flex-wrap  justify-center  mb3">
           <input
             className="subscribe-banner__input  di"
@@ -75,8 +90,8 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
             type="primary"
             size="medium"
             text="Subscribe"
-            color="black"
-            fluid={false}
+            color="white"
+            fluid={app?.deviceSize === 'md'}
             icon={null}
             iconFloat={null}
             inverted
@@ -94,8 +109,9 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
         </div>
 
         <div className="col-24  flex  justify-center">
-          <p className="t-secondary  f6  almost-black  lh-copy  tac">
-            No spam. Only the interesting bits.
+          <p className="t-secondary  f6  white  lh-copy  tac">
+            No spam from me. <span className="db  dib-md" />
+            Only the interesting bits.
           </p>
         </div>
       </form>

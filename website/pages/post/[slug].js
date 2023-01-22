@@ -71,61 +71,39 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
   };
   if (!router?.isFallback && post?.slug) {
     return (
-      <Container>
-        <article>
-          <div className="post__header">
-            <Image
-              /* Options */
-              src={imageBuilder
-                .image(post.coverImage)
-                .height(500)
-                .width(1080)
-                .url()}
-              placeholder={imageBuilder
-                .image(post.coverImage)
-                .height(50)
-                .width(108)
-                .url()}
-              alt={post.title}
-              figcaption={null}
-              height={500}
-              width={null}
-              customClass={null}
-              onClick={null}
-              /* Children */
-              withLinkProps={null}
-            />
-          </div>
-
-          <section className="measure-wide  mla  mra">
-            <div className="pb2  pt4">
-              <Heading
+      <>
+        <Container>
+          <article>
+            <div className="post__header">
+              <Image
                 /* Options */
-                htmlEntity="h1"
-                text={post.title}
-                color="black"
-                size="large"
-                truncate={0}
+                src={imageBuilder
+                  .image(post.coverImage)
+                  .height(500)
+                  .width(1080)
+                  .url()}
+                placeholder={imageBuilder
+                  .image(post.coverImage)
+                  .height(50)
+                  .width(108)
+                  .url()}
+                alt={post.title}
+                figcaption={null}
+                height={500}
+                width={null}
+                customClass={null}
                 onClick={null}
                 /* Children */
                 withLinkProps={null}
               />
             </div>
 
-            <p className="t-secondary  f7  almost-black  lh-copy  pb4">
-              <Date dateString={post.date} />
-            </p>
-
-            <div className="richtext  post__body  pb4">
-              <BlockContent blocks={post.content} serializers={serializers} />
-            </div>
-
-            <div className="pb4  tac">
-              <div className="pb3">
+            <section className="measure-wide  mla  mra">
+              <div className="pb2  pt4">
                 <Heading
                   /* Options */
-                  htmlEntity="h2"
-                  text="Keep in touch <3"
+                  htmlEntity="h1"
+                  text={post.title}
                   color="black"
                   size="large"
                   truncate={0}
@@ -134,11 +112,20 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                   withLinkProps={null}
                 />
               </div>
-              <SubscribeBanner />
-            </div>
-          </section>
-        </article>
-      </Container>
+
+              <p className="t-secondary  f7  almost-black  lh-copy  pb4">
+                <Date dateString={post.date} />
+              </p>
+
+              <div className="richtext  post__body  pb4">
+                <BlockContent blocks={post.content} serializers={serializers} />
+              </div>
+            </section>
+          </article>
+        </Container>
+
+        <SubscribeBanner />
+      </>
     );
   }
 
