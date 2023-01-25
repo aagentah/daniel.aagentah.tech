@@ -4,6 +4,7 @@ import { PageTransition } from 'next-page-transitions';
 import NProgress from 'nprogress';
 import { ToastProvider } from 'react-toast-notifications';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import PlausibleProvider from 'next-plausible';
 
 import { AppProvider } from '../context-provider/app';
 import Layout from '~/components/layout';
@@ -20,36 +21,38 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <AppProvider>
-        <ParallaxProvider>
-          <ToastProvider>
-            <PageTransition
-              timeout={transitionTimeout}
-              classNames="page-transition"
-              loadingComponent={null}
-              loadingDelay={transitionTimeout}
-              loadingTimeout={{
-                enter: transitionTimeout,
-                exit: transitionTimeout
-              }}
-              loadingClassNames="loading-indicator"
-            >
-              <Layout
-                meta={{
-                  siteConfig,
-                  title: layout?.meta?.title,
-                  description: layout?.meta.description,
-                  image: layout?.meta?.image
+      <PlausibleProvider domain="daniel.aagentah.tech">
+        <AppProvider>
+          <ParallaxProvider>
+            <ToastProvider>
+              <PageTransition
+                timeout={transitionTimeout}
+                classNames="page-transition"
+                loadingComponent={null}
+                loadingDelay={transitionTimeout}
+                loadingTimeout={{
+                  enter: transitionTimeout,
+                  exit: transitionTimeout
                 }}
-                // navWhite={page?.slug.current === 'home'}
-                preview={preview}
+                loadingClassNames="loading-indicator"
               >
-                <Component {...pageProps} />
-              </Layout>
-            </PageTransition>
-          </ToastProvider>
-        </ParallaxProvider>
-      </AppProvider>
+                <Layout
+                  meta={{
+                    siteConfig,
+                    title: layout?.meta?.title,
+                    description: layout?.meta.description,
+                    image: layout?.meta?.image
+                  }}
+                  // navWhite={page?.slug.current === 'home'}
+                  preview={preview}
+                >
+                  <Component {...pageProps} />
+                </Layout>
+              </PageTransition>
+            </ToastProvider>
+          </ParallaxProvider>
+        </AppProvider>
+      </PlausibleProvider>
     </>
   );
 }
