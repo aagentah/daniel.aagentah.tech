@@ -367,7 +367,7 @@ export async function getMusicAndMore(slug, preview) {
 
 export async function getAllMusicsTotal() {
   const data = await client.fetch(
-    `*[_type == "project"] {
+    `*[_type == "music"] {
       ${musicFields}
       content,
      }`
