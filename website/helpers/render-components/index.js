@@ -9,6 +9,7 @@ const componentList = {
   hero: dynamic(() => import('~/components/hero')),
   gridProjects: dynamic(() => import('~/components/grid/project')),
   gridPosts: dynamic(() => import('~/components/grid/post')),
+  gridMusics: dynamic(() => import('~/components/grid/music')),
   subscribeBanner: dynamic(() => import('~/components/subscribe-banner')),
   button: dynamic(() => import('~/components/button')),
   intro: dynamic(() => import('~/components/intro'))

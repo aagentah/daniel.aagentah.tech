@@ -9,7 +9,7 @@ export default {
       type: "string",
       options: {
         list: [
-          { title: "Rendah Mag", value: "rendah-mag" },
+          { title: "Spotify", value: "spotify" },
           { title: "SoundCloud", value: "soundcloud" },
           { title: "Youtube", value: "youtube" },
           { title: "Facebook", value: "facebook" },

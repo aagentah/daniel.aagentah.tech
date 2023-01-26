@@ -22,6 +22,27 @@ const postFields = `
   'author': author->{name, 'picture': picture.asset->url},
 `;
 
+const musicFields = `
+  name,
+  title,
+  date,
+  excerpt,
+  'slug': slug.current,
+  'coverImage': coverImage.asset->url,
+  'author': author->{name, 'picture': picture.asset->url},
+  'smartLink': smartLink->{
+    ...,
+    'items': items[] {
+      ...,
+      'documentInternal': documentInternal {
+        'document': *[_id == ^._ref] [0] {
+          ...,
+        },
+      },
+    },
+  },
+`;
+
 const storeFields = `
   name,
   title,
@@ -199,7 +220,6 @@ export async function getAllPostsTotal() {
       content,
      }`
   );
-
   return data;
 }
 
@@ -303,6 +323,53 @@ export async function getAllProductsTotal() {
     `*[_type == "product"] {
       ${postFields}
       productFields,
+     }`
+  );
+
+  return data;
+}
+
+export async function getAllMusics(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "music"] | order(date desc, _updatedAt desc) {
+      ${musicFields}
+    }`);
+  return getUniquePosts(results);
+}
+
+export async function getMusicAndMore(slug, preview) {
+  const curClient = getClient(preview);
+  const [item, moreItems] = await Promise.all([
+    curClient
+      .fetch(
+        `*[_type == "music" && slug.current == $slug] | order(_updatedAt desc) {
+        ${musicFields}
+        content,
+        'childPosts': childPosts[] {
+          'post': *[_id == ^._ref] [0] {
+            ${musicFields}
+          },
+        },
+      }`,
+        { slug }
+      )
+      .then(res => res?.[0]),
+    curClient.fetch(
+      `*[_type == "music" && slug.current != $slug] | order(date desc, _updatedAt desc){
+        ${musicFields}
+        content,
+      }[0...4]`,
+      { slug }
+    )
+  ]);
+  return { item, moreItems: getUniquePosts(moreItems) };
+}
+
+export async function getAllMusicsTotal() {
+  const data = await client.fetch(
+    `*[_type == "project"] {
+      ${musicFields}
+      content,
      }`
   );
 
