@@ -73,7 +73,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
     return (
       <>
         <Container>
-          <article>
+          <article className="pt3  pt0-md">
             <div className="post__header">
               <Image
                 /* Options */

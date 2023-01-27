@@ -175,7 +175,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
       <>
         <Container>
           <article>
-            <div className="flex  flex-wrap  pb5">
+            <div className="flex  flex-wrap  pb5  pt3  pt0-md">
               <div className="col-24  col-12-md  ph4  ph3-md  pb3  pb0-md">
                 <div className="post__header">
                   <Image

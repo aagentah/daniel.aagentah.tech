@@ -74,7 +74,7 @@ export default function Project({
     return (
       <>
         <Container>
-          <article>
+          <article className="pt3  pt0-md">
             <div className="post__header">
               <Image
                 /* Options */
