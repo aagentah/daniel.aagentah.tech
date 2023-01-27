@@ -80,7 +80,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
             className="subscribe-banner__input  di"
             id="email-input"
             name="email"
-            placeholder="Your Email"
+            placeholder="<Your Email>"
             ref={inputEl}
             type="email"
           />

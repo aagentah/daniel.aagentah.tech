@@ -41,7 +41,8 @@ function MyApp({ Component, pageProps }) {
                     siteConfig,
                     title: layout?.meta?.title,
                     description: layout?.meta.description,
-                    image: layout?.meta?.image
+                    image: layout?.meta?.image,
+                    pageClass: layout?.meta?.pageClass
                   }}
                   // navWhite={page?.slug.current === 'home'}
                   preview={preview}

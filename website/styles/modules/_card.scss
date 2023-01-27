@@ -104,3 +104,28 @@
     display: none;
   }
 }
+
+.card--post-thumbnail {
+  @extend .ba;
+  @extend .bc-mid-grey;
+  @extend .pa3;
+  @extend .br4;
+  @extend .shadow2;
+
+  .card__title {
+    @extend .pt2;
+  }
+
+  .card__image,
+  .image__figure {
+    margin-bottom: 0;
+
+    &:before {
+      content: none;
+    }
+
+    &:after {
+      content: none;
+    }
+  }
+}

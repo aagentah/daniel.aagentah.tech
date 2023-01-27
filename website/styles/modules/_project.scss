@@ -146,6 +146,10 @@
       height: 2px;
     }
   }
+
+  li {
+    @extend .pb2;
+  }
 }
 
 .code-block * {
