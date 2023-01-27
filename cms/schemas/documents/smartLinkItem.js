@@ -14,6 +14,8 @@ export default {
           { title: "Youtube", value: "youtube" },
           { title: "Facebook", value: "facebook" },
           { title: "Instagram", value: "instagram" },
+          { title: "Bandcamp", value: "bandcamp" },
+          { title: "Apple Music", value: "apple-music" },
           { title: "Other Web", value: "web" }
         ]
       },

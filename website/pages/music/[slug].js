@@ -107,6 +107,14 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
         service = 'SoundCloud';
         icon = <IconSoundcloud color="black" size={16} />;
         break;
+      case 'bandcamp':
+        service = 'Bandcamp';
+        icon = <IconWebLink color="black" size={16} />;
+        break;
+      case 'apple-music':
+        service = 'Apple Music';
+        icon = <IconWebLink color="black" size={16} />;
+        break;
       case 'web':
         service = 'View Web Link';
         icon = <IconWebLink color="black" size={16} />;
