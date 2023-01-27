@@ -14,7 +14,6 @@ export default function CardMusic({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
-  const imageHeight = app?.deviceSize === 'md' ? 180 : 280;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
@@ -32,7 +31,7 @@ export default function CardMusic({ item, placeholder }) {
       placeholder={placeholder}
       alt={item?.title}
       figcaption={null}
-      height={imageHeight}
+      height={null}
       width={null}
       customClass={null}
       skeleton={!item}
@@ -129,14 +128,16 @@ export default function CardMusic({ item, placeholder }) {
   // );
 
   return (
-    <LazyLoad once offset={150} height={imageHeight}>
+    <LazyLoad once offset={150} height={280}>
       <article className="card  card--item">
         {image && <div className="card__image">{image}</div>}
 
         <div className="card__dialog">
           {labels?.length && <div className="card__labels">{[...labels]}</div>}
           {heading && <div className="card__title">{heading}</div>}
-          {copy && <div className="card__description">{copy}</div>}
+          {
+            // copy && <div className="card__description">{copy}</div>
+          }
           {
             // button && <div className="card__button">{button}</div>
           }

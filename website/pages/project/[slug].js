@@ -80,17 +80,15 @@ export default function Project({
                 /* Options */
                 src={imageBuilder
                   .image(project.coverImage)
-                  .height(500)
                   .width(1080)
                   .url()}
                 placeholder={imageBuilder
                   .image(project.coverImage)
-                  .height(50)
                   .width(108)
                   .url()}
                 alt={project.title}
                 figcaption={null}
-                height={500}
+                height={null}
                 width={null}
                 customClass={null}
                 onClick={null}
@@ -129,8 +127,8 @@ export default function Project({
 
           {project?.childPosts?.length > 0 && (
             <section className="pb3">
-              <h2 className="t-primary  f5  lh-title  grey  tal  pb4">
-                - Related Posts
+              <h2 className="t-primary  f4  lh-title  blck  tal  pb3">
+                Related Posts:
               </h2>
 
               <div className="flex  flex-wrap">

@@ -64,6 +64,35 @@ export default function Bio({ siteConfig }) {
                 /* Options */
                 type="primary"
                 size="large"
+                text="Latest Music"
+                color="black"
+                fluid={true}
+                icon={null}
+                iconFloat={null}
+                inverted={false}
+                loading={false}
+                disabled={false}
+                skeleton={false}
+                onClick={null}
+                /* Children */
+                withLinkProps={{
+                  type: 'next',
+                  href: '/music',
+                  target: null,
+                  routerLink: Link,
+                  routerLinkProps: {
+                    as: `/music`,
+                    scroll: false
+                  }
+                }}
+              />
+            </div>
+
+            <div className="col-24  pb3">
+              <Button
+                /* Options */
+                type="primary"
+                size="large"
                 text="Latest Projects"
                 color="black"
                 fluid={true}

@@ -1,5 +1,15 @@
 .footer {
-  height: 160px;
+  height: 140px;
   max-height: 260px;
   min-height: 260px;
+}
+
+@include breakpoint-up(md) {
+  .footer {
+    height: 160px;
+  }
+
+  .page--home .footer {
+    display: none;
+  }
 }

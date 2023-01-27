@@ -195,12 +195,10 @@ export default function Intro({
         if (app?.deviceSize === 'lg') {
           times = 45;
         } else if (app?.deviceSize === 'md') {
-          times = 30;
+          times = -30;
         } else {
           times = 45;
         }
-
-        console.log('times', times);
 
         let geometry = new THREE.SphereGeometry(
           container.clientWidth - (container.clientWidth / 100) * times,
@@ -377,7 +375,7 @@ export default function Intro({
               </div>
             </div>
 
-            <div className="intro__dialog  col-24  col-7-sm  col-10-lg  flex  justify-start  align-center  relative  ph0  ph3-md">
+            <div className="intro__dialog  col-24  col-7-sm  col-10-lg  flex  justify-center  justify-start-md  tac  tal-md  align-start  align-center-md  relative  ph0  ph3-md  pt3  pt0-md">
               <Prompt
                 active={promptActive}
                 setMidiActive={setMidiActive}

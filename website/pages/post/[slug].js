@@ -79,17 +79,15 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                 /* Options */
                 src={imageBuilder
                   .image(post.coverImage)
-                  .height(500)
                   .width(1080)
                   .url()}
                 placeholder={imageBuilder
                   .image(post.coverImage)
-                  .height(50)
                   .width(108)
                   .url()}
                 alt={post.title}
                 figcaption={null}
-                height={500}
+                height={null}
                 width={null}
                 customClass={null}
                 onClick={null}

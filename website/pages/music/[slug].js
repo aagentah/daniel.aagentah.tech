@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Router, { useRouter } from 'next/router';
-import BlockContent from '@sanity/block-content-to-react';
 import Iframe from 'react-iframe';
 
 import hljs from 'highlight.js/lib/core';
@@ -177,7 +176,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
         <Container>
           <article>
             <div className="flex  flex-wrap  pb5">
-              <div className="col-24  col-10-md  ph4  ph3-md  pb3  pb0-md">
+              <div className="col-24  col-12-md  ph4  ph3-md  pb3  pb0-md">
                 <div className="post__header">
                   <Image
                     /* Options */
@@ -201,7 +200,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                 </div>
               </div>
 
-              <div className="col-24  col-14-md  ph0  ph3-md">
+              <div className="col-24  col-12-md  ph0  ph3-md">
                 <section className="measure-wide  mla  mra  tac  tal-md">
                   <div className="pb2">
                     <Heading
@@ -220,13 +219,6 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                   <p className="t-secondary  f7  almost-black  lh-copy  pb3  tac  tal-md">
                     <Date dateString={post.date} />
                   </p>
-
-                  <div className="richtext  post__body  pb3">
-                    <BlockContent
-                      blocks={post.content}
-                      serializers={serializers}
-                    />
-                  </div>
 
                   {post?.smartLink.items?.length &&
                     post.smartLink.items.map((item, i) => (

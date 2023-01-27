@@ -1,8 +1,15 @@
 $transitionTimeout: 0.3s;
 
 main {
-  min-height: calc(100vh - 120px);
-  padding-top: 120px;
+  min-height: calc(100vh - 220px);
+  padding-top: 80px;
+}
+
+@include breakpoint-up(md) {
+  main {
+    min-height: calc(100vh - 120px);
+    padding-top: 120px;
+  }
 }
 
 .page--bio {
