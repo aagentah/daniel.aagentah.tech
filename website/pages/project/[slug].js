@@ -19,14 +19,14 @@ import {
   imageBuilder,
   getSiteConfig,
   getProjectAndMore,
-  getAllProjectsTotal
+  getAllProjectsTotal,
 } from '~/lib/sanity/requests';
 
 export default function Project({
   siteConfig,
   project,
   moreProjects,
-  preview
+  preview,
 }) {
   const router = useRouter();
   const app = useApp();
@@ -66,37 +66,36 @@ export default function Project({
             />
           </div>
         );
-      }
-    }
+      },
+    },
   };
 
   if (!router?.isFallback && project?.slug) {
     return (
       <>
-        <Container>
-          <article className="pt3  pt0-md">
-            <div className="post__header">
-              <Image
-                /* Options */
-                src={imageBuilder
-                  .image(project.coverImage)
-                  .width(1080)
-                  .url()}
-                placeholder={imageBuilder
-                  .image(project.coverImage)
-                  .width(108)
-                  .url()}
-                alt={project.title}
-                figcaption={null}
-                height={null}
-                width={null}
-                customClass={null}
-                onClick={null}
-                /* Children */
-                withLinkProps={null}
-              />
-            </div>
+        <div className="ph4  pt3  pt0-md">
+          <div className="post__header">
+            <Image
+              /* Options */
+              src={imageBuilder.image(project.coverImage).width(1960).url()}
+              placeholder={imageBuilder
+                .image(project.coverImage)
+                .width(108)
+                .url()}
+              alt={project.title}
+              figcaption={null}
+              height={app?.deviceSize === 'md' ? null : 600}
+              width={null}
+              customClass={null}
+              onClick={null}
+              /* Children */
+              withLinkProps={null}
+            />
+          </div>
+        </div>
 
+        <Container>
+          <article className="">
             <section className="measure-wide  mla  mra">
               <div className="pb2  pt4">
                 <Heading
@@ -169,11 +168,11 @@ export async function getStaticProps({ req, params, preview = false }) {
           title: data.project?.title,
           description: data.project?.excerpt,
           image: data.project?.coverImage,
-          pageClass: 'project'
-        }
-      }
+          pageClass: 'project',
+        },
+      },
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -183,14 +182,14 @@ export async function getStaticPaths() {
   return {
     paths:
       data
-        .filter(project => project?.slug)
-        .map(project => {
+        .filter((project) => project?.slug)
+        .map((project) => {
           return {
             params: {
-              slug: project.slug
-            }
+              slug: project.slug,
+            },
           };
         }) || [],
-    fallback: true
+    fallback: true,
   };
 }

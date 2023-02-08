@@ -5,6 +5,7 @@ import Iframe from 'react-iframe';
 
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
+import markdown from 'highlight.js/lib/languages/markdown';
 import 'highlight.js/styles/a11y-light.css';
 
 import Heading from '~/components/elements/heading';
@@ -20,10 +21,11 @@ import {
   imageBuilder,
   getSiteConfig,
   getPostAndMore,
-  getAllPostsTotal
+  getAllPostsTotal,
 } from '~/lib/sanity/requests';
 
 hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('markdown', markdown);
 
 const prism = require('prismjs');
 require('prismjs/components/prism-javascript');
@@ -66,36 +68,31 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
             />
           </div>
         );
-      }
-    }
+      },
+    },
   };
   if (!router?.isFallback && post?.slug) {
     return (
       <>
+        <div className="ph4  pt3  pt0-md">
+          <div className="post__header">
+            <Image
+              /* Options */
+              src={imageBuilder.image(post.coverImage).width(1960).url()}
+              placeholder={imageBuilder.image(post.coverImage).width(108).url()}
+              alt={post.title}
+              figcaption={null}
+              height={app?.deviceSize === 'md' ? null : 600}
+              width={null}
+              customClass={null}
+              onClick={null}
+              /* Children */
+              withLinkProps={null}
+            />
+          </div>
+        </div>
         <Container>
-          <article className="pt3  pt0-md">
-            <div className="post__header">
-              <Image
-                /* Options */
-                src={imageBuilder
-                  .image(post.coverImage)
-                  .width(1080)
-                  .url()}
-                placeholder={imageBuilder
-                  .image(post.coverImage)
-                  .width(108)
-                  .url()}
-                alt={post.title}
-                figcaption={null}
-                height={null}
-                width={null}
-                customClass={null}
-                onClick={null}
-                /* Children */
-                withLinkProps={null}
-              />
-            </div>
-
+          <article className="">
             <section className="measure-wide  mla  mra">
               <div className="pb2  pt4">
                 <Heading
@@ -145,11 +142,11 @@ export async function getStaticProps({ req, params, preview = false }) {
         meta: {
           title: data.post?.title,
           description: data.post?.excerpt,
-          image: data.post?.coverImage
-        }
-      }
+          image: data.post?.coverImage,
+        },
+      },
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -159,14 +156,14 @@ export async function getStaticPaths() {
   return {
     paths:
       data
-        .filter(post => post?.slug)
-        .map(post => {
+        .filter((post) => post?.slug)
+        .map((post) => {
           return {
             params: {
-              slug: post.slug
-            }
+              slug: post.slug,
+            },
           };
         }) || [],
-    fallback: true
+    fallback: true,
   };
 }

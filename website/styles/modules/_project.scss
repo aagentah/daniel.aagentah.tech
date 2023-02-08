@@ -121,34 +121,32 @@
     text-decoration: underline;
   }
 
+  pre {
+    overflow: auto;
+    border: 1px solid black;
+    @extend .pa3;
+    @extend .br3;
+    @extend .mb4;
+
+    * {
+      font-size: 14px !important;
+      // background-color: var(--light-grey);
+    }
+  }
+
   p > code {
-    background: #1d1f21;
-    color: rgb(197, 200, 198);
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      background: #1d1f21;
-      width: 100%;
-      height: 2px;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 0;
-      background: #1d1f21;
-      width: 100%;
-      height: 2px;
-    }
+    border: 1px solid black;
+    background-color: var(--light-grey);
+    @extend .ph1;
+    @extend .br3;
   }
 
   li {
     @extend .pb2;
+  }
+
+  p:empty {
+    display: none;
   }
 }
 
