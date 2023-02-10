@@ -85,7 +85,7 @@ export default function Project({
                 .url()}
               alt={project.title}
               figcaption={null}
-              height={app?.deviceSize === 'md' ? null : 600}
+              height={app?.deviceSize === 'md' ? 220 : 600}
               width={null}
               customClass={null}
               onClick={null}

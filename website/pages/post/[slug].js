@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import BlockContent from '@sanity/block-content-to-react';
 import Iframe from 'react-iframe';
-
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import markdown from 'highlight.js/lib/languages/markdown';

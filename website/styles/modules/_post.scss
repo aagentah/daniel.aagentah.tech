@@ -72,7 +72,8 @@
 }
 
 .post__body {
-  @extend .taj;
+  @extend .tal;
+  @extend .taj-md;
 }
 
 .post__body p,
