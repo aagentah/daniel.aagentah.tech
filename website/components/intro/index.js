@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
-
 import { useApp } from '~/context-provider/app';
 
 const Prompt = dynamic(() => import('~/components/intro/prompt'));
@@ -40,10 +39,6 @@ export default function Intro({
   const [rotate2, setRotate2] = useState({});
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      renderPlanet();
-    }
-
     const handleR1 = () => {
       let spin = Math.round(Math.random() * 180);
       setRotate({ transform: `rotate(${spin}deg)` });
@@ -69,6 +64,12 @@ export default function Intro({
       handleR2();
     }, 2500);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && app?.deviceSize) {
+      renderPlanet();
+    }
+  }, [app?.deviceSize]);
 
   const promptWrapperClass = classNames({
     active: !midiActive,
@@ -189,18 +190,12 @@ export default function Intro({
       loader = new THREE.TextureLoader();
 
       loader.load('/images/ceres.jpg', function (texture) {
-        let times;
-
-        if (app?.deviceSize === 'lg') {
-          times = 45;
-        } else if (app?.deviceSize === 'md') {
-          times = -30;
-        } else {
-          times = 45;
-        }
+        const percent = container.clientWidth / 100;
+        const percentBy = app?.deviceSize === 'md' ? 15 : 50;
+        const percentOf = percent * percentBy;
 
         let geometry = new THREE.SphereGeometry(
-          container.clientWidth - (container.clientWidth / 100) * times,
+          container.clientWidth - percentOf,
           20,
           20
         );
@@ -306,10 +301,11 @@ export default function Intro({
       <>
         <article
           className={`
-        intro
-        ${modifier && `intro--${modifier}`}
-        mt${marginTop}
-        mb${marginBottom}
+          intro
+          ${modifier && `intro--${modifier}`}
+          ${hasPlanetRendered ? 'loaded' : ''}
+          mt${marginTop}
+          mb${marginBottom}
       `}
           style={styles}
         >
@@ -339,7 +335,7 @@ export default function Intro({
             //  </div>
           }
 
-          <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  absolute">
+          <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  pt5  pt0-md">
             <div className="col-24  col-1-md" />
             <div className="intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md">
               {

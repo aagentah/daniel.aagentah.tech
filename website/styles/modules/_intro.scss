@@ -1,13 +1,19 @@
 .intro {
   // background: var(--black);
-  overflow: hidden;
+  // overflow: hidden;
   // background: var(--black);
   // color: var(--white);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 
   @extend .flex;
   @extend .flex-wrap;
   @extend .align-center;
   @extend .justify-center;
+}
+
+.intro.loaded {
+  opacity: 1;
 }
 
 .intro__barcode {
@@ -19,7 +25,6 @@
 }
 
 .intro__section {
-  position: absolute;
   top: 15%;
   left: 0;
   right: 0;
@@ -58,7 +63,6 @@
 }
 
 .intro__dialog {
-  height: 300px;
   opacity: 0;
   animation: fade-out 0s ease-in-out forwards;
   animation-delay: 0.5s;

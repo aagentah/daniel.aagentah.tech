@@ -124,8 +124,8 @@
   pre {
     overflow: auto;
     border: 1px solid black;
-    @extend .pa3;
-    @extend .pt4;
+    @extend .ph3;
+    @extend .pv4;
     @extend .br3;
     @extend .mb4;
 
@@ -167,9 +167,11 @@
 
 .code-block__language {
   position: absolute;
-  display: table;
+  display: inline-block;
+  width: 100px;
+  text-align: center;
   margin: 0 auto;
-  top: -15px;
+  top: -17px;
   left: 0;
   right: 0;
   background-color: #e6e6e6;
