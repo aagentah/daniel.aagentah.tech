@@ -12,19 +12,31 @@ import { useUser } from '~/lib/hooks';
 import { useApp } from '~/context-provider/app';
 
 const IconInstagram = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconInstagram)
+  import('~/components/elements/icon').then((m) => m.IconInstagram)
 );
 
 const IconSoundcloud = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconSoundcloud)
+  import('~/components/elements/icon').then((m) => m.IconSoundcloud)
 );
 
 const IconYoutube = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconYoutube)
+  import('~/components/elements/icon').then((m) => m.IconYoutube)
 );
 
 const IconSpotify = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconSpotify)
+  import('~/components/elements/icon').then((m) => m.IconSpotify)
+);
+
+const IconGithub = dynamic(() =>
+  import('~/components/elements/icon').then((m) => m.IconGithub)
+);
+
+const IconTwitter = dynamic(() =>
+  import('~/components/elements/icon').then((m) => m.IconTwitter)
+);
+
+const IconBandcamp = dynamic(() =>
+  import('~/components/elements/icon').then((m) => m.IconBandcamp)
 );
 
 export default function Header({ siteConfig, handleLogout }) {
@@ -65,11 +77,8 @@ export default function Header({ siteConfig, handleLogout }) {
         </button>
 
         <h1 className="t-primary  almost-black  f6">
-          <a href="/" className="almost-black  link">
-            <img
-              className="header--mobile__logo  w2"
-              src="/images/logo-black.png"
-            />
+          <a href="/" className="almost-black  link  tac  fw6">
+            Daniel Aagentah
           </a>
         </h1>
       </div>
@@ -124,7 +133,7 @@ export default function Header({ siteConfig, handleLogout }) {
                           href: `/${path}`,
                           target: null,
                           routerLink: Link,
-                          routerLinkProps: null
+                          routerLinkProps: null,
                         }}
                       />
                     </li>
@@ -152,7 +161,7 @@ export default function Header({ siteConfig, handleLogout }) {
                         href: '/profile',
                         target: null,
                         routerLink: Link,
-                        routerLinkProps: null
+                        routerLinkProps: null,
                       }}
                     />
                   </li>
@@ -231,8 +240,8 @@ export default function Header({ siteConfig, handleLogout }) {
               )}
             </ul>
 
-            <div className="col-24  flex  justify-center  pb3  ph3  ph0-md">
-              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+            <div className="col-24  flex  flex-wrap  justify-center  pb3  ph3  ph0-md">
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
                 <a
                   aria-label="Instagram"
                   href="https://www.instagram.com/daniel.aagentah/"
@@ -243,7 +252,7 @@ export default function Header({ siteConfig, handleLogout }) {
                 </a>
               </div>
 
-              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
                 <a
                   aria-label="Soundcloud"
                   href="https://soundcloud.com/aagentah"
@@ -253,7 +262,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   <IconSoundcloud color="black" size={30} />
                 </a>
               </div>
-              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
                 <a
                   aria-label="Youtube"
                   href="https://www.youtube.com/@daniel.aagentah"
@@ -264,7 +273,7 @@ export default function Header({ siteConfig, handleLogout }) {
                 </a>
               </div>
 
-              <div className="col-8  col-3-md  flex  justify-center  pt4  pt0-md">
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
                 <a
                   aria-label="Spotify"
                   href="https://open.spotify.com/artist/5sAlVt0dBip3YMS6di8JJw?si=GR11QkY8RVySAvsvLMRodg"
@@ -272,6 +281,39 @@ export default function Header({ siteConfig, handleLogout }) {
                   rel="noreferrer"
                 >
                   <IconSpotify color="black" size={30} />
+                </a>
+              </div>
+
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Github"
+                  href="https://github.com/aagentah"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconGithub color="black" size={30} />
+                </a>
+              </div>
+
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Twitter"
+                  href="https://twitter.com/Aagentah"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconTwitter color="black" size={30} />
+                </a>
+              </div>
+
+              <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
+                <a
+                  aria-label="Bandcamp"
+                  href="https://aagentah.bandcamp.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <IconBandcamp color="black" size={30} />
                 </a>
               </div>
             </div>

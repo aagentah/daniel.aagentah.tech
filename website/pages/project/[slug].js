@@ -42,6 +42,7 @@ export default function Project({
 
         return (
           <div className="code-block">
+            <span className="code-block__language">{language}</span>
             <SyntaxHighlighter language={language || 'text'} style={atomDark}>
               {code}
             </SyntaxHighlighter>
@@ -104,7 +105,7 @@ export default function Project({
                   text={project.title}
                   color="black"
                   size="large"
-                  truncate={0}
+                  truncate={null}
                   onClick={null}
                   /* Children */
                   withLinkProps={null}

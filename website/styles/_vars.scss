@@ -16,9 +16,9 @@ $mono: 'Consolas', 'Menlo', 'Monaco', 'Lucida Console', monospace;
 $sans: sans-serif;
 $serif: serif;
 
-$t-display: 'Courier Prime', monospace;
-$t-primary: 'Courier Prime', monospace;
-$t-secondary: 'Courier Prime', monospace;
+$t-display: 'Roboto Mono', monospace;
+$t-primary: 'Roboto Mono', monospace;
+$t-secondary: 'Roboto Mono', monospace;
 $t-intro-2: 'Courier Prime', monospace;
 $t-intro-3: 'Courier Prime', monospace;
 $t-intro-4: 'Courier Prime', monospace;
@@ -39,7 +39,7 @@ $type-scale: (
   f4: 1.25rem,
   f5: 1rem,
   f6: 0.875rem,
-  f7: 0.75rem
+  f7: 0.75rem,
 ) !default;
 
 // colors
@@ -87,7 +87,7 @@ $colors: (
   red: --red,
   green: --green,
   primary-color: --primary-color,
-  secondary-color: --secondary-color
+  secondary-color: --secondary-color,
 ) !default;
 
 $body-color: var(--almost-black) !default;
@@ -103,7 +103,7 @@ $grid-breakpoints: (
   sm: 650px,
   md: 950px,
   lg: 1250px,
-  xl: 1550px
+  xl: 1550px,
 ) !default;
 
 /* iphone 6, 6s, 7, 8 */
@@ -136,5 +136,5 @@ $spacings: (
   4: 2rem,
   5: 4rem,
   6: 8rem,
-  7: 16rem
+  7: 16rem,
 ) !default;

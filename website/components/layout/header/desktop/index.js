@@ -18,17 +18,15 @@ export default function Header({ siteConfig, handleLogout }) {
 
   return (
     <div className="header  header--desktop  flex  justify-center  align-center">
-      <div className="col-3  flex  align-center  ph4">
-        <h1 className="t-primary  almost-black  f5">
+      <div className="col-6  flex  align-center  ph4">
+        <h1 className="t-primary  almost-black  f4  fw6">
           <a href="/" className="almost-black  link">
-            {
-              // <img className="w3" src="/images/logo.png" />
-            }
+            Daniel Aagentah
           </a>
         </h1>
       </div>
-      <nav className="nav  col-21">
-        <ul className="flex  flex-wrap  justify-end  pr3  pt3  ls-none">
+      <nav className="nav  col-18">
+        <ul className="flex  flex-wrap  justify-end  pr3  ls-none">
           {siteConfig?.menu?.map?.length &&
             siteConfig.menu.map((iteration, i) => {
               let path = iteration?.slug?.current;
@@ -55,7 +53,7 @@ export default function Header({ siteConfig, handleLogout }) {
                       href: `/${path}`,
                       target: null,
                       routerLink: Link,
-                      routerLinkProps: null
+                      routerLinkProps: null,
                     }}
                   />
                 </li>

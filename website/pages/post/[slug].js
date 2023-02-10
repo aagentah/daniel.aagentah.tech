@@ -45,9 +45,12 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
         const myHtml = hljs.highlight(code, { language }).value;
 
         return (
-          <pre className="">
-            <code dangerouslySetInnerHTML={{ __html: myHtml }} />
-          </pre>
+          <div className="code-block">
+            <span className="code-block__language">{language}</span>
+            <pre>
+              <code dangerouslySetInnerHTML={{ __html: myHtml }} />
+            </pre>
+          </div>
         );
       },
       iframeEmbedBlock: ({ node }) => {
@@ -101,7 +104,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                   text={post.title}
                   color="black"
                   size="large"
-                  truncate={0}
+                  truncate={null}
                   onClick={null}
                   /* Children */
                   withLinkProps={null}

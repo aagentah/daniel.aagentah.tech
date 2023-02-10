@@ -1,10 +1,14 @@
 .subscribe-banner {
   background: var(--black);
   color: var(--white);
+  max-width: 90vw;
+  margin: 0 auto;
 
   @extend .tac;
   @extend .pv5;
+  @extend .pv6-md;
   @extend .ph4;
+  @extend .shadow2;
 }
 
 .subscribe-banner__input {

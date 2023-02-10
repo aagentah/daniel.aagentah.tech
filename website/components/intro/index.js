@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
-import Image from '~/components/elements/image';
 
 import { useApp } from '~/context-provider/app';
 
@@ -28,7 +27,7 @@ export default function Intro({
   marginTop,
   marginBottom,
   styles,
-  skeleton
+  skeleton,
 }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
@@ -72,11 +71,11 @@ export default function Intro({
   }, []);
 
   const promptWrapperClass = classNames({
-    active: !midiActive
+    active: !midiActive,
   });
 
   const midiWrapperClass = classNames({
-    active: midiActive
+    active: midiActive,
   });
 
   const renderPlanet = () => {
@@ -189,7 +188,7 @@ export default function Intro({
 
       loader = new THREE.TextureLoader();
 
-      loader.load('/images/ceres.jpg', function(texture) {
+      loader.load('/images/ceres.jpg', function (texture) {
         let times;
 
         if (app?.deviceSize === 'lg') {
@@ -208,7 +207,7 @@ export default function Intro({
 
         let material = new THREE.MeshBasicMaterial({
           map: texture,
-          overdraw: 0.5
+          overdraw: 0.5,
         });
         let mesh = new THREE.Mesh(geometry, material);
         group.add(mesh);
@@ -238,7 +237,7 @@ export default function Intro({
       let geometry = new THREE.PlaneBufferGeometry(300, 300, 3, 3);
       let material = new THREE.MeshBasicMaterial({
         map: texture,
-        overdraw: 0.5
+        overdraw: 0.5,
       });
 
       let mesh = new THREE.Mesh(geometry, material);
@@ -321,22 +320,24 @@ export default function Intro({
             // />
           }
 
-          <div className="intro__barcode  absolute  top  left  ml3">
-            <Image
-              /* Options */
-              src="/images/barcode-black.png"
-              placeholder={null}
-              alt={null}
-              figcaption={null}
-              height={75}
-              width={null}
-              customClass={null}
-              skeleton={skeleton}
-              onClick={null}
-              /* Children */
-              withLinkProps={null}
-            />
-          </div>
+          {
+            //    <div className="intro__barcode  absolute  top  left  ml3">
+            //    <Image
+            //      /* Options */
+            //      src="/images/barcode-black.png"
+            //      placeholder={null}
+            //      alt={null}
+            //      figcaption={null}
+            //      height={75}
+            //      width={null}
+            //      customClass={null}
+            //      skeleton={skeleton}
+            //      onClick={null}
+            //      /* Children */
+            //      withLinkProps={null}
+            //    />
+            //  </div>
+          }
 
           <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  absolute">
             <div className="col-24  col-1-md" />

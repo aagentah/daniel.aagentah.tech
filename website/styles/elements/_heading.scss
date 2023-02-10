@@ -3,10 +3,11 @@
   // animation: npl-fade-in 0.3s forwards;
   position: relative;
   display: block;
-  font-family: $t-primary;
-  line-height: 1.5;
+  line-height: 1.6;
   overflow: hidden;
   font-weight: normal;
+
+  @extend .t-primary;
 
   &.small {
     @extend .f5;
