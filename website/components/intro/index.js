@@ -67,7 +67,21 @@ export default function Intro({
 
   useEffect(() => {
     if (typeof window !== 'undefined' && app?.deviceSize) {
-      renderPlanet();
+      const img = new Image();
+
+      console.log('loading');
+
+      img.onload = function () {
+        console.log('loaded');
+        renderPlanet();
+      };
+
+      img.onerror = function () {
+        console.log('not loaded');
+        renderPlanet();
+      };
+
+      img.src = '/images/ceres.jpg';
     }
   }, [app?.deviceSize]);
 
@@ -96,6 +110,7 @@ export default function Intro({
     let id;
     let windowHalfX;
     let windowHalfY;
+    let loaderLoaded = false;
 
     // let kickId = 0;
 
@@ -193,6 +208,7 @@ export default function Intro({
         const percent = container.clientWidth / 100;
         const percentBy = app?.deviceSize === 'md' ? 15 : 50;
         const percentOf = percent * percentBy;
+        loaderLoaded = true;
 
         let geometry = new THREE.SphereGeometry(
           container.clientWidth - percentOf,
@@ -204,6 +220,7 @@ export default function Intro({
           map: texture,
           overdraw: 0.5,
         });
+
         let mesh = new THREE.Mesh(geometry, material);
         group.add(mesh);
       });
@@ -293,7 +310,12 @@ export default function Intro({
 
     group.scale.set(0.5, 0.5, 0.5);
     renderer.setClearColor(0x000000, 0);
-    setHasPlanetRendered(true);
+
+    setInterval(() => {
+      if (!hasPlanetRendered && loaderLoaded) {
+        setHasPlanetRendered(true);
+      }
+    }, 100);
   };
 
   if (app?.deviceSize) {
