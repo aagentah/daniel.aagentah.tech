@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressiveImage from '../../utils/progressive-image';
 import WithLink from '../../utils/with-link';
 
@@ -20,27 +20,40 @@ export default function Image(props) {
     onClick,
     skeleton,
     /* Children */
-    withLinkProps
+    withLinkProps,
   } = props;
+  const [isSkeleton, setIsSkeleton] = useState(true);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  const handleSetImgLoaded = () => setImgLoaded(true);
 
   const dimensions = {
     minHeight: height ? `${height}px` : '100%',
     height: height ? `${height}px` : '100%',
     width: width ? `${width}px` : '100%',
-    maxWidth: '100%'
+    maxWidth: '100%',
   };
 
-  const skeletonClass = skeleton ? 'skeleton  skeleton-active' : 'skeleton';
+  useEffect(() => {
+    if (!skeleton && imgLoaded) setIsSkeleton(false);
+  }, [skeleton, imgLoaded]);
 
   return (
     <figure className="image__figure">
       <WithLink
         style={dimensions}
-        className={`image__wrapper  ${skeletonClass}  ${customClass || ''} `}
+        className={`image__wrapper  skeleton  ${
+          isSkeleton ? 'skeleton-active' : ''
+        }  ${customClass || ''} `}
         {...(withLinkProps && { withLinkProps })}
         {...(onClick && { onClick })}
       >
-        <ProgressiveImage src={src} alt={alt} priority={priority} />
+        <ProgressiveImage
+          src={src}
+          alt={alt}
+          priority={priority}
+          handleSetImgLoaded={handleSetImgLoaded}
+        />
       </WithLink>
 
       {figcaption && (

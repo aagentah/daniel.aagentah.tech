@@ -5,11 +5,14 @@ import Image from 'next/future/image';
  * ProgressiveImage.
  */
 
-const ProgressiveImage = props => {
+const ProgressiveImage = (props) => {
   const [loaded, setLoaded] = useState(false);
-  const { src, alt, priority } = props;
+  const { src, alt, priority, handleSetImgLoaded } = props;
 
-  const handleLoad = () => setLoaded(true);
+  const handleLoad = () => {
+    setLoaded(true);
+    handleSetImgLoaded();
+  };
 
   if (src) {
     return (
