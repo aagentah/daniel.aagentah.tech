@@ -2,6 +2,7 @@ import useState from 'react-usestateref';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import * as THREE from 'three';
 
 import { useApp } from '~/context-provider/app';
 
@@ -257,7 +258,7 @@ export default function Intro({
       mesh.rotation.x = -Math.PI / 2;
       group.add(mesh);
 
-      renderer = new THREE.CanvasRenderer({ alpha: true });
+      renderer = new THREE.WebGLRenderer({ alpha: true });
       // renderer.setPixelRatio(window?.devicePixelRatio);
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);

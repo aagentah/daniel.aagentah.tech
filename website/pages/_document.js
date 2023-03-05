@@ -20,6 +20,7 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    console.log('this.props', this.props);
     return (
       <Html lang="en">
         <Head>
@@ -63,20 +64,6 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#000" />
 
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-
-          {this.props.__NEXT_DATA__.page === '/' && (
-            <>
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/build/three.min.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/renderers/Projector.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/renderers/SoftwareRenderer.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/renderers/CanvasRenderer.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/controls/OrbitControls.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/geometries/ConvexGeometry.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/libs/stats.min.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/Detector.js" />
-              <script src="https://cdn.jsdelivr.net/npm/three@0.83.0/examples/js/geometries/hilbert3D.js" />
-            </>
-          )}
         </Head>
 
         <body>

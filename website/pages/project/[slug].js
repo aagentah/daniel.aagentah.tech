@@ -53,7 +53,7 @@ export default function Project({
         const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
 
         return (
-          <div className="w-100  db  mla  mra  mb4">
+          <div className="w-100  db  mla  mra  mb4  ph3">
             <Iframe
               url={iframeUrl}
               width="100%"
@@ -74,8 +74,8 @@ export default function Project({
   if (!router?.isFallback && project?.slug) {
     return (
       <>
-        <div className="ph4  pt3  pt0-md">
-          <div className="post__header">
+        <div className="container  mla  mra  pt3  pt0-md">
+          <div className="project__header">
             <Image
               /* Options */
               src={imageBuilder.image(project.coverImage).width(1960).url()}
@@ -85,7 +85,7 @@ export default function Project({
                 .url()}
               alt={project.title}
               figcaption={null}
-              height={app?.deviceSize === 'md' ? 220 : 600}
+              height={app?.deviceSize === 'md' ? 250 : 500}
               width={null}
               customClass={null}
               onClick={null}

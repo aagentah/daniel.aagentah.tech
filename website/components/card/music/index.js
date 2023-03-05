@@ -31,7 +31,7 @@ export default function CardMusic({ item, placeholder }) {
       placeholder={placeholder}
       alt={item?.title}
       figcaption={null}
-      height={null}
+      height={280}
       width={null}
       customClass={null}
       skeleton={!item}
@@ -44,8 +44,8 @@ export default function CardMusic({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/music/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -81,8 +81,8 @@ export default function CardMusic({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/music/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );

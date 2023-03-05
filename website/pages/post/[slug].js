@@ -56,7 +56,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
         const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
 
         return (
-          <div className="w-100  db  mla  mra  mb4">
+          <div className="w-100  db  mla  mra  mb4  ph3">
             <Iframe
               url={iframeUrl}
               width="100%"
@@ -76,7 +76,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
   if (!router?.isFallback && post?.slug) {
     return (
       <>
-        <div className="ph4  pt3  pt0-md">
+        <div className="container  mla  mra  pt3  pt0-md">
           <div className="post__header">
             <Image
               /* Options */
@@ -84,7 +84,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
               placeholder={imageBuilder.image(post.coverImage).width(108).url()}
               alt={post.title}
               figcaption={null}
-              height={app?.deviceSize === 'md' ? null : 600}
+              height={app?.deviceSize === 'md' ? 250 : 500}
               width={null}
               customClass={null}
               onClick={null}
@@ -93,6 +93,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
             />
           </div>
         </div>
+
         <Container>
           <article className="">
             <section className="measure-wide  mla  mra">

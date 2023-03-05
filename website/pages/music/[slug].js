@@ -20,7 +20,7 @@ import {
   imageBuilder,
   getSiteConfig,
   getMusicAndMore,
-  getAllMusicsTotal
+  getAllMusicsTotal,
 } from '~/lib/sanity/requests';
 
 hljs.registerLanguage('javascript', javascript);
@@ -29,31 +29,31 @@ const prism = require('prismjs');
 require('prismjs/components/prism-javascript');
 
 const IconFacebook = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconFacebook)
+  import('~/components/elements/icon').then((m) => m.IconFacebook)
 );
 
 const IconInstagram = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconInstagram)
+  import('~/components/elements/icon').then((m) => m.IconInstagram)
 );
 
 const IconYoutube = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconYoutube)
+  import('~/components/elements/icon').then((m) => m.IconYoutube)
 );
 
 const IconSoundcloud = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconSoundcloud)
+  import('~/components/elements/icon').then((m) => m.IconSoundcloud)
 );
 
 const IconWebLink = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconWebLink)
+  import('~/components/elements/icon').then((m) => m.IconWebLink)
 );
 
 const IconHeart = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconHeart)
+  import('~/components/elements/icon').then((m) => m.IconHeart)
 );
 
 const IconSpotify = dynamic(() =>
-  import('~/components/elements/icon').then(m => m.IconSpotify)
+  import('~/components/elements/icon').then((m) => m.IconSpotify)
 );
 
 export default function Post({ siteConfig, post, morePosts, preview }) {
@@ -66,7 +66,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
     if (!router?.isFallback && !post?.slug) Router.push('/404');
   }, [router?.isFallback, post?.slug]);
 
-  const renderItemType = item => {
+  const renderItemType = (item) => {
     let service;
     let icon;
     let url = item.url;
@@ -167,8 +167,8 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
             />
           </div>
         );
-      }
-    }
+      },
+    },
   };
   if (!router?.isFallback && post?.slug) {
     return (
@@ -177,20 +177,17 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
           <article>
             <div className="flex  flex-wrap  pb5  pt3  pt0-md">
               <div className="col-24  col-12-md  ph4  ph3-md  pb3  pb0-md">
-                <div className="post__header">
+                <div className="project__header">
                   <Image
                     /* Options */
-                    src={imageBuilder
-                      .image(post.coverImage)
-                      .width(1080)
-                      .url()}
+                    src={imageBuilder.image(post.coverImage).width(1080).url()}
                     placeholder={imageBuilder
                       .image(post.coverImage)
                       .width(108)
                       .url()}
                     alt={post.title}
                     figcaption={null}
-                    height={null}
+                    height={400}
                     width={null}
                     customClass={null}
                     onClick={null}
@@ -255,11 +252,11 @@ export async function getStaticProps({ req, params, preview = false }) {
         meta: {
           title: data.item?.title,
           description: data.item?.excerpt,
-          image: data.item?.coverImage
-        }
-      }
+          image: data.item?.coverImage,
+        },
+      },
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -269,14 +266,14 @@ export async function getStaticPaths() {
   return {
     paths:
       data
-        .filter(post => post?.slug)
-        .map(post => {
+        .filter((post) => post?.slug)
+        .map((post) => {
           return {
             params: {
-              slug: post.slug
-            }
+              slug: post.slug,
+            },
           };
         }) || [],
-    fallback: true
+    fallback: true,
   };
 }
