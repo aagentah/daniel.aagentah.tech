@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 *,
@@ -15,6 +16,7 @@ body {
   color: $body-color;
   background-color: $body-background-color;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -81,5 +83,3 @@ input[type='tel'],
 input[type='color'] {
   font-size: 16px;
 }
-
-

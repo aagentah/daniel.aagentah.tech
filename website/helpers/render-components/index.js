@@ -12,14 +12,16 @@ const componentList = {
   gridMusics: dynamic(() => import('~/components/grid/music')),
   subscribeBanner: dynamic(() => import('~/components/subscribe-banner')),
   button: dynamic(() => import('~/components/button')),
-  intro: dynamic(() => import('~/components/intro'))
+  intro: dynamic(() => import('~/components/intro'), {
+    ssr: false,
+  }),
   // ...
 };
 
 export default function RenderComponents({ components }) {
   const app = useApp();
 
-  const componentsArray = components.map(component => {
+  const componentsArray = components.map((component) => {
     let key = component._type;
 
     if (component._type === 'customComponent') {
@@ -28,13 +30,13 @@ export default function RenderComponents({ components }) {
 
     return {
       DynamicComponent: componentList[key],
-      props: component
+      props: component,
     };
   });
 
   return (
     <>
-      {componentsArray.map(component => {
+      {componentsArray.map((component) => {
         const { DynamicComponent, props } = component;
 
         if (DynamicComponent && app?.deviceSize) {

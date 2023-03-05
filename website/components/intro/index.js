@@ -67,24 +67,22 @@ export default function Intro({
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && app?.deviceSize) {
-      const img = new Image();
+    const img = new Image();
 
-      console.log('loading');
+    console.log('loading');
 
-      img.onload = function () {
-        console.log('loaded');
-        renderPlanet();
-      };
+    img.onload = function () {
+      console.log('loaded');
+      renderPlanet();
+    };
 
-      img.onerror = function () {
-        console.log('not loaded');
-        renderPlanet();
-      };
+    img.onerror = function () {
+      console.log('not loaded');
+      renderPlanet();
+    };
 
-      img.src = '/images/ceres.jpg';
-    }
-  }, [app?.deviceSize]);
+    img.src = '/images/ceres.jpg';
+  }, []);
 
   const promptWrapperClass = classNames({
     active: !midiActive,
@@ -316,103 +314,101 @@ export default function Intro({
       if (!hasPlanetRendered && loaderLoaded) {
         setHasPlanetRendered(true);
       }
-    }, 100);
+    }, 50);
   };
 
-  if (app?.deviceSize) {
-    return (
-      <>
-        <article
-          className={`
+  return (
+    <>
+      <article
+        className={`
           intro
           ${modifier && `intro--${modifier}`}
           ${hasPlanetRendered ? 'loaded' : ''}
           mt${marginTop}
           mb${marginBottom}
       `}
-          style={styles}
-        >
-          {
-            // <img
-            //   className="intro__image--mobile  db  dn-md"
-            //   src="/images/logo-black.png"
-            // />
-          }
+        style={styles}
+      >
+        {
+          // <img
+          //   className="intro__image--mobile  db  dn-md"
+          //   src="/images/logo-black.png"
+          // />
+        }
 
-          {
-            //    <div className="intro__barcode  absolute  top  left  ml3">
-            //    <Image
-            //      /* Options */
-            //      src="/images/barcode-black.png"
-            //      placeholder={null}
-            //      alt={null}
-            //      figcaption={null}
-            //      height={75}
-            //      width={null}
-            //      customClass={null}
-            //      skeleton={skeleton}
-            //      onClick={null}
-            //      /* Children */
-            //      withLinkProps={null}
-            //    />
-            //  </div>
-          }
+        {
+          //    <div className="intro__barcode  absolute  top  left  ml3">
+          //    <Image
+          //      /* Options */
+          //      src="/images/barcode-black.png"
+          //      placeholder={null}
+          //      alt={null}
+          //      figcaption={null}
+          //      height={75}
+          //      width={null}
+          //      customClass={null}
+          //      skeleton={skeleton}
+          //      onClick={null}
+          //      /* Children */
+          //      withLinkProps={null}
+          //    />
+          //  </div>
+        }
 
-          <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  pt5  pt0-md">
-            <div className="col-24  col-1-md" />
-            <div className="intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md">
-              {
-                // <Image
-                //   /* Options */
-                //   src="/images/logo-black.png"
-                //   placeholder={null}
-                //   alt={null}
-                //   figcaption={null}
-                //   height={imageHeight}
-                //   width={null}
-                //   customClass={null}
-                //   skeleton={skeleton}
-                //   onClick={null}
-                //   /* Children */
-                //   withLinkProps={null}
-                // />
-              }
+        <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  pt5  pt0-md">
+          <div className="col-24  col-1-md" />
+          <div className="intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md">
+            {
+              // <Image
+              //   /* Options */
+              //   src="/images/logo-black.png"
+              //   placeholder={null}
+              //   alt={null}
+              //   figcaption={null}
+              //   height={imageHeight}
+              //   width={null}
+              //   customClass={null}
+              //   skeleton={skeleton}
+              //   onClick={null}
+              //   /* Children */
+              //   withLinkProps={null}
+              // />
+            }
 
-              <div className="intro__planet" />
+            <div className="intro__planet" />
 
-              <div
-                className="planet__hud__wrapper  planet__hud__wrapper--1"
-                style={rotate}
-              >
-                <img className="planet__hud" src="/images/hud-outside.png" />
-              </div>
-
-              <div
-                className="planet__hud__wrapper  planet__hud__wrapper--2"
-                style={rotate2}
-              >
-                <img className="planet__hud" src="/images/hud-inside.png" />
-              </div>
+            <div
+              className="planet__hud__wrapper  planet__hud__wrapper--1"
+              style={rotate}
+            >
+              <img className="planet__hud" src="/images/hud-outside.png" />
             </div>
 
-            <div className="intro__dialog  col-24  col-7-sm  col-10-lg  flex  justify-center  justify-start-md  tac  tal-md  align-start  align-center-md  relative  ph0  ph3-md  pt3  pt0-md">
-              <Prompt
-                active={promptActive}
+            <div
+              className="planet__hud__wrapper  planet__hud__wrapper--2"
+              style={rotate2}
+            >
+              <img className="planet__hud" src="/images/hud-inside.png" />
+            </div>
+          </div>
+
+          <div className="intro__dialog  col-24  col-7-sm  col-10-lg  flex  justify-center  justify-start-md  tac  tal-md  align-start  align-center-md  relative  ph0  ph3-md  pt3  pt0-md">
+            <Prompt
+              active={promptActive}
+              setMidiActive={setMidiActive}
+              setPromptActive={setPromptActive}
+            />
+
+            {typeof window !== 'undefined' && (
+              <Midi
+                active={midiActive}
                 setMidiActive={setMidiActive}
                 setPromptActive={setPromptActive}
               />
-
-              {typeof window !== 'undefined' && (
-                <Midi
-                  active={midiActive}
-                  setMidiActive={setMidiActive}
-                  setPromptActive={setPromptActive}
-                />
-              )}
-            </div>
+            )}
           </div>
-        </article>
-      </>
-    );
-  }
+        </div>
+      </article>
+    </>
+  );
 }
