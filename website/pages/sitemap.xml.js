@@ -28,7 +28,7 @@ const sitemapXml = (allPosts, allProjects, allPages, allMusic) => {
   });
 
   allPosts.map((post) => {
-    const url = `${process.env.SITE_URL}/posts/${post.slug}`;
+    const url = `${process.env.SITE_URL}/post/${post.slug}`;
     const date = Date.parse(post.date);
 
     postsXML += `
