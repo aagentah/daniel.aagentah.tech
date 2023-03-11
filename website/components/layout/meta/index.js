@@ -4,7 +4,7 @@ import { withRouter } from 'next/router';
 import { useApp, useDispatchApp } from '~/context-provider/app';
 import { imageBuilder } from '~/lib/sanity/requests';
 
-const Meta = props => {
+const Meta = (props) => {
   const app = useApp();
   const dispatch = useDispatchApp();
   const { router, siteConfig, title, description, image } = props;
@@ -13,11 +13,7 @@ const Meta = props => {
   const siteTitle = siteConfig?.title || '';
   const siteDesc = siteConfig?.description || '';
   const siteImage =
-    imageBuilder
-      .image(siteConfig?.logo)
-      .height(1000)
-      .width(1000)
-      .url() || '';
+    imageBuilder.image(siteConfig?.logo).height(1000).width(1000).url() || '';
 
   const titleVal = title || '';
   const descVal = description || '';
@@ -39,8 +35,8 @@ const Meta = props => {
             url: siteImage,
             width: 1500,
             height: 1500,
-            caption: siteTitle
-          }
+            caption: siteTitle,
+          },
         },
         {
           '@type': 'WebSite',
@@ -53,10 +49,10 @@ const Meta = props => {
             {
               '@type': 'SearchAction',
               target: `${process.env.SITE_URL}/search/{search_term_string}`,
-              'query-input': 'required name=search_term_string'
-            }
+              'query-input': 'required name=search_term_string',
+            },
           ],
-          inLanguage: 'en-US'
+          inLanguage: 'en-US',
         },
         {
           '@type': 'CollectionPage',
@@ -66,11 +62,13 @@ const Meta = props => {
           isPartOf: { '@id': `${process.env.SITE_URL}#website` },
           about: { '@id': `${process.env.SITE_URL}/#organization` },
           description: siteDesc,
-          inLanguage: 'en-US'
-        }
-      ]
+          inLanguage: 'en-US',
+        },
+      ],
     };
   };
+
+  console.log('router.asPath', router.asPath);
 
   return (
     <Head>
