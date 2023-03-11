@@ -1,13 +1,34 @@
 import React from 'react';
 
-import { getAllPosts, getAllProducts } from '~/lib/sanity/requests';
+import {
+  getAllPosts,
+  getAllProjects,
+  getAllPagesTotal,
+  getAllMusicsTotal,
+} from '~/lib/sanity/requests';
 
-const sitemapXml = (allPosts, allProducts) => {
+const sitemapXml = (allPosts, allProjects, allPages, allMusic) => {
   let postsXML = '';
-  let productsXML = '';
+  let projectsXML = '';
+  let pagesXML = '';
+  let musicXML = '';
+
+  allPages.map((page) => {
+    const url = `${process.env.SITE_URL}/${page.slug}`;
+    const date = Date.parse(page._updatedAt);
+
+    pagesXML += `
+      <url>
+        <loc>${url}</loc>
+        <lastmod>${date}</lastmod>
+        <priority>1.00</priority>
+      </url>`;
+
+    return true;
+  });
 
   allPosts.map((post) => {
-    const url = `${process.env.SITE_URL}/${post.slug}`;
+    const url = `${process.env.SITE_URL}/posts/${post.slug}`;
     const date = Date.parse(post.date);
 
     postsXML += `
@@ -20,11 +41,25 @@ const sitemapXml = (allPosts, allProducts) => {
     return true;
   });
 
-  allProducts.map((product) => {
-    const url = `${process.env.SITE_URL}/${product.slug}`;
-    const date = Date.parse(product.date);
+  allProjects.map((project) => {
+    const url = `${process.env.SITE_URL}/project/${project.slug}`;
+    const date = Date.parse(project.date);
 
-    productsXML += `
+    projectsXML += `
+      <url>
+        <loc>${url}</loc>
+        <lastmod>${date}</lastmod>
+        <priority>0.50</priority>
+      </url>`;
+
+    return true;
+  });
+
+  allMusic.map((music) => {
+    const url = `${process.env.SITE_URL}/music/${music.slug}`;
+    const date = Date.parse(music.date);
+
+    musicXML += `
       <url>
         <loc>${url}</loc>
         <lastmod>${date}</lastmod>
@@ -41,18 +76,22 @@ const sitemapXml = (allPosts, allProducts) => {
         <lastmod>0</lastmod>
         <priority>1.00</priority>
       </url>
+      ${pagesXML}
       ${postsXML}
-      ${productsXML}
+      ${projectsXML}
+      ${musicXML}
     </urlset>`;
 };
 
 class Sitemap extends React.Component {
   static async getInitialProps({ res }) {
     const allPosts = await getAllPosts();
-    const allProducts = await getAllProducts();
+    const allProjects = await getAllProjects();
+    const allPages = await getAllPagesTotal();
+    const allMusic = await getAllMusicsTotal();
 
     res.setHeader('Content-Type', 'text/xml');
-    res.write(sitemapXml(allPosts, allProducts));
+    res.write(sitemapXml(allPosts, allProjects, allPages, allMusic));
     res.end();
   }
 }
