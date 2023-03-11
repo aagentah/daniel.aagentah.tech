@@ -5,11 +5,18 @@
   // color: var(--white);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  height: calc(100vh - 80px - 120px);
 
   @extend .flex;
   @extend .flex-wrap;
   @extend .align-center;
   @extend .justify-center;
+}
+
+@include breakpoint-up(md) {
+  .intro {
+    height: calc(100vh - 120px);
+  }
 }
 
 .intro.loaded {
