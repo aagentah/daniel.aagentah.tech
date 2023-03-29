@@ -82,8 +82,8 @@ export default function Bio({ siteConfig }) {
                   routerLink: Link,
                   routerLinkProps: {
                     as: `/music`,
-                    scroll: false
-                  }
+                    scroll: false,
+                  },
                 }}
               />
             </div>
@@ -111,8 +111,8 @@ export default function Bio({ siteConfig }) {
                   routerLink: Link,
                   routerLinkProps: {
                     as: `/projects`,
-                    scroll: false
-                  }
+                    scroll: false,
+                  },
                 }}
               />
             </div>
@@ -140,8 +140,37 @@ export default function Bio({ siteConfig }) {
                   routerLink: Link,
                   routerLinkProps: {
                     as: `/posts`,
-                    scroll: false
-                  }
+                    scroll: false,
+                  },
+                }}
+              />
+            </div>
+
+            <div className="col-24  pb3">
+              <Button
+                /* Options */
+                type="primary"
+                size="large"
+                text="Shows & Exhibitions"
+                color="black"
+                fluid={true}
+                icon={null}
+                iconFloat={null}
+                inverted={false}
+                loading={false}
+                disabled={false}
+                skeleton={false}
+                onClick={null}
+                /* Children */
+                withLinkProps={{
+                  type: 'next',
+                  href: '/shows',
+                  target: null,
+                  routerLink: Link,
+                  routerLinkProps: {
+                    as: `/shows`,
+                    scroll: false,
+                  },
                 }}
               />
             </div>
@@ -193,9 +222,9 @@ export async function getStaticProps() {
         meta: {
           title: 'Bio',
           description: 'Bio',
-          image: null
-        }
-      }
-    }
+          image: null,
+        },
+      },
+    },
   };
 }

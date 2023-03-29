@@ -129,3 +129,19 @@
     }
   }
 }
+
+.card--show {
+  .card__dialog {
+    @extend .bb;
+    @extend .bc-black;
+
+    .card__title * {
+      font-weight: bold;
+    }
+
+    .card__date {
+      @extend .pb3;
+      @extend .pb0-md;
+    }
+  }
+}

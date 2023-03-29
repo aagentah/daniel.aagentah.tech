@@ -16,7 +16,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
 
   const inputEl = useRef(null);
 
-  const subscribe = async e => {
+  const subscribe = async (e) => {
     e.preventDefault();
     dispatch({ type: 'TOGGLE_LOADING' });
 
@@ -26,11 +26,11 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
         body: JSON.stringify({
           data: {
             email_address: inputEl.current.value,
-            status: 'subscribed'
-          }
+            status: 'subscribed',
+          },
         }),
         headers: { 'Content-Type': 'application/json' },
-        method: 'POST'
+        method: 'POST',
       }
     );
 
@@ -39,7 +39,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
     if (error) {
       addToast(error, {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
       return dispatch({ type: 'TOGGLE_LOADING' });
     }
@@ -47,7 +47,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
     inputEl.current.value = '';
     addToast('Success! 🎉 You are now subscribed to the newsletter.', {
       appearance: 'success',
-      autoDismiss: true
+      autoDismiss: true,
     });
     dispatch({ type: 'TOGGLE_LOADING' });
     return true;
@@ -103,7 +103,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
               type: 'form',
               url: null,
               target: null,
-              routerLink: null
+              routerLink: null,
             }}
           />
         </div>

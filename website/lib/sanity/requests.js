@@ -1,9 +1,9 @@
 import sanityImage from '@sanity/image-url';
 import client, { previewClient } from './config';
 
-const getUniquePosts = posts => {
+const getUniquePosts = (posts) => {
   const slugs = new Set();
-  return posts.filter(post => {
+  return posts.filter((post) => {
     if (slugs.has(post.slug)) {
       return false;
     }
@@ -20,6 +20,7 @@ const postFields = `
   'slug': slug.current,
   'coverImage': coverImage.asset->url,
   'author': author->{name, 'picture': picture.asset->url},
+  ...,
 `;
 
 const musicFields = `
@@ -62,7 +63,7 @@ const productFields = `
   'coverImage': coverImage.asset->url,
 `;
 
-const getClient = preview => (preview ? previewClient : client);
+const getClient = (preview) => (preview ? previewClient : client);
 
 export const imageBuilder = sanityImage(client);
 
@@ -201,14 +202,14 @@ export async function getPostAndMore(slug, preview) {
       }`,
         { slug }
       )
-      .then(res => res?.[0]),
+      .then((res) => res?.[0]),
     curClient.fetch(
       `*[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc){
         ${postFields}
         content,
       }[0...4]`,
       { slug }
-    )
+    ),
   ]);
   return { post, morePosts: getUniquePosts(morePosts) };
 }
@@ -247,14 +248,14 @@ export async function getProjectAndMore(slug, preview) {
       }`,
         { slug }
       )
-      .then(res => res?.[0]),
+      .then((res) => res?.[0]),
     curClient.fetch(
       `*[_type == "project" && slug.current != $slug] | order(date desc, _updatedAt desc){
         ${postFields}
         content,
       }[0...4]`,
       { slug }
-    )
+    ),
   ]);
   return { project, moreProjects: getUniquePosts(moreProjects) };
 }
@@ -262,6 +263,53 @@ export async function getProjectAndMore(slug, preview) {
 export async function getAllProjectsTotal() {
   const data = await client.fetch(
     `*[_type == "project"] {
+      ${postFields}
+      content,
+     }`
+  );
+
+  return data;
+}
+
+export async function getAllShows(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "show"] | order(date desc, _updatedAt desc) {
+      ${postFields}
+    }`);
+  return getUniquePosts(results);
+}
+
+export async function getShowAndMore(slug, preview) {
+  const curClient = getClient(preview);
+  const [show, moreShows] = await Promise.all([
+    curClient
+      .fetch(
+        `*[_type == "show" && slug.current == $slug] | order(_updatedAt desc) {
+        ${postFields}
+        content,
+        'childPosts': childPosts[] {
+          'post': *[_id == ^._ref] [0] {
+            ${postFields}
+          },
+        },
+      }`,
+        { slug }
+      )
+      .then((res) => res?.[0]),
+    curClient.fetch(
+      `*[_type == "show" && slug.current != $slug] | order(date desc, _updatedAt desc){
+        ${postFields}
+        content,
+      }[0...4]`,
+      { slug }
+    ),
+  ]);
+  return { show, moreShows: getUniquePosts(moreShows) };
+}
+
+export async function getAllShowsTotal() {
+  const data = await client.fetch(
+    `*[_type == "show"] {
       ${postFields}
       content,
      }`
@@ -304,7 +352,7 @@ export async function getStoreAndMore(slug, preview) {
       }`,
         { slug }
       )
-      .then(res => res?.[0]),
+      .then((res) => res?.[0]),
     curClient.fetch(
       `*[_type == "store" && slug.current != $slug] | order(date desc, _updatedAt desc){
         ${storeFields}
@@ -312,7 +360,7 @@ export async function getStoreAndMore(slug, preview) {
         content,
       }[0...4]`,
       { slug }
-    )
+    ),
   ]);
 
   return { store, moreStores: getUniquePosts(moreStores) };
@@ -353,14 +401,14 @@ export async function getMusicAndMore(slug, preview) {
       }`,
         { slug }
       )
-      .then(res => res?.[0]),
+      .then((res) => res?.[0]),
     curClient.fetch(
       `*[_type == "music" && slug.current != $slug] | order(date desc, _updatedAt desc){
         ${musicFields}
         content,
       }[0...4]`,
       { slug }
-    )
+    ),
   ]);
   return { item, moreItems: getUniquePosts(moreItems) };
 }

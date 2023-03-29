@@ -12,6 +12,7 @@ import store from "./documents/store";
 import product from "./documents/product";
 import project from "./documents/project";
 import user from "./documents/user";
+import show from "./documents/show";
 import music from "./documents/music";
 import smartLink from "./documents/smartLink";
 import smartLinkItem from "./documents/smartLinkItem";
@@ -44,6 +45,7 @@ export default createSchema({
     project,
     post,
     music,
+    show,
     smartLink,
     smartLinkItem,
     // store,
@@ -57,6 +59,6 @@ export default createSchema({
     button,
     customComponent,
     //
-    siteSettings
-  ])
+    siteSettings,
+  ]),
 });
