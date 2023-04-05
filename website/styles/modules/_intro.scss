@@ -3,8 +3,7 @@
   // overflow: hidden;
   // background: var(--black);
   // color: var(--white);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+
   height: calc(100vh - 80px - 120px);
 
   @extend .flex;
@@ -17,10 +16,6 @@
   .intro {
     height: calc(100vh - 120px);
   }
-}
-
-.intro.loaded {
-  opacity: 1;
 }
 
 .intro__barcode {
@@ -58,6 +53,7 @@
 
 .intro__planet__wrapper {
   opacity: 0;
+  transition: opacity 0.3s ease-in-out;
   animation-name: fade-in-right;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
@@ -67,6 +63,10 @@
 
   // max-width: 400px;
   // margin: 0 auto;
+}
+
+.intro__planet__wrapper.loaded {
+  opacity: 1;
 }
 
 .intro__dialog {

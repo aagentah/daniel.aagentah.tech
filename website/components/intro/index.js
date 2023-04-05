@@ -39,6 +39,64 @@ export default function Intro({
   const [rotate, setRotate] = useState({});
   const [rotate2, setRotate2] = useState({});
 
+  useEffect(async () => {
+    async function isBraveBrowserWithShieldsUp() {
+      return new Promise(async (resolve) => {
+        // Create a feature detection function for the Brave browser
+        const braveDetection = async () => {
+          if (
+            window.navigator.brave &&
+            typeof window.navigator.brave.isBrave === 'function'
+          ) {
+            try {
+              const isBrave = await window.navigator.brave.isBrave();
+              const shields = await window.navigator.brave.getBlockers();
+              resolve(isBrave && shields);
+            } catch (error) {
+              resolve(false);
+            }
+          } else {
+            resolve(false);
+          }
+        };
+
+        // Delay the execution of the detection function to give Brave Shields a chance to initialize
+        setTimeout(braveDetection, 100);
+      });
+    }
+
+    function isWebGLSupported() {
+      return !!(
+        window.WebGLRenderingContext &&
+        (document.createElement('canvas').getContext('webgl') ||
+          document.createElement('canvas').getContext('experimental-webgl'))
+      );
+    }
+
+    (async function checkConditions() {
+      const isBraveWithShieldsUp = await isBraveBrowserWithShieldsUp();
+      const webGLSupported = isWebGLSupported();
+
+      if (!isBraveWithShieldsUp && webGLSupported) {
+        const img = new Image();
+
+        console.log('loading');
+
+        img.onload = function () {
+          console.log('loaded');
+          renderPlanet();
+        };
+
+        img.onerror = function () {
+          console.log('not loaded');
+          renderPlanet();
+        };
+
+        img.src = '/images/ceres.jpg';
+      }
+    })();
+  }, []);
+
   useEffect(() => {
     const handleR1 = () => {
       let spin = Math.round(Math.random() * 180);
@@ -64,24 +122,6 @@ export default function Intro({
     setTimeout(() => {
       handleR2();
     }, 2500);
-  }, []);
-
-  useEffect(() => {
-    const img = new Image();
-
-    console.log('loading');
-
-    img.onload = function () {
-      console.log('loaded');
-      renderPlanet();
-    };
-
-    img.onerror = function () {
-      console.log('not loaded');
-      renderPlanet();
-    };
-
-    img.src = '/images/ceres.jpg';
   }, []);
 
   const promptWrapperClass = classNames({
@@ -256,17 +296,7 @@ export default function Intro({
       mesh.rotation.x = -Math.PI / 2;
       group.add(mesh);
 
-      if (
-        typeof WebGL2RenderingContext !== 'undefined' &&
-        document.createElement('canvas').getContext('webgl2')
-      ) {
-        // console.log("WebGL 2 is supported");
-        renderer = new THREE.WebGLRenderer({ alpha: true });
-      } else {
-        // console.log("WebGL 2 is not supported");
-        renderer = new THREE.WebGL1Renderer({ alpha: true });
-      }
-
+      renderer = new THREE.WebGLRenderer({ alpha: true });
       // renderer.setPixelRatio(window?.devicePixelRatio);
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
@@ -333,7 +363,7 @@ export default function Intro({
         className={`
           intro
           ${modifier && `intro--${modifier}`}
-          ${hasPlanetRendered ? 'loaded' : ''}
+          loaded
           mt${marginTop}
           mb${marginBottom}
       `}
@@ -367,7 +397,11 @@ export default function Intro({
 
         <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  pt5  pt0-md">
           <div className="col-24  col-1-md" />
-          <div className="intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md">
+          <div
+            className={`intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md ${
+              hasPlanetRendered ? 'loaded' : ''
+            }`}
+          >
             {
               // <Image
               //   /* Options */
@@ -409,13 +443,15 @@ export default function Intro({
               setPromptActive={setPromptActive}
             />
 
-            {typeof window !== 'undefined' && (
-              <Midi
-                active={midiActive}
-                setMidiActive={setMidiActive}
-                setPromptActive={setPromptActive}
-              />
-            )}
+            {
+              // typeof window !== 'undefined' && (
+              //   <Midi
+              //     active={midiActive}
+              //     setMidiActive={setMidiActive}
+              //     setPromptActive={setPromptActive}
+              //   />
+              // )
+            }
           </div>
         </div>
       </article>
