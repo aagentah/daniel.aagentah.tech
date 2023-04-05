@@ -256,7 +256,17 @@ export default function Intro({
       mesh.rotation.x = -Math.PI / 2;
       group.add(mesh);
 
-      renderer = new THREE.WebGLRenderer({ alpha: true });
+      if (
+        typeof WebGL2RenderingContext !== 'undefined' &&
+        document.createElement('canvas').getContext('webgl2')
+      ) {
+        // console.log("WebGL 2 is supported");
+        renderer = new THREE.WebGLRenderer({ alpha: true });
+      } else {
+        // console.log("WebGL 2 is not supported");
+        renderer = new THREE.WebGL1Renderer({ alpha: true });
+      }
+
       // renderer.setPixelRatio(window?.devicePixelRatio);
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
