@@ -88,35 +88,35 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
     switch (item.type) {
       case 'facebook':
         service = 'Facebook';
-        icon = <IconFacebook color="black" size={16} />;
+        icon = <IconFacebook color="white" size={16} />;
         break;
       case 'instagram':
         service = 'Instagram';
-        icon = <IconInstagram color="black" size={16} />;
+        icon = <IconInstagram color="white" size={16} />;
         break;
       case 'youtube':
         service = 'YouTube';
-        icon = <IconYoutube color="black" size={16} />;
+        icon = <IconYoutube color="white" size={16} />;
         break;
       case 'spotify':
         service = 'Spotify';
-        icon = <IconSpotify color="black" size={16} />;
+        icon = <IconSpotify color="white" size={16} />;
         break;
       case 'soundcloud':
         service = 'SoundCloud';
-        icon = <IconSoundcloud color="black" size={16} />;
+        icon = <IconSoundcloud color="white" size={16} />;
         break;
       case 'bandcamp':
         service = 'Bandcamp';
-        icon = <IconWebLink color="black" size={16} />;
+        icon = <IconWebLink color="white" size={16} />;
         break;
       case 'apple-music':
         service = 'Apple Music';
-        icon = <IconWebLink color="black" size={16} />;
+        icon = <IconWebLink color="white" size={16} />;
         break;
       case 'web':
         service = 'View Web Link';
-        icon = <IconWebLink color="black" size={16} />;
+        icon = <IconWebLink color="white" size={16} />;
         break;
       default:
         break;
@@ -128,7 +128,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
           href={url}
           rel="noopener noreferrer"
           target={target}
-          className="w-100  mla  mra  flex  justify-center  align-center  ph3  pv3  br3  bg-white  shadow2  link  black"
+          className="w-100  mla  mra  flex  justify-center  align-center  ph3  pv3  br3  bg-black  shadow2  link  ba  bc-white  white"
         >
           <div className="pr3">{icon}</div>
           <p className="t-secondary  f4">{service}</p>
@@ -153,7 +153,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
         const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
 
         return (
-          <div className="w-100  db  mla  mra  mb4">
+          <div className="w-100  db  mla  mra  mb4  mt3">
             <Iframe
               url={iframeUrl}
               width="100%"
@@ -204,7 +204,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                       /* Options */
                       htmlEntity="h1"
                       text={post.title}
-                      color="black"
+                      color="white"
                       size="large"
                       truncate={0}
                       onClick={null}
@@ -213,7 +213,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                     />
                   </div>
 
-                  <p className="t-secondary  f7  almost-black  lh-copy  pb3  tac  tal-md">
+                  <p className="t-secondary  f7  almost-white  lh-copy  pb3  tac  tal-md">
                     <Date dateString={post.date} />
                   </p>
 

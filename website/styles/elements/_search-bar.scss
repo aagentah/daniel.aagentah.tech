@@ -6,8 +6,8 @@
 .search-bar__input {
   box-shadow: 0;
   outline: 0;
-  background-color: var(--white);
+  background-color: var(--black);
   @extend .pa2;
   @extend .ba;
-  @extend .bc-almost-black;
+  @extend .bc-almost-white;
 }

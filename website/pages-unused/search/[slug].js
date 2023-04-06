@@ -28,7 +28,7 @@ export default function Post({ siteConfig, params }) {
         siteConfig,
         title: 'Search',
         description: 'This is the Search page.',
-        image: null
+        image: null,
       }}
       preview={null}
     >
@@ -38,7 +38,7 @@ export default function Post({ siteConfig, params }) {
             /* Options */
             htmlEntity="h1"
             text="Search"
-            color="black"
+            color="white"
             size="large"
             truncate={0}
             onClick={null}
@@ -87,7 +87,7 @@ export async function getServerSideProps({ params, preview = false }) {
   return {
     props: {
       siteConfig,
-      params
-    }
+      params,
+    },
   };
 }

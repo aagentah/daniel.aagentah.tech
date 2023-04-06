@@ -14,7 +14,7 @@ export default function Error404({ siteConfig }) {
             /* Options */
             htmlEntity="h1"
             text="404"
-            color="black"
+            color="white"
             size="large"
             truncate={0}
             onClick={null}
@@ -26,7 +26,7 @@ export default function Error404({ siteConfig }) {
           <Copy
             /* Options */
             text="Page not found."
-            color="black"
+            color="white"
             size="medium"
             truncate={2}
           />
@@ -46,9 +46,9 @@ export async function getStaticProps() {
         meta: {
           title: '404',
           description: '404',
-          image: null
-        }
-      }
-    }
+          image: null,
+        },
+      },
+    },
   };
 }

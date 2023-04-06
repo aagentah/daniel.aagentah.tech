@@ -17,27 +17,27 @@ export default function Forgot({ siteConfig }) {
     e.preventDefault();
 
     const body = {
-      username: e.currentTarget.username.value
+      username: e.currentTarget.username.value,
     };
 
     const res = await fetch('../api/forgot', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
 
     if (res.status === 200) {
       await res.json();
       addToast("We've sent you an email with some instructions", {
         appearance: 'info',
-        autoDismiss: true
+        autoDismiss: true,
       });
     } else {
       addToast(
         'Something went wrong, please try again, or a different browser?',
         {
           appearance: 'error',
-          autoDismiss: true
+          autoDismiss: true,
         }
       );
     }
@@ -53,7 +53,7 @@ export default function Forgot({ siteConfig }) {
           siteConfig,
           title: 'Forgot Password',
           description: 'This is the Forgot Password page.',
-          image: null
+          image: null,
         }}
         preview={null}
       >
@@ -63,7 +63,7 @@ export default function Forgot({ siteConfig }) {
               /* Options */
               htmlEntity="h1"
               text="Forgot Password"
-              color="black"
+              color="white"
               size="large"
               truncate={0}
               onClick={null}
@@ -94,7 +94,7 @@ export default function Forgot({ siteConfig }) {
                   type="primary"
                   size="medium"
                   text="Reset"
-                  color="black"
+                  color="white"
                   fluid={false}
                   icon={buttonIconArrowRight}
                   iconFloat={null}
@@ -108,7 +108,7 @@ export default function Forgot({ siteConfig }) {
                     href: null,
                     target: null,
                     routerLink: null,
-                    routerLinkProps: null
+                    routerLinkProps: null,
                   }}
                 />
               </div>
@@ -124,6 +124,6 @@ export async function getServerSideProps() {
   const siteConfig = await getSiteConfig();
 
   return {
-    props: { siteConfig }
+    props: { siteConfig },
   };
 }

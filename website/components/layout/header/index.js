@@ -8,7 +8,7 @@ import { useUser } from '~/lib/hooks';
 const HeaderDesktop = dynamic(() => import('./desktop'));
 const HeaderMobile = dynamic(() => import('./mobile'));
 
-export default function Header({ navWhite, siteConfig }) {
+export default function Header({ navblack, siteConfig }) {
   const app = useApp();
   const [user, { mutate }] = useUser();
 
@@ -29,7 +29,7 @@ export default function Header({ navWhite, siteConfig }) {
     return (
       <div
         className={`header-wrapper ${
-          navWhite ? 'header-wrapper--white' : null
+          navblack ? 'header-wrapper--black' : null
         }`}
       >
         {app.deviceSize !== 'md' && (

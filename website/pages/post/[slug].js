@@ -56,7 +56,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
         const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
 
         return (
-          <div className="w-100  db  mla  mra  mb4  ph3">
+          <div className="w-100  db  mla  mra  mb4  mt3  ph3">
             <Iframe
               url={iframeUrl}
               width="100%"
@@ -102,7 +102,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                   /* Options */
                   htmlEntity="h1"
                   text={post.title}
-                  color="black"
+                  color="white"
                   size="large"
                   truncate={null}
                   onClick={null}
@@ -111,7 +111,7 @@ export default function Post({ siteConfig, post, morePosts, preview }) {
                 />
               </div>
 
-              <p className="t-secondary  f7  almost-black  lh-copy  pb4">
+              <p className="t-secondary  f7  almost-white  lh-copy  pb4">
                 <Date dateString={post.date} />
               </p>
 

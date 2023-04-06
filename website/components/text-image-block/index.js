@@ -29,7 +29,7 @@ export default function TextImageBlock({
   padding,
   marginTop,
   marginBottom,
-  modifier
+  modifier,
 }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
@@ -41,7 +41,7 @@ export default function TextImageBlock({
       /* Options */
       htmlEntity="h2"
       text={title}
-      color="black"
+      color="white"
       size="large"
       truncate={null}
       skeleton={null}
@@ -56,7 +56,7 @@ export default function TextImageBlock({
     <Copy
       /* Options */
       text={description}
-      color="black"
+      color="white"
       size="medium"
       truncate={null}
       skeleton={null}

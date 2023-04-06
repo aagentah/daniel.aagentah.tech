@@ -1,7 +1,7 @@
 $transitionTimeout: 0.3s;
 
 main {
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh);
   padding-top: 80px;
 }
 
@@ -9,12 +9,6 @@ main {
   main {
     min-height: calc(100vh - 120px);
     padding-top: 120px;
-  }
-}
-
-.page--bio {
-  main {
-    min-height: auto;
   }
 }
 

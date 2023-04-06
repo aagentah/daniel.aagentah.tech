@@ -47,8 +47,8 @@ export default function CardPost({ item }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/store/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -58,8 +58,8 @@ export default function CardPost({ item }) {
       /* Options */
       customClass=""
       text="Blog"
-      color="white"
-      backgroundColor="black"
+      color="black"
+      backgroundColor="white"
       skeleton={!item}
       onClick={null}
       /* Children */
@@ -72,7 +72,7 @@ export default function CardPost({ item }) {
       /* Options */
       htmlEntity="h2"
       text={item?.title}
-      color="black"
+      color="white"
       size="small"
       truncate={1}
       skeleton={!item}
@@ -84,8 +84,8 @@ export default function CardPost({ item }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/store/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -94,7 +94,7 @@ export default function CardPost({ item }) {
     <Copy
       /* Options */
       text={item?.excerpt}
-      color="black"
+      color="white"
       size="medium"
       truncate={2}
       skeleton={!item}
@@ -107,7 +107,7 @@ export default function CardPost({ item }) {
       type="secondary"
       size="small"
       text="View Product"
-      color="black"
+      color="white"
       fluid={false}
       icon={buttonIcon}
       iconFloat={null}
@@ -124,8 +124,8 @@ export default function CardPost({ item }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/store/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );

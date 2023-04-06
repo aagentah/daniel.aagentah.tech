@@ -46,8 +46,8 @@ export default function CardPost({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/post/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -57,8 +57,8 @@ export default function CardPost({ item, placeholder }) {
       /* Options */
       customClass=""
       text="Blog"
-      color="white"
-      backgroundColor="black"
+      color="black"
+      backgroundColor="white"
       skeleton={!item}
       onClick={null}
       /* Children */
@@ -71,7 +71,7 @@ export default function CardPost({ item, placeholder }) {
       /* Options */
       htmlEntity="h2"
       text={item?.title}
-      color="black"
+      color="white"
       size="small"
       truncate={2}
       skeleton={!item}
@@ -83,8 +83,8 @@ export default function CardPost({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/post/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -93,7 +93,7 @@ export default function CardPost({ item, placeholder }) {
     <Copy
       /* Options */
       text={item?.excerpt}
-      color="black"
+      color="white"
       size="medium"
       truncate={null}
       skeleton={!item}
@@ -106,7 +106,7 @@ export default function CardPost({ item, placeholder }) {
       type="secondary"
       size="small"
       text="Read post"
-      color="black"
+      color="white"
       fluid={false}
       icon={buttonIcon}
       iconFloat={null}
@@ -123,8 +123,8 @@ export default function CardPost({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/post/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );

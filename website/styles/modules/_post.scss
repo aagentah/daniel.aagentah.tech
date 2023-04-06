@@ -16,7 +16,7 @@
     width: 0;
     height: 0;
     border-width: 30px 30px 0 0;
-    border-color: var(--white) transparent transparent transparent;
+    border-color: var(--black) transparent transparent transparent;
     border-style: solid;
     z-index: 10;
   }
@@ -29,7 +29,7 @@
     width: 0;
     height: 0;
     border-width: 0 30px 30px 0;
-    border-color: transparent var(--white) transparent transparent;
+    border-color: transparent var(--black) transparent transparent;
     border-style: solid;
     z-index: 10;
   }
@@ -64,7 +64,7 @@
       width: 0;
       height: 0;
       border-width: 0 0 30px 30px;
-      border-color: transparent transparent var(--white) transparent;
+      border-color: transparent transparent var(--black) transparent;
       border-style: solid;
       z-index: 10;
     }

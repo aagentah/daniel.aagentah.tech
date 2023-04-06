@@ -372,7 +372,7 @@ export default function Intro({
         {
           // <img
           //   className="intro__image--mobile  db  dn-md"
-          //   src="/images/logo-black.png"
+          //   src="/images/logo-white.png"
           // />
         }
 
@@ -380,7 +380,7 @@ export default function Intro({
           //    <div className="intro__barcode  absolute  top  left  ml3">
           //    <Image
           //      /* Options */
-          //      src="/images/barcode-black.png"
+          //      src="/images/barcode-white.png"
           //      placeholder={null}
           //      alt={null}
           //      figcaption={null}
@@ -398,14 +398,14 @@ export default function Intro({
         <div className="intro__section  flex  flex-wrap  justify-center  align-center  col-24  ph4  pt5  pt0-md">
           <div className="col-24  col-1-md" />
           <div
-            className={`intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  mb4  mb0-md ${
+            className={`intro__planet__wrapper  col-24  col-11-sm  col-13-lg  justify-center  justify-end-md  ph5  mb4  mb0-md ${
               hasPlanetRendered ? 'loaded' : ''
             }`}
           >
             {
               // <Image
               //   /* Options */
-              //   src="/images/logo-black.png"
+              //   src="/images/logo-white.png"
               //   placeholder={null}
               //   alt={null}
               //   figcaption={null}

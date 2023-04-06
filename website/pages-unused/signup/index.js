@@ -25,13 +25,13 @@ export default function Sigup({ siteConfig }) {
     const body = {
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
-      name: e.currentTarget.name.value
+      name: e.currentTarget.name.value,
     };
 
     if (body.password !== e.currentTarget.rpassword.value) {
       addToast("The passwords don't match", {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
       return;
     }
@@ -39,7 +39,7 @@ export default function Sigup({ siteConfig }) {
     if (body.password === e.currentTarget.username.value) {
       addToast('Password should not match Email', {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
       return;
     }
@@ -47,7 +47,7 @@ export default function Sigup({ siteConfig }) {
     if (body.password === e.currentTarget.name.value) {
       addToast('Password should not match Name', {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
       return;
     }
@@ -57,7 +57,7 @@ export default function Sigup({ siteConfig }) {
     if (!isPasswordValid.isValid) {
       addToast(isPasswordValid.message, {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
       return;
     }
@@ -65,7 +65,7 @@ export default function Sigup({ siteConfig }) {
     const res = await fetch('../api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
 
     if (res.status === 201) {
@@ -74,7 +74,7 @@ export default function Sigup({ siteConfig }) {
     } else {
       addToast(await res.text(), {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
     }
   }
@@ -96,7 +96,7 @@ export default function Sigup({ siteConfig }) {
           siteConfig,
           title: 'Sign Up',
           description: 'his is the Sign Up page.',
-          image: null
+          image: null,
         }}
         preview={null}
       >
@@ -106,7 +106,7 @@ export default function Sigup({ siteConfig }) {
               /* Options */
               htmlEntity="h1"
               text="Sign up"
-              color="black"
+              color="white"
               size="large"
               truncate={0}
               onClick={null}
@@ -176,7 +176,7 @@ export default function Sigup({ siteConfig }) {
                   type="primary"
                   size="medium"
                   text="Sign up"
-                  color="black"
+                  color="white"
                   fluid={false}
                   icon={buttonIconArrowRight}
                   iconFloat={null}
@@ -190,7 +190,7 @@ export default function Sigup({ siteConfig }) {
                     href: null,
                     target: null,
                     routerLink: null,
-                    routerLinkProps: null
+                    routerLinkProps: null,
                   }}
                 />
               </div>
@@ -200,7 +200,7 @@ export default function Sigup({ siteConfig }) {
                   type="secondary"
                   size="medium"
                   text="I already have an account"
-                  color="black"
+                  color="white"
                   fluid={false}
                   icon={null}
                   iconFloat={null}
@@ -214,7 +214,7 @@ export default function Sigup({ siteConfig }) {
                     href: '/login',
                     target: null,
                     routerLink: Link,
-                    routerLinkProps: null
+                    routerLinkProps: null,
                   }}
                 />
               </div>
@@ -230,6 +230,6 @@ export async function getServerSideProps() {
   const siteConfig = await getSiteConfig();
 
   return {
-    props: { siteConfig }
+    props: { siteConfig },
   };
 }

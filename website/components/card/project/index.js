@@ -14,7 +14,7 @@ export default function CardPost({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
-  const imageHeight = app?.deviceSize === 'md' ? 180 : 180;
+  const imageHeight = app?.deviceSize === 'md' ? 140 : 180;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
@@ -56,8 +56,8 @@ export default function CardPost({ item, placeholder }) {
       /* Options */
       customClass=""
       text="Blog"
-      color="white"
-      backgroundColor="black"
+      color="black"
+      backgroundColor="white"
       skeleton={!item}
       onClick={null}
       /* Children */
@@ -70,7 +70,7 @@ export default function CardPost({ item, placeholder }) {
       /* Options */
       htmlEntity="h2"
       text={item?.title}
-      color="black"
+      color="white"
       size="small"
       truncate={null}
       skeleton={!item}
@@ -92,7 +92,7 @@ export default function CardPost({ item, placeholder }) {
     <Copy
       /* Options */
       text={item?.excerpt}
-      color="black"
+      color="white"
       size="medium"
       truncate={null}
       skeleton={!item}
@@ -105,7 +105,7 @@ export default function CardPost({ item, placeholder }) {
   //     type="secondary"
   //     size="small"
   //     text="View"
-  //     color="black"
+  //     color="white"
   //     fluid={false}
   //     icon={buttonIcon}
   //     iconFloat={null}

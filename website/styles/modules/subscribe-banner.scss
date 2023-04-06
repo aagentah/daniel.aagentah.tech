@@ -1,13 +1,12 @@
 .subscribe-banner {
-  background: var(--black);
-  color: var(--white);
-  max-width: 90vw;
+  color: var(--primary-color);
   margin: 0 auto;
+  max-width: 90vw;
 
+  @extend .container;
   @extend .tac;
-  @extend .pv5;
+  @extend .pv4;
   @extend .ph4;
-  @extend .shadow2;
 }
 
 .subscribe-banner__input {
@@ -18,7 +17,7 @@
   width: 100%;
   margin-bottom: 15px;
   height: 50px;
-  color: var(--white);
+  color: var(--primary-color);
 
   @extend .t-secondary;
   @extend .tac;
@@ -27,12 +26,13 @@
   @extend .f6-md;
   @extend .w5-md;
   @extend .pa2;
+  @extend .pl3;
   @extend .ba;
   @extend .bw1;
-  @extend .bc-white;
+  @extend .bc-primary-color;
 
   &::placeholder {
-    color: var(--white);
+    color: var(--primary-color);
     opacity: 1;
   }
 }

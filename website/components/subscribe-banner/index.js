@@ -66,7 +66,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
             /* Options */
             htmlEntity="h2"
             text="Keep in touch <3"
-            color="white"
+            color="primary-color"
             size="large"
             truncate={0}
             onClick={null}
@@ -90,7 +90,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
             type="primary"
             size="medium"
             text="Subscribe"
-            color="white"
+            color="primary-color"
             fluid={app?.deviceSize === 'md'}
             icon={null}
             iconFloat={null}
@@ -109,7 +109,7 @@ export default function SubscribeBanner({ padding, marginTop, marginBottom }) {
         </div>
 
         <div className="col-24  flex  justify-center">
-          <p className="t-secondary  f6  white  lh-copy  tac">
+          <p className="t-secondary  f6  primary-color  lh-copy  tac">
             No spam from me. <span className="db  dib-md" />
             Only the interesting bits.
           </p>

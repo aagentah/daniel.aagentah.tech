@@ -31,7 +31,7 @@ export default function TextBlock({
   padding,
   marginTop,
   marginBottom,
-  modifier
+  modifier,
 }) {
   const app = useApp();
 
@@ -57,7 +57,7 @@ export default function TextBlock({
     <Copy
       /* Options */
       text={description}
-      color="black"
+      color="white"
       size="medium"
       truncate={null}
       skeleton={null}

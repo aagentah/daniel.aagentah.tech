@@ -15,7 +15,7 @@ import {
   imageBuilder,
   getSiteConfig,
   getStoreAndMore,
-  getAllStoresTotal
+  getAllStoresTotal,
 } from '~/lib/sanity/requests';
 
 export default function Store({ siteConfig, store, moreStores, preview }) {
@@ -35,7 +35,7 @@ export default function Store({ siteConfig, store, moreStores, preview }) {
           siteConfig,
           title: store.title,
           description: store.excerpt,
-          image: store.coverImage
+          image: store.coverImage,
         }}
         preview={preview}
       >
@@ -71,7 +71,7 @@ export default function Store({ siteConfig, store, moreStores, preview }) {
                   /* Options */
                   htmlEntity="h1"
                   text={store.title}
-                  color="black"
+                  color="white"
                   size="large"
                   truncate={0}
                   onClick={null}
@@ -80,7 +80,7 @@ export default function Store({ siteConfig, store, moreStores, preview }) {
                 />
               </div>
 
-              <p className="t-secondary  f7  bg-almost-black  white  pa2  lh-copy  mb4  dib">
+              <p className="t-secondary  f7  bg-almost-white  black  pa2  lh-copy  mb4  dib">
                 ${store.price}
               </p>
 
@@ -108,7 +108,7 @@ export default function Store({ siteConfig, store, moreStores, preview }) {
                       type="primary"
                       size="medium"
                       text="Add to cart"
-                      color="black"
+                      color="white"
                       fluid={false}
                       icon={buttonIconPlus}
                       iconFloat="left"
@@ -159,9 +159,9 @@ export async function getStaticProps({ req, params, preview = false }) {
       siteConfig,
       preview,
       store: data.store || null,
-      moreStores: data.moreStores || null
+      moreStores: data.moreStores || null,
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -171,14 +171,14 @@ export async function getStaticPaths() {
   return {
     paths:
       data
-        .filter(store => store?.slug)
-        .map(store => {
+        .filter((store) => store?.slug)
+        .map((store) => {
           return {
             params: {
-              slug: store.slug
-            }
+              slug: store.slug,
+            },
           };
         }) || [],
-    fallback: true
+    fallback: true,
   };
 }

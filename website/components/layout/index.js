@@ -5,7 +5,7 @@ import Header from './header';
 
 import deviceSize from '~/lib/device-size';
 
-export default function Layout({ meta, navWhite, preview, children }) {
+export default function Layout({ meta, navblack, preview, children }) {
   // set device type in context API
   deviceSize();
 
@@ -17,7 +17,7 @@ export default function Layout({ meta, navWhite, preview, children }) {
       <Meta {...meta} />
       {preview && <Alert preview={preview} />}
       <div className={`page  page--${titleClass}  page--${pageClass}`}>
-        <Header navWhite={navWhite} {...meta} />
+        <Header navblack={navblack} {...meta} />
         <main className="main">{children}</main>
         <Footer />
       </div>

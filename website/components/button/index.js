@@ -22,7 +22,7 @@ export default function ButtonBlock({
   padding,
   marginTop,
   marginBottom,
-  modifier
+  modifier,
 }) {
   return (
     <LazyLoad once offset={150} height="200">
@@ -42,7 +42,7 @@ export default function ButtonBlock({
               type="primary"
               size="medium"
               text={text}
-              color="black"
+              color="white"
               fluid={false}
               icon={null}
               iconFloat={null}
@@ -57,7 +57,7 @@ export default function ButtonBlock({
                 href,
                 target: null,
                 routerLink: null,
-                routerLinkProps: null
+                routerLinkProps: null,
               }}
             />
           </div>

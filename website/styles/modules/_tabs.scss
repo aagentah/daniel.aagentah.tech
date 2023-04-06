@@ -24,32 +24,32 @@
 .tabs__desktop-nav__item {
   transition: background-color 0.3s ease-in-out;
   display: inline-block;
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--black);
+  color: var(--white);
   padding: 20px;
   margin-right: 10px;
   cursor: pointer;
 }
 
 .tabs__desktop-nav__item:hover {
-  background-color: var(--almost-white);
+  background-color: var(--almost-black);
 }
 
 .tabs__desktop-nav__item.active {
-  background-color: var(--almost-white);
-  color: var(--black);
+  background-color: var(--almost-black);
+  color: var(--white);
 }
 
 // Body
 
 .tabs__body {
-  background-color: var(--white);
+  background-color: var(--black);
   padding: 30px;
 }
 
 @include breakpoint-up(md) {
   .tabs__body {
-    background-color: var(--almost-white);
+    background-color: var(--almost-black);
     padding: 30px;
   }
 }
@@ -107,8 +107,8 @@
 .tabs__mobile-nav__item {
   transition: background-color 0.3s ease-in-out;
   display: block;
-  background: var(--almost-white);
-  color: var(--black);
+  background: var(--almost-black);
+  color: var(--white);
   padding: 20px;
   margin-bottom: 20px;
   cursor: pointer;

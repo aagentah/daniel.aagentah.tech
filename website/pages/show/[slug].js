@@ -98,7 +98,7 @@ export default function Show({ siteConfig, show, moreShows, preview }) {
                   /* Options */
                   htmlEntity="h1"
                   text={show.title}
-                  color="black"
+                  color="white"
                   size="large"
                   truncate={null}
                   onClick={null}
@@ -107,7 +107,7 @@ export default function Show({ siteConfig, show, moreShows, preview }) {
                 />
               </div>
 
-              <p className="t-secondary  f7  almost-black  lh-copy  pb4">
+              <p className="t-secondary  f7  almost-white  lh-copy  pb4">
                 <Date dateString={show.date} />
               </p>
 
@@ -127,11 +127,11 @@ export default function Show({ siteConfig, show, moreShows, preview }) {
                     type="primary"
                     size="medium"
                     text="Event"
-                    color="black"
+                    color="white"
                     fluid={false}
                     icon={null}
                     iconFloat={null}
-                    inverted={false}
+                    inverted={true}
                     loading={false}
                     disabled={false}
                     skeleton={false}

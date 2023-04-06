@@ -22,19 +22,15 @@ export default function Bio({ siteConfig }) {
 
   return (
     <>
-      <div className="pb4  mb2  tac">
-        <SubscribeBanner />
-      </div>
-
       <Container>
-        <div className="col-24">
+        <div className="col-24  pt4">
           {
             // <div className="pt4  pb3  tac">
             //   <Heading
             //     /* Options */
             //     htmlEntity="h2"
             //     text="Latest Projects"
-            //     color="black"
+            //     color="white"
             //     size="large"
             //     truncate={0}
             //     onClick={null}
@@ -65,11 +61,11 @@ export default function Bio({ siteConfig }) {
                 type="primary"
                 size="large"
                 text="Latest Music"
-                color="black"
+                color="white"
                 fluid={true}
                 icon={null}
                 iconFloat={null}
-                inverted={false}
+                inverted={true}
                 loading={false}
                 disabled={false}
                 skeleton={false}
@@ -94,11 +90,11 @@ export default function Bio({ siteConfig }) {
                 type="primary"
                 size="large"
                 text="Latest Projects"
-                color="black"
+                color="white"
                 fluid={true}
                 icon={null}
                 iconFloat={null}
-                inverted={false}
+                inverted={true}
                 loading={false}
                 disabled={false}
                 skeleton={false}
@@ -123,11 +119,11 @@ export default function Bio({ siteConfig }) {
                 type="primary"
                 size="large"
                 text="Latest Posts"
-                color="black"
+                color="white"
                 fluid={true}
                 icon={null}
                 iconFloat={null}
-                inverted={false}
+                inverted={true}
                 loading={false}
                 disabled={false}
                 skeleton={false}
@@ -152,11 +148,11 @@ export default function Bio({ siteConfig }) {
                 type="primary"
                 size="large"
                 text="Shows & Exhibitions"
-                color="black"
+                color="white"
                 fluid={true}
                 icon={null}
                 iconFloat={null}
-                inverted={false}
+                inverted={true}
                 loading={false}
                 disabled={false}
                 skeleton={false}
@@ -182,7 +178,7 @@ export default function Bio({ siteConfig }) {
               //     type="primary"
               //     size="large"
               //     text="Latest Music"
-              //     color="black"
+              //     color="white"
               //     fluid={true}
               //     icon={null}
               //     iconFloat={null}
@@ -208,6 +204,10 @@ export default function Bio({ siteConfig }) {
           </div>
         </div>
       </Container>
+
+      <div className="tac">
+        <SubscribeBanner />
+      </div>
     </>
   );
 }

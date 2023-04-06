@@ -174,9 +174,9 @@
     }
   }
 
-  .button.primary.button--white {
+  .button.primary.button--black {
     &:hover:not(.loading):not(.disabled) {
-      color: var(--black) !important;
+      color: var(--white) !important;
     }
   }
 
@@ -185,21 +185,21 @@
     fill: var($hex);
     border-color: var($hex);
 
-    &:hover:not(.loading):not(.disabled):not(.white) {
-      background-color: var($hex);
-      color: var(--white);
-
-      svg {
-        fill: var(--white);
-      }
-    }
-
-    &:hover:not(.loading):not(.disabled).white {
+    &:hover:not(.loading):not(.disabled):not(.black) {
       background-color: var($hex);
       color: var(--black);
 
       svg {
         fill: var(--black);
+      }
+    }
+
+    &:hover:not(.loading):not(.disabled).black {
+      background-color: var($hex);
+      color: var(--white);
+
+      svg {
+        fill: var(--white);
       }
     }
   }

@@ -1,10 +1,10 @@
 .intro {
-  // background: var(--black);
+  // background: var(--white);
   // overflow: hidden;
-  // background: var(--black);
-  // color: var(--white);
+  // background: var(--white);
+  // color: var(--black);
 
-  height: calc(100vh - 80px - 120px);
+  height: calc(100vh - 80px - 260px);
 
   @extend .flex;
   @extend .flex-wrap;
@@ -14,7 +14,7 @@
 
 @include breakpoint-up(md) {
   .intro {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 80px - 260px);
   }
 }
 
@@ -92,7 +92,7 @@
 
 @include breakpoint-up(md) {
   .intro__planet {
-    height: 600px;
+    height: 500px;
   }
 }
 
@@ -291,7 +291,7 @@
 
 .intro__prompt--command.email {
   .intro__input {
-    border-color: var(--black);
+    border-color: var(--white);
   }
 
   .blink {
@@ -308,7 +308,7 @@
 
   .intro__prompt--command:hover {
     .intro__input:hover {
-      border-color: var(--black);
+      border-color: var(--white);
     }
 
     .blink {
@@ -325,7 +325,7 @@
   display: inline-block;
   box-sizing: border-box;
   height: calc(100% + 10px);
-  background: var(--white);
+  background: var(--black);
   // border-left: 1px solid #fff;
 }
 
@@ -377,7 +377,7 @@
   @extend.w-100;
   @extend.h3;
   @extend.ba;
-  @extend.bc-black;
+  @extend.bc-white;
   @extend.br2;
   @extend.shadow2;
   @extend.cp;
@@ -404,11 +404,11 @@
 .intro__midi-button.active {
   border-color: var(--primary-color);
   background-color: var(--primary-color);
-  color: white;
+  color: black;
 
   .intro__midi-button__number {
-    color: var(--white);
-    border-color: var(--white);
+    color: var(--black);
+    border-color: var(--black);
   }
 }
 

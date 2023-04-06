@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
                 loadingDelay={transitionTimeout}
                 loadingTimeout={{
                   enter: transitionTimeout,
-                  exit: transitionTimeout
+                  exit: transitionTimeout,
                 }}
                 loadingClassNames="loading-indicator"
               >
@@ -42,9 +42,9 @@ function MyApp({ Component, pageProps }) {
                     title: layout?.meta?.title,
                     description: layout?.meta.description,
                     image: layout?.meta?.image,
-                    pageClass: layout?.meta?.pageClass
+                    pageClass: layout?.meta?.pageClass,
                   }}
-                  // navWhite={page?.slug.current === 'home'}
+                  // navblack={page?.slug.current === 'home'}
                   preview={preview}
                 >
                   <Component {...pageProps} />

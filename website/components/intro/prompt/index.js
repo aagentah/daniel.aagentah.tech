@@ -20,7 +20,7 @@ export default function Prompt({
   //
   active,
   setMidiActive,
-  setPromptActive
+  setPromptActive,
 }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
@@ -53,16 +53,16 @@ export default function Prompt({
     if (app?.deviceSize !== 'md' && lastRef.current) lastRef.current.focus();
   }, []);
 
-  const handleInputBlur = event => {
+  const handleInputBlur = (event) => {
     if (app?.deviceSize !== 'md' && lastRef.current) lastRef.current.focus();
   };
 
   const [terminal, setTerminal, terminalRef] = useState([
     <p>init exo:navigator</p>,
     <h1 className="primary-color">
-      <span className="black">usr</span>&nbsp;daniel.aagentah
+      <span className="white">usr</span>&nbsp;daniel.aagentah
     </h1>,
-    <p>TERMINAL IN PROG_</p>
+    <p>TERMINAL IN PROG_</p>,
     // <p>
     //   {app?.deviceSize === 'md' ? 'select' : 'type'} "
     //   <span
@@ -76,10 +76,10 @@ export default function Prompt({
   ]);
 
   const commandClass = classNames({
-    email: emailInputActive
+    email: emailInputActive,
   });
 
-  const validateEmail = email => {
+  const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
       .match(
@@ -87,7 +87,7 @@ export default function Prompt({
       );
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     let value = event.target.value;
 
     setInputValue(value);
@@ -226,7 +226,7 @@ export default function Prompt({
         style={{
           transition: 'opacity 0.3s ease-in-out',
           opacity,
-          display
+          display,
         }}
       >
         {terminal.map((string, i) => (

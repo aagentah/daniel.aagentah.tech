@@ -33,7 +33,7 @@ export default function HeroDefault({
   marginBottom,
   modifier,
   //
-  skeleton
+  skeleton,
 }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
@@ -49,18 +49,18 @@ export default function HeroDefault({
     parallax = useParallax({
       opacity: [1, 0],
       startScroll: 50,
-      endScroll: 600
+      endScroll: 600,
     });
   }
 
   const styles = {
-    height: `${imageHeight}px`
+    height: `${imageHeight}px`,
   };
 
   if (link) {
     linkProps = {
       type: 'external',
-      href: link
+      href: link,
     };
   }
 
@@ -105,7 +105,7 @@ export default function HeroDefault({
       /* Options */
       htmlEntity="h2"
       text={title}
-      color="black"
+      color="white"
       size="large"
       truncate={null}
       skeleton={skeleton}
@@ -121,7 +121,7 @@ export default function HeroDefault({
       <Copy
         /* Options */
         text={description || ''}
-        color="black"
+        color="white"
         size="medium"
         truncate={null}
         skeleton={skeleton}
@@ -136,7 +136,7 @@ export default function HeroDefault({
         type="secondary"
         size="small"
         text={heroButtonText}
-        color="black"
+        color="white"
         fluid={false}
         icon={heroButtonIcon}
         iconFloat={null}

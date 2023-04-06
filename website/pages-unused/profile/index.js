@@ -30,7 +30,7 @@ function ProfileEdit() {
 
     const body = {
       email: e.currentTarget.username.value,
-      name: e.currentTarget.name.value
+      name: e.currentTarget.name.value,
     };
 
     if (e.currentTarget.password.value) {
@@ -39,7 +39,7 @@ function ProfileEdit() {
       if (body.password !== e.currentTarget.rpassword.value) {
         addToast("The passwords don't match", {
           appearance: 'error',
-          autoDismiss: true
+          autoDismiss: true,
         });
         return;
       }
@@ -47,7 +47,7 @@ function ProfileEdit() {
       if (body.password === e.currentTarget.username.value) {
         addToast('Password should not match Username', {
           appearance: 'error',
-          autoDismiss: true
+          autoDismiss: true,
         });
         return;
       }
@@ -55,7 +55,7 @@ function ProfileEdit() {
       if (body.password === e.currentTarget.name.value) {
         addToast('Password should not match Name', {
           appearance: 'error',
-          autoDismiss: true
+          autoDismiss: true,
         });
         return;
       }
@@ -65,7 +65,7 @@ function ProfileEdit() {
       if (!isPasswordValid.isValid) {
         addToast(isPasswordValid.message, {
           appearance: 'error',
-          autoDismiss: true
+          autoDismiss: true,
         });
         return;
       }
@@ -77,7 +77,7 @@ function ProfileEdit() {
     const res = await fetch('../api/user', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
 
     if (res.status === 200) {
@@ -85,12 +85,12 @@ function ProfileEdit() {
       mutate(updatedUser);
       addToast('Successfully updated', {
         appearance: 'success',
-        autoDismiss: true
+        autoDismiss: true,
       });
     } else {
       addToast('Error whilst updating, try again.', {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
     }
 
@@ -103,7 +103,7 @@ function ProfileEdit() {
     setUpdateButtonLoading(true);
 
     const res = await fetch('../api/user', {
-      method: 'DELETE'
+      method: 'DELETE',
     });
 
     if (res.status === 204) {
@@ -112,7 +112,7 @@ function ProfileEdit() {
     } else {
       addToast('Error whilst deleting, try again.', {
         appearance: 'error',
-        autoDismiss: true
+        autoDismiss: true,
       });
     }
 
@@ -137,7 +137,7 @@ function ProfileEdit() {
             /* Options */
             htmlEntity="h1"
             text="Are you sure?"
-            color="black"
+            color="white"
             size="large"
             truncate={0}
             onClick={null}
@@ -149,7 +149,7 @@ function ProfileEdit() {
           <Copy
             /* Options */
             text="This is the point of no return. Are you sure you want to DELETE your account?"
-            color="black"
+            color="white"
             size="medium"
             truncate={2}
           />
@@ -179,7 +179,7 @@ function ProfileEdit() {
               type="secondary"
               size="medium"
               text="Cancel"
-              color="black"
+              color="white"
               fluid={false}
               icon={null}
               iconFloat={null}
@@ -256,7 +256,7 @@ function ProfileEdit() {
               type="primary"
               size="medium"
               text="Update"
-              color="black"
+              color="white"
               fluid={false}
               icon={null}
               iconFloat={null}
@@ -269,7 +269,7 @@ function ProfileEdit() {
                 type: 'form',
                 url: null,
                 target: null,
-                routerLink: null
+                routerLink: null,
               }}
             />
           </div>
@@ -279,7 +279,7 @@ function ProfileEdit() {
               type="primary"
               size="medium"
               text="Delete Profile"
-              color="black"
+              color="white"
               fluid={false}
               icon={buttonIconTrash}
               iconFloat={null}
@@ -314,7 +314,7 @@ export default function Profile({ siteConfig }) {
           siteConfig,
           title: 'Profile',
           description: 'This is the Profile page.',
-          image: null
+          image: null,
         }}
         preview={null}
       >
@@ -324,7 +324,7 @@ export default function Profile({ siteConfig }) {
               /* Options */
               htmlEntity="h1"
               text="Profile"
-              color="black"
+              color="white"
               size="large"
               truncate={0}
               onClick={null}
@@ -350,6 +350,6 @@ export async function getServerSideProps() {
   const siteConfig = await getSiteConfig();
 
   return {
-    props: { siteConfig }
+    props: { siteConfig },
   };
 }

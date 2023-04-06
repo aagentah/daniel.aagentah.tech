@@ -5,7 +5,7 @@ const defaultProps = ({ color, size }) => {
     width: '24',
     height: '24',
     viewBox: '0 0 24 24',
-    fill: color || 'black',
+    fill: color || 'white',
     style: { width: `${size || 24}px`, minWidth: `${size || 24}px` },
     role: 'img',
   };

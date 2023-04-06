@@ -57,7 +57,7 @@ export default function Header({ siteConfig, handleLogout }) {
         header
         header--mobile
         ${navOpen ? 'collapsed' : ''}
-        bg-almost-white
+        bg-almost-black
         flex
         justify-center
         align-center
@@ -76,8 +76,8 @@ export default function Header({ siteConfig, handleLogout }) {
           </svg>
         </button>
 
-        <h1 className="t-primary  almost-black  f6">
-          <a href="/" className="almost-black  link  tac  fw6">
+        <h1 className="t-primary  almost-white  f6">
+          <a href="/" className="almost-white  link  tac  fw6">
             Daniel Aagentah
           </a>
         </h1>
@@ -119,7 +119,7 @@ export default function Header({ siteConfig, handleLogout }) {
                         type="secondary"
                         size="x-large"
                         text={`_${iteration?.title.toLowerCase()}`}
-                        color="black"
+                        color="white"
                         fluid={false}
                         icon={null}
                         iconFloat={null}
@@ -147,7 +147,7 @@ export default function Header({ siteConfig, handleLogout }) {
                       type="secondary"
                       size="x-large"
                       text="Profile"
-                      color="black"
+                      color="white"
                       fluid={false}
                       icon={null}
                       iconFloat={null}
@@ -171,7 +171,7 @@ export default function Header({ siteConfig, handleLogout }) {
                       type="secondary"
                       size="x-large"
                       text="Log Out"
-                      color="black"
+                      color="white"
                       fluid={false}
                       icon={buttonIconSignOut}
                       iconFloat={null}
@@ -193,7 +193,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     //     type="secondary"
                     //     size="large"
                     //     text="Sign Up"
-                    //     color="black"
+                    //     color="white"
                     //     fluid={false}
                     //     icon={null}
                     //     iconFloat={null}
@@ -217,7 +217,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     //     type="secondary"
                     //     size="large"
                     //     text="Login"
-                    //     color="black"
+                    //     color="white"
                     //     fluid={false}
                     //     icon={buttonIconSignIn}
                     //     iconFloat={null}
@@ -248,7 +248,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconInstagram color="white" size={30} />
+                  <IconInstagram color="#e6e6e6" size={30} />
                 </a>
               </div>
 
@@ -259,7 +259,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconSoundcloud color="white" size={30} />
+                  <IconSoundcloud color="#e6e6e6" size={30} />
                 </a>
               </div>
               <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
@@ -269,7 +269,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconYoutube color="white" size={30} />
+                  <IconYoutube color="#e6e6e6" size={30} />
                 </a>
               </div>
 
@@ -280,7 +280,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconSpotify color="white" size={30} />
+                  <IconSpotify color="#e6e6e6" size={30} />
                 </a>
               </div>
 
@@ -291,7 +291,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconGithub color="white" size={30} />
+                  <IconGithub color="#e6e6e6" size={30} />
                 </a>
               </div>
 
@@ -302,7 +302,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconTwitter color="white" size={30} />
+                  <IconTwitter color="#e6e6e6" size={30} />
                 </a>
               </div>
 
@@ -313,13 +313,13 @@ export default function Header({ siteConfig, handleLogout }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconBandcamp color="white" size={30} />
+                  <IconBandcamp color="#e6e6e6" size={30} />
                 </a>
               </div>
             </div>
 
             <div className="flex  justify-center  pt4">
-              <p className="t-secondary  bold  f5  lh-copy  almost-black  tac  dib  mla  mra">
+              <p className="t-secondary  bold  f5  lh-copy  almost-white  tac  dib  mla  mra">
                 Daniel Aagentah {new Date().getFullYear()}
               </p>
             </div>

@@ -53,7 +53,7 @@ export default function Project({
         const { iframeUrl, iframeHeightMobile, iframeHeightDesktop } = node;
 
         return (
-          <div className="w-100  db  mla  mra  mb4  ph3">
+          <div className="w-100  db  mla  mra  mb4  mt3  ph3">
             <Iframe
               url={iframeUrl}
               width="100%"
@@ -103,7 +103,7 @@ export default function Project({
                   /* Options */
                   htmlEntity="h1"
                   text={project.title}
-                  color="black"
+                  color="white"
                   size="large"
                   truncate={null}
                   onClick={null}
@@ -112,7 +112,7 @@ export default function Project({
                 />
               </div>
 
-              <p className="t-secondary  f7  almost-black  lh-copy  pb4">
+              <p className="t-secondary  f7  almost-white  lh-copy  pb4">
                 <Date dateString={project.date} />
               </p>
 

@@ -55,8 +55,8 @@ export default function CardMusic({ item, placeholder }) {
       /* Options */
       customClass=""
       text="Blog"
-      color="white"
-      backgroundColor="black"
+      color="black"
+      backgroundColor="white"
       skeleton={!item}
       onClick={null}
       /* Children */
@@ -69,7 +69,7 @@ export default function CardMusic({ item, placeholder }) {
       /* Options */
       htmlEntity="h2"
       text={item?.title}
-      color="black"
+      color="white"
       size="small"
       truncate={2}
       skeleton={!item}
@@ -91,7 +91,7 @@ export default function CardMusic({ item, placeholder }) {
     <Copy
       /* Options */
       text={item?.excerpt}
-      color="black"
+      color="white"
       size="medium"
       truncate={null}
       skeleton={!item}
@@ -104,7 +104,7 @@ export default function CardMusic({ item, placeholder }) {
   //     type="secondary"
   //     size="small"
   //     text="View Product"
-  //     color="black"
+  //     color="white"
   //     fluid={false}
   //     icon={buttonIcon}
   //     iconFloat={null}

@@ -19,8 +19,8 @@ export default function Header({ siteConfig, handleLogout }) {
   return (
     <div className="header  header--desktop  flex  justify-center  align-center">
       <div className="col-6  flex  align-center  ph4">
-        <h1 className="t-primary  almost-black  f4  fw6">
-          <a href="/" className="almost-black  link">
+        <h1 className="t-primary  almost-white  f4  fw6">
+          <a href="/" className="almost-white  link">
             Daniel Aagentah
           </a>
         </h1>
@@ -39,7 +39,7 @@ export default function Header({ siteConfig, handleLogout }) {
                     type="secondary"
                     size="medium"
                     text={`_${iteration?.title.toLowerCase()}`}
-                    color="black"
+                    color="white"
                     fluid={false}
                     icon={null}
                     iconFloat={null}
