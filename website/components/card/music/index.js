@@ -31,7 +31,7 @@ export default function CardMusic({ item, placeholder }) {
       placeholder={placeholder}
       alt={item?.title}
       figcaption={null}
-      height={280}
+      height={180}
       width={null}
       customClass={null}
       skeleton={!item}

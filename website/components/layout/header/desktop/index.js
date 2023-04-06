@@ -26,7 +26,7 @@ export default function Header({ siteConfig, handleLogout }) {
         </h1>
       </div>
       <nav className="nav  col-18">
-        <ul className="flex  flex-wrap  justify-end  pr3  ls-none">
+        <ul className="flex  flex-wrap  justify-end  pr2  ls-none">
           {siteConfig?.menu?.map?.length &&
             siteConfig.menu.map((iteration, i) => {
               let path = iteration?.slug?.current;
@@ -37,7 +37,7 @@ export default function Header({ siteConfig, handleLogout }) {
                   <Button
                     /* Options */
                     type="secondary"
-                    size="large"
+                    size="medium"
                     text={`_${iteration?.title.toLowerCase()}`}
                     color="black"
                     fluid={false}

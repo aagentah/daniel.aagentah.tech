@@ -5,12 +5,40 @@
   //
 }
 
+.card--project {
+  .card__dialog {
+    @extend .flex-md;
+    @extend .flex-wrap-md;
+    align-content: center;
+    @extend .pt3;
+    @extend .pt0-md;
+  }
+
+  .card__title {
+    @extend .col-24-md;
+    * {
+      @extend .f3-md;
+      @extend .lh-title;
+    }
+  }
+
+  .card__description {
+    @extend .col-24-md;
+  }
+}
+
 .card__image {
   position: relative;
   filter: grayscale(0.5);
   z-index: 1;
   transition: filter 0.3s ease-in-out;
+  @extend .ba;
+  @extend .bw1;
+  @extend .bc-grey;
+  border-top: 0;
+  border-right: 0;
   @extend .mb3;
+  @extend .pa4;
 
   &:hover {
     filter: grayscale(0);

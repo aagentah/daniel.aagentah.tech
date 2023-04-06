@@ -38,7 +38,8 @@
 .nav__desktop__item {
   position: relative;
 
-  @extend .ph3;
+  @extend .pl2;
+  @extend .pr3;
 }
 
 // Mobile
@@ -79,4 +80,8 @@
   top: 28px;
   left: 10px;
   @extend .absolute;
+
+  * {
+    fill: var(--black);
+  }
 }

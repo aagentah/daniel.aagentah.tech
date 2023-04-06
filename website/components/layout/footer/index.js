@@ -42,7 +42,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconInstagram color="black" size={30} />
+              <IconInstagram color="white" size={30} />
             </a>
           </div>
 
@@ -53,7 +53,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconSoundcloud color="black" size={30} />
+              <IconSoundcloud color="white" size={30} />
             </a>
           </div>
           <div className="col-6  col-3-md  flex  justify-center  pt4  pt0-md">
@@ -63,7 +63,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconYoutube color="black" size={30} />
+              <IconYoutube color="white" size={30} />
             </a>
           </div>
 
@@ -74,7 +74,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconSpotify color="black" size={30} />
+              <IconSpotify color="white" size={30} />
             </a>
           </div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconGithub color="black" size={30} />
+              <IconGithub color="white" size={30} />
             </a>
           </div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconTwitter color="black" size={30} />
+              <IconTwitter color="white" size={30} />
             </a>
           </div>
 
@@ -107,13 +107,13 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <IconBandcamp color="black" size={30} />
+              <IconBandcamp color="white" size={30} />
             </a>
           </div>
         </div>
 
         <div className="flex  justify-center  pt4">
-          <p className="t-secondary  bold  f5  lh-copy  almost-black  tac  dib  mla  mra">
+          <p className="t-secondary  bold  f5  lh-copy  almost-white  tac  dib  mla  mra">
             Daniel Aagentah {new Date().getFullYear()}
           </p>
         </div>

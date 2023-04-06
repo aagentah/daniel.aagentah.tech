@@ -14,7 +14,7 @@ export default function CardPost({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
-  const imageHeight = app?.deviceSize === 'md' ? 180 : 280;
+  const imageHeight = app?.deviceSize === 'md' ? 180 : 180;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
@@ -45,8 +45,8 @@ export default function CardPost({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/project/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -82,8 +82,8 @@ export default function CardPost({ item, placeholder }) {
         routerLink: Link,
         routerLinkProps: {
           as: `/project/${item?.slug}`,
-          scroll: false
-        }
+          scroll: false,
+        },
       }}
     />
   );
@@ -132,10 +132,12 @@ export default function CardPost({ item, placeholder }) {
   //   </LazyLoad>
 
   return (
-    <article className="card  card--item">
-      {image && <div className="card__image">{image}</div>}
+    <article className="card  card--project  flex  flex-wrap">
+      {image && (
+        <div className="col-24  col-10-md  ph3  card__image">{image}</div>
+      )}
 
-      <div className="card__dialog">
+      <div className="col-24  col-14-md  ph3  card__dialog">
         {labels?.length && <div className="card__labels">{[...labels]}</div>}
         {heading && <div className="card__title">{heading}</div>}
         {copy && <div className="card__description">{copy}</div>}

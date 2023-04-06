@@ -12,7 +12,7 @@ import SubscribeBanner from '~/components/subscribe-banner';
 import Container from '~/components/layout/container';
 
 import Date from '~/components/date';
-import CardPostThumbnail from '~/components/card/post-thumbnail';
+import CardPost from '~/components/card/post';
 import { useApp } from '~/context-provider/app';
 
 import {
@@ -125,15 +125,15 @@ export default function Project({
 
               {project?.childPosts?.length > 0 && (
                 <section className="pb4">
-                  <h2 className="t-primary  f4  lh-title  blck  tal  pb3">
-                    Related Posts:
+                  <h2 className="t-primary  ph3  f5  lh-title  blck  tal  pb3">
+                    &gt; Blog posts for {project.title}
                   </h2>
 
                   <div className="flex  flex-wrap">
                     {project.childPosts.map((p, i) => (
-                      <div key={p.slug} className="col-24">
+                      <div key={p.slug} className="col-24  col-12-md">
                         <div className="pa3">
-                          <CardPostThumbnail i={i} item={p.post} />
+                          <CardPost i={i} item={p.post} />
                         </div>
                       </div>
                     ))}

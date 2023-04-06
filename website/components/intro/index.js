@@ -422,14 +422,14 @@ export default function Intro({
             <div className="intro__planet" />
 
             <div
-              className="planet__hud__wrapper  planet__hud__wrapper--1"
+              className="planet__hud__wrapper  planet__hud__wrapper--1  o-50"
               style={rotate}
             >
               <img className="planet__hud" src="/images/hud-outside.png" />
             </div>
 
             <div
-              className="planet__hud__wrapper  planet__hud__wrapper--2"
+              className="planet__hud__wrapper  planet__hud__wrapper--2  o-50"
               style={rotate2}
             >
               <img className="planet__hud" src="/images/hud-inside.png" />

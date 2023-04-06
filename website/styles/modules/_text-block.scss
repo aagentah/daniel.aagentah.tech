@@ -23,6 +23,7 @@
 .text-block__title {
   margin-bottom: 1rem;
   @extend .t-primary;
+  @extend .ph3;
 }
 
 .text-block__description {
