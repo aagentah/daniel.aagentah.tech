@@ -160,11 +160,17 @@
 
 .card--show {
   .card__dialog {
+    // @extend .flex;
+    // @extend .flex-wrap;
     @extend .bb;
     @extend .bc-white;
 
-    .card__title * {
-      font-weight: bold;
+    .card__title {
+      margin-bottom: 0;
+
+      * {
+        font-weight: bold;
+      }
     }
 
     .card__date {

@@ -9,6 +9,10 @@
 
   @extend .t-primary;
 
+  &.x-small {
+    @extend .f6;
+  }
+
   &.small {
     @extend .f5;
   }

@@ -273,7 +273,7 @@ export async function getAllProjectsTotal() {
 
 export async function getAllShows(preview) {
   const results = await getClient(preview)
-    .fetch(`*[_type == "show"] | order(date desc, _updatedAt desc) {
+    .fetch(`*[_type == "show"] | order(date asc) {
       ${postFields}
     }`);
   return getUniquePosts(results);

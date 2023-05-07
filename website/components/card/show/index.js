@@ -1,12 +1,13 @@
 import Link from 'next/link';
 // import LazyLoad from 'react-lazyload';
+import Flag from 'react-world-flags';
 
 import { Icon } from 'next-pattern-library';
 import Copy from '~/components/elements/copy';
 import Heading from '~/components/elements/heading';
 import Image from '~/components/elements/image';
 import Label from '~/components/elements/label';
-import Date from '~/components/date';
+import DateC from '~/components/date';
 
 import { imageBuilder } from '~/lib/sanity/requests';
 import { useApp } from '~/context-provider/app';
@@ -72,7 +73,7 @@ export default function CardShow({ item, placeholder }) {
       htmlEntity="h2"
       text={item?.title}
       color="white"
-      size="small"
+      size={app?.deviceSize === 'md' ? 'x-small' : 'small'}
       truncate={null}
       skeleton={!item}
       /* Children */
@@ -133,13 +134,27 @@ export default function CardShow({ item, placeholder }) {
   //   </LazyLoad>
 
   return (
-    <article className="card  card--show">
+    <article
+      className={`card  card--show  ${
+        new Date(item?.date) < new Date() ? 'o-20' : ''
+      }`}
+    >
       <div className="card__dialog">
-        {labels?.length && <div className="card__labels">{[...labels]}</div>}
-        <div className="flex-md  flex-wrap  justify-between">
-          {heading && <div className="card__title">{heading}</div>}
-          {item?.date && (
-            <div className="card__date">{Date({ dateString: item.date })}</div>
+        <div className="flex-md  flex-wrap  justify-between  pb3">
+          <div className="flex-md  flex-wrap-md  align-center">
+            <div className="w2  flex  align-center  mb1  mb0-md  pb2  pb0-md">
+              <Flag code={item?.country} height="16" />
+            </div>
+
+            {heading && (
+              <div className="card__title  pl2-md  pb2  pb0-md">{heading}</div>
+            )}
+          </div>
+
+          {item?.date ? (
+            <div className="card__date">{DateC({ dateString: item.date })}</div>
+          ) : (
+            <div className="card__date">TBA</div>
           )}
         </div>
         {
