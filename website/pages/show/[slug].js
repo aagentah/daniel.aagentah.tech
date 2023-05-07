@@ -107,9 +107,11 @@ export default function Show({ siteConfig, show, moreShows, preview }) {
                 />
               </div>
 
-              <p className="t-secondary  f7  almost-white  lh-copy  pb4">
-                <Date dateString={show.date} />
-              </p>
+              {show?.date && (
+                <p className="t-secondary  f7  almost-white  lh-copy  pb4">
+                  <Date dateString={show.date} />
+                </p>
+              )}
 
               {show.content && show.content.length > 0 && (
                 <div className="richtext  show__body  pb3">
