@@ -7,7 +7,7 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
-      validation: Rule => Rule.required().max(60)
+      validation: (Rule) => Rule.required().max(60),
     },
     {
       name: "slug",
@@ -15,20 +15,9 @@ export default {
       type: "slug",
       options: {
         source: "title",
-        maxLength: 96
-      },
-      validation: Rule => Rule.required()
-    },
-    {
-      name: "shortUrl",
-      title: "Short URL",
-      description: "Do not change value",
-      type: "slug",
-      options: {
-        source: "slug",
         maxLength: 96,
-        slugify: input => `https://aagentah.tech/l/${input.current}`
-      }
+      },
+      validation: (Rule) => Rule.required(),
     },
     {
       title: "Items",
@@ -37,15 +26,15 @@ export default {
       of: [
         {
           title: "Item",
-          type: "smartLinkItem"
-        }
-      ]
-    }
+          type: "smartLinkItem",
+        },
+      ],
+    },
   ],
   preview: {
     select: {
       title: "title",
-      media: "image"
-    }
-  }
+      media: "image",
+    },
+  },
 };
