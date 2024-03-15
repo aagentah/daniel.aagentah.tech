@@ -28,7 +28,7 @@ export default function GridItems({ padding, marginTop, marginBottom }) {
           >
             <div className="flex  flex-wrap">
               {[...Array(itemsLength)].map((iteration, i) => (
-                <div key={iteration} className="col-24  col-8-md">
+                <div key={iteration} className="col-24  col-6-md">
                   <div className="pa3">
                     <CardPost
                       i={i}

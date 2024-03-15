@@ -14,6 +14,7 @@ export default function CardMusic({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
+  const imageHeight = app?.deviceSize === 'md' ? 180 : 100;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
@@ -31,7 +32,7 @@ export default function CardMusic({ item, placeholder }) {
       placeholder={placeholder}
       alt={item?.title}
       figcaption={null}
-      height={180}
+      height={imageHeight}
       width={null}
       customClass={null}
       skeleton={!item}

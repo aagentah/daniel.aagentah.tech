@@ -62,7 +62,7 @@ export default function Prompt({
     <h1 className="primary-color">
       <span className="white">usr</span>&nbsp;daniel.aagentah
     </h1>,
-    <p>TERMINAL IN PROG_</p>,
+    <p>TERMINAL EX.T7</p>,
     // <p>
     //   {app?.deviceSize === 'md' ? 'select' : 'type'} "
     //   <span

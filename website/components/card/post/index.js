@@ -14,7 +14,7 @@ export default function CardPost({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
-  const imageHeight = app?.deviceSize === 'md' ? 140 : 180;
+  const imageHeight = app?.deviceSize === 'md' ? 140 : 120;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (

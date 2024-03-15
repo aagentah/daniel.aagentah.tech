@@ -14,7 +14,7 @@ export default function CardPost({ item, placeholder }) {
   const app = useApp();
   const scale = app?.isRetina ? 2 : 1;
   const imageUrlWidth = app?.deviceSize === 'md' ? 1080 : 1080;
-  const imageHeight = app?.deviceSize === 'md' ? 140 : 180;
+  const imageHeight = app?.deviceSize === 'md' ? 140 : 100;
   const buttonIcon = <Icon icon={['fa', 'arrow-right']} size="3x" />;
 
   const image = (
@@ -133,11 +133,9 @@ export default function CardPost({ item, placeholder }) {
 
   return (
     <article className="card  card--project  flex  flex-wrap">
-      {image && (
-        <div className="col-24  col-10-md  ph3  card__image">{image}</div>
-      )}
+      {image && <div className="col-24  col-4-md  card__image">{image}</div>}
 
-      <div className="col-24  col-14-md  ph3  card__dialog">
+      <div className="col-24  col-20-md  ph3  card__dialog">
         {labels?.length && <div className="card__labels">{[...labels]}</div>}
         {heading && <div className="card__title">{heading}</div>}
         {copy && <div className="card__description">{copy}</div>}
